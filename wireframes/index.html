@@ -1,0 +1,688 @@
+<title>Business Brokerage Wireframes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ground:#EEF0EE; --paper:#FFFFFF; --ink:#1D2321; --muted:#5E6864;
+  --line:#A3ACA8; --fill:#E2E6E3; --fill2:#D2D8D4; --accent:#2B59D6; --accent-soft:#E3EAFB;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"IBM Plex Sans","Segoe UI",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark;--ground:#141816;--paper:#1C211F;--ink:#E3E8E5;--muted:#9AA5A0;
+  --line:#57625D;--fill:#28302C;--fill2:#333C38;--accent:#88A6FF;--accent-soft:#232C45;}}
+:root[data-theme="dark"]{
+  color-scheme:dark;--ground:#141816;--paper:#1C211F;--ink:#E3E8E5;--muted:#9AA5A0;
+  --line:#57625D;--fill:#28302C;--fill2:#333C38;--accent:#88A6FF;--accent-soft:#232C45;}
+
+*{box-sizing:border-box}
+body{background:var(--ground);color:var(--ink);font:15px/1.55 var(--body);padding-inline:16px;padding-block:0 64px}
+.wrap{max-width:1240px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ---------- document header ---------- */
+.doc-head{padding-block:40px 24px;display:grid;gap:12px;max-width:760px}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.doc-head h1{font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:-.01em;line-height:1.1}
+.doc-head p{margin:0;color:var(--muted);max-width:65ch}
+
+/* ---------- sitemap ---------- */
+.sitemap{background:var(--paper);border:1px solid var(--line);padding:20px;margin-bottom:28px}
+.sitemap h2{font-size:15px;margin-bottom:14px}
+.tree{display:flex;flex-wrap:wrap;gap:8px;font:13px/1.3 var(--mono)}
+.tree a{display:inline-flex;gap:8px;align-items:center;padding:8px 10px;border:1px solid var(--line);text-decoration:none;color:var(--ink);background:var(--ground)}
+.tree a:hover{border-color:var(--accent);color:var(--accent)}
+.tree b{font-weight:500;color:var(--accent)}
+.legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:16px;font:12px var(--mono);color:var(--muted)}
+.legend span{display:inline-flex;gap:6px;align-items:center}
+.sw{width:18px;height:12px;border:1px solid var(--line)}
+
+/* ---------- page frame ---------- */
+.page{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;margin-top:48px;scroll-margin-top:16px}
+.page-title{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:baseline;gap:12px}
+.page-title h2{font-size:24px;font-weight:800}
+.page-title .slug{font:13px var(--mono);color:var(--muted)}
+.page-title .goal{font-size:14px;color:var(--muted);flex-basis:100%}
+.browser{background:var(--paper);border:1px solid var(--line);min-width:0}
+.chrome{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--line);background:var(--fill)}
+.chrome i{width:9px;height:9px;border-radius:50%;border:1px solid var(--line)}
+.chrome .url{flex:1;font:12px var(--mono);color:var(--muted);background:var(--paper);border:1px solid var(--line);padding:3px 8px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.canvas{padding:0}
+
+.notes{display:grid;gap:10px;align-content:start;font-size:13.5px}
+.notes h3{font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.note{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start}
+.note p{margin:0}
+.pin{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--accent);color:var(--paper);font:500 11px/1 var(--mono);flex:none}
+
+/* ---------- wireframe primitives ---------- */
+.sec{padding:24px;border-bottom:1px dashed var(--line);position:relative}
+.sec:last-child{border-bottom:0}
+.sec > .pin{position:absolute;top:4px;left:4px;width:18px;height:18px;font-size:10px}
+.row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.between{justify-content:space-between}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.split{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:24px}
+.side{display:grid;grid-template-columns:240px minmax(0,1fr);gap:24px}
+.stack{display:grid;gap:10px;align-content:start}
+
+.img{background:
+  linear-gradient(to top right,transparent calc(50% - .5px),var(--line) 50%,transparent calc(50% + .5px)),
+  linear-gradient(to bottom right,transparent calc(50% - .5px),var(--line) 50%,transparent calc(50% + .5px)),
+  var(--fill);border:1px solid var(--line);display:grid;place-items:center;
+  font:11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em;max-width:100%}
+.img span{background:var(--fill);padding:2px 6px}
+.r169{aspect-ratio:16/9}.r43{aspect-ratio:4/3}.r11{aspect-ratio:1}.r31{aspect-ratio:3/1}
+.hero-img{min-height:300px}
+.logo{font:800 14px var(--display);border:2px solid var(--ink);padding:6px 10px;letter-spacing:.04em}
+.nav{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px}
+.nav .on{text-decoration:underline;text-underline-offset:4px}
+.btn{display:inline-block;padding:9px 16px;border:1.5px solid var(--ink);font:600 13px var(--body);background:var(--paper)}
+.btn.pri{background:var(--ink);color:var(--paper)}
+.btn.sm{padding:5px 10px;font-size:12px}
+.field{border:1px solid var(--line);background:var(--paper);padding:9px 10px;font-size:12.5px;color:var(--muted);min-height:38px}
+.field.area{min-height:90px}
+.lab{font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.t-xl{font:800 clamp(22px,3vw,34px)/1.1 var(--display)}
+.t-lg{font:700 20px/1.2 var(--display)}
+.t-md{font:600 15px/1.3 var(--body)}
+.t-sm{font-size:13px;color:var(--muted)}
+.lines{display:grid;gap:7px}
+.lines i{display:block;height:8px;background:var(--fill2)}
+.lines i:nth-child(3n){width:82%}
+.lines i:nth-child(4n){width:64%}
+.chip{display:inline-block;font:500 11px var(--mono);padding:3px 8px;border:1px solid var(--line);background:var(--fill)}
+.chip.flag{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.card{border:1px solid var(--line);display:grid;align-content:start}
+.card .body{padding:12px;display:grid;gap:8px}
+.kv{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);font-variant-numeric:tabular-nums}
+.kv div{background:var(--paper);padding:8px 10px;display:grid;gap:2px}
+.kv b{font:600 14px var(--body)}
+.kv.k4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.band{background:var(--fill)}
+.dark{background:var(--ink);color:var(--paper)}
+.dark .lines i{background:var(--muted)}
+.dark .btn{border-color:var(--paper);background:transparent;color:var(--paper)}
+.dark .btn.pri{background:var(--paper);color:var(--ink)}
+.dark .t-sm,.dark .lab{color:var(--fill2)}
+.center{text-align:center;justify-items:center}
+.tbl{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+.tbl th,.tbl td{border:1px solid var(--line);padding:7px 9px;text-align:left}
+.tbl th{background:var(--fill);font:500 11px var(--mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.scroll{overflow-x:auto}
+.check{display:flex;gap:8px;align-items:flex-start;font-size:13px}
+.check::before{content:"";width:14px;height:14px;border:1px solid var(--ink);flex:none;margin-top:2px}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.step{border-top:3px solid var(--ink);padding-top:10px;display:grid;gap:6px}
+.step .lab{color:var(--ink)}
+.avatar{border-radius:50%}
+.footer{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:20px}
+.mobile-only{display:none}
+
+@media (max-width:980px){
+  .page{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:720px){
+  .g3,.g4,.steps,.footer{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .split,.side{grid-template-columns:minmax(0,1fr)}
+  .kv,.kv.k4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nav{display:none}.mobile-only{display:inline-block}
+  .sec{padding:18px 14px}
+  .hero-img{min-height:200px}
+}
+@media (max-width:460px){
+  .g2,.g3,.g4,.steps,.footer{grid-template-columns:minmax(0,1fr)}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+html{scroll-behavior:smooth}
+</style>
+
+<div class="wrap">
+
+<header class="doc-head">
+  <span class="eyebrow">Wireframes · v1 · for a myRealPage site</span>
+  <h1>Business-for-sale brokerage website — every page</h1>
+  <p>Low-fidelity layouts for a commercial brokerage that sells businesses and commercial property. Grey boxes are placeholders; blue pins match the build notes beside each page. Built so each block maps onto a myRealPage page section, listing widget or form.</p>
+</header>
+
+<nav class="sitemap" aria-label="Sitemap">
+  <h2>Sitemap</h2>
+  <div class="tree">
+    <a href="#home"><b>01</b> Home</a>
+    <a href="#listings"><b>02</b> Businesses for Sale</a>
+    <a href="#detail"><b>03</b> Listing Detail</a>
+    <a href="#nda"><b>04</b> Confidentiality (NDA)</a>
+    <a href="#property"><b>05</b> Commercial Property</a>
+    <a href="#sell"><b>06</b> Sell Your Business</a>
+    <a href="#buyers"><b>07</b> Buyer Guide</a>
+    <a href="#about"><b>08</b> About &amp; Team</a>
+    <a href="#insights"><b>09</b> Insights (Blog)</a>
+    <a href="#contact"><b>10</b> Contact</a>
+  </div>
+  <div class="legend">
+    <span><i class="sw img"></i> Image / media</span>
+    <span><i class="sw" style="background:var(--fill2)"></i> Body text</span>
+    <span><i class="sw" style="background:var(--ink)"></i> Primary button</span>
+    <span><span class="pin" style="width:16px;height:16px;font-size:9px">1</span> Build note</span>
+  </div>
+</nav>
+
+<!-- ===================== 01 HOME ===================== -->
+<section class="page" id="home">
+  <div class="page-title">
+    <h2>01 · Home</h2><span class="slug">/</span>
+    <span class="goal">Job: send buyers to listings and sellers to a valuation request, in one screen.</span>
+  </div>
+  <div class="browser">
+    <div class="chrome"><i></i><i></i><i></i><span class="url">yourbrokerage.com/</span></div>
+    <div class="canvas">
+      <div class="sec"><span class="pin">1</span>
+        <div class="row between">
+          <span class="logo">[ LOGO ]</span>
+          <nav class="nav"><span>Businesses for Sale</span><span>Commercial Property</span><span>Sell Your Business</span><span>Buyers</span><span>About</span><span>Insights</span></nav>
+          <div class="row" style="gap:10px"><span class="t-sm">(604) 555‑0142</span><span class="btn pri sm">Get a Valuation</span><span class="btn sm mobile-only">☰ Menu</span></div>
+        </div>
+      </div>
+      <div class="sec"><span class="pin">2</span>
+        <div class="split">
+          <div class="stack" style="align-content:center;gap:14px">
+            <span class="lab">Business brokerage · Commercial real estate</span>
+            <div class="t-xl">Buy or sell an established business with a broker who's closed 140+ deals.</div>
+            <div class="lines"><i></i><i></i></div>
+            <div class="row"><span class="btn pri">Browse Businesses for Sale</span><span class="btn">What's My Business Worth?</span></div>
+          </div>
+          <div class="img hero-img"><span>Hero photo · storefront / handshake</span></div>
+        </div>
+      </div>
+      <div class="sec band"><span class="pin">3</span>
+        <div class="grid g4" style="align-items:end">
+          <div class="stack"><span class="lab">Industry</span><div class="field">All industries ▾</div></div>
+          <div class="stack"><span class="lab">Location</span><div class="field">City or region</div></div>
+          <div class="stack"><span class="lab">Asking price</span><div class="field">$0 – $2M+ ▾</div></div>
+          <span class="btn pri" style="text-align:center">Search 38 listings</span>
+        </div>
+      </div>
+      <div class="sec"><span class="pin">4</span>
+        <div class="row between" style="margin-bottom:14px"><div class="t-lg">Featured opportunities</div><span class="t-sm">View all →</span></div>
+        <div class="grid g3">
+          <div class="card"><div class="img r43"><span>Photo</span></div><div class="body"><span class="chip">Food &amp; Beverage</span><div class="t-md">Established Café — Downtown</div><div class="t-sm">Asking $285,000 · Cash flow $118K</div></div></div>
+          <div class="card"><div class="img r43"><span>Photo</span></div><div class="body"><span class="chip">Automotive</span><div class="t-md">Auto Repair Shop w/ Real Estate</div><div class="t-sm">Asking $1,450,000 · Cash flow $310K</div></div></div>
+          <div class="card"><div class="img r43"><span>Photo</span></div><div class="body"><span class="chip flag">Under offer</span><div class="t-md">Commercial Cleaning Franchise</div><div class="t-sm">Asking $420,000 · Cash flow $156K</div></div></div>
+        </div>
+      </div>
+      <div class="sec"><span class="pin">5</span>
+        <div class="grid g4 center">
+          <div class="stack center"><div class="t-xl">140+</div><span class="t-sm">Businesses sold</span></div>
+          <div class="stack center"><div class="t-xl">$96M</div><span class="t-sm">Total deal value</span></div>
+          <div class="stack center"><div class="t-xl">94%</div><span class="t-sm">Of asking achieved</span></div>
+          <div class="stack center"><div class="t-xl">18 yrs</div><span class="t-sm">In the local market</span></div>
+        </div>
+      </div>
+      <div class="sec"><span class="pin">6</span>
+        <div class="grid g2">
+          <div class="card"><div class="body" style="padding:20px;gap:10px"><span class="lab">For sellers</span><div class="t-lg">Selling your business?</div><div class="lines"><i></i><i></i><i></i></div><span class="btn">Get a confidential valuation</span></div></div>
+          <div class="card"><div class="body" style="padding:20px;gap:10px"><span class="lab">For buyers</span><div class="t-lg">Looking to buy?</div><div class="lines"><i></i><i></i><i></i></div><span class="btn">Join the buyer list</span></div></div>
+        </div>
+      </div>
+      <div class="sec band"><span class="pin">7</span>
+        <div class="grid g3">
+          <div class="stack"><div class="lines"><i></i><i></i><i></i></div><span class="t-sm">— Seller, bakery, 2025</span></div>
+          <div class="stack"><div class="lines"><i></i><i></i><i></i></div><span class="t-sm">— Buyer, HVAC firm, 2025</span></div>
+          <div class="stack"><div class="lines"><i></i><i></i><i></i></div><span class="t-sm">— Seller, retail, 2024</span></div>
+        </div>
+      </div>
+      <div class="sec dark"><span class="pin">8</span>
+        <div class="row between"><div class="t-lg">Thinking about selling in the next 1–3 years?</div><span class="btn pri">Book a 20‑min call</span></div>
+      </div>
+      <div class="sec"><span class="pin">9</span>
+        <div class="footer">
+          <div class="stack"><span class="logo" style="justify-self:start">[ LOGO ]</span><span class="t-sm">Brokerage name · Licensed by [regulator]<br>Office address · Phone · Email</span></div>
+          <div class="stack"><span class="lab">Buy</span><span class="t-sm">Businesses for sale<br>Commercial property<br>Buyer guide</span></div>
+          <div class="stack"><span class="lab">Sell</span><span class="t-sm">Valuation<br>Our process<br>Sold deals</span></div>
+          <div class="stack"><span class="lab">Company</span><span class="t-sm">About<br>Insights<br>Privacy · Terms</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    <h3>Build notes</h3>
+    <div class="note"><span class="pin">1</span><p><strong>Global header</strong> on every page. Phone number stays visible; "Get a Valuation" is the one persistent primary button. Collapses to a menu under 720px.</p></div>
+    <div class="note"><span class="pin">2</span><p><strong>Hero</strong> speaks to both audiences with two buttons. Replace the deal count with your real number.</p></div>
+    <div class="note"><span class="pin">3</span><p><strong>Quick search</strong> — use the myRealPage listing search widget, or plain links into filtered listing pages if business listings aren't on MLS.</p></div>
+    <div class="note"><span class="pin">4</span><p><strong>Featured listings</strong>: 3 cards, never the business name — industry + city only, to protect confidentiality.</p></div>
+    <div class="note"><span class="pin">5</span><p><strong>Proof numbers</strong>. Only include figures you can back up.</p></div>
+    <div class="note"><span class="pin">6</span><p><strong>Audience split</strong> — two short paths into Sell (06) and Buyer Guide (07).</p></div>
+    <div class="note"><span class="pin">7</span><p>Testimonials, attributed by industry rather than name.</p></div>
+    <div class="note"><span class="pin">8</span><p>Closing CTA band, reused on 06, 07, 08.</p></div>
+    <div class="note"><span class="pin">9</span><p><strong>Global footer</strong>: brokerage licensing disclosure required in most jurisdictions.</p></div>
+  </aside>
+</section>
+
+<!-- ===================== 02 LISTINGS ===================== -->
+<section class="page" id="listings">
+  <div class="page-title">
+    <h2>02 · Businesses for Sale</h2><span class="slug">/businesses-for-sale</span>
+    <span class="goal">Job: let a buyer narrow 38 listings to the few worth an NDA.</span>
+  </div>
+  <div class="browser">
+    <div class="chrome"><i></i><i></i><i></i><span class="url">yourbrokerage.com/businesses-for-sale?industry=all</span></div>
+    <div class="canvas">
+      <div class="sec"><span class="pin">1</span>
+        <div class="stack"><span class="t-sm">Home / Businesses for Sale</span><div class="t-xl">Businesses for Sale</div><span class="t-sm">38 active listings · updated weekly</span></div>
+      </div>
+      <div class="sec">
+        <div class="side">
+          <div class="stack" style="gap:14px"><span class="pin">2</span>
+            <div class="stack"><span class="lab">Industry</span>
+              <span class="check">Food &amp; Beverage (9)</span><span class="check">Retail (7)</span><span class="check">Automotive (5)</span><span class="check">Services (11)</span><span class="check">Manufacturing (6)</span></div>
+            <div class="stack"><span class="lab">Asking price</span><div class="row" style="gap:8px"><div class="field" style="flex:1">Min</div><div class="field" style="flex:1">Max</div></div></div>
+            <div class="stack"><span class="lab">Annual cash flow (SDE)</span><div class="field">Any ▾</div></div>
+            <div class="stack"><span class="lab">Location</span><div class="field">City / region ▾</div></div>
+            <div class="stack"><span class="lab">Includes</span><span class="check">Real estate</span><span class="check">Seller financing</span><span class="check">Franchise</span><span class="check">Relocatable</span></div>
+            <span class="btn">Clear filters</span>
+          </div>
+          <div class="stack" style="gap:14px">
+            <div class="row between"><span class="pin">3</span><span class="t-sm">Showing 1–12 of 38</span><div class="field" style="min-width:0;flex:0 1 200px">Sort: Newest ▾</div><div class="row" style="gap:6px"><span class="btn sm pri">Grid</span><span class="btn sm">List</span><span class="btn sm">Map</span></div></div>
+            <span class="pin">4</span>
+            <div class="grid g2">
+              <div class="card"><div class="img r169"><span>Photo</span></div><div class="body"><div class="row between"><span class="chip">Food &amp; Beverage</span><span class="t-sm">#BB‑1042</span></div><div class="t-md">Established Café — Downtown</div><div class="kv"><div><span class="lab">Asking</span><b>$285K</b></div><div><span class="lab">Revenue</span><b>$620K</b></div><div><span class="lab">Cash flow</span><b>$118K</b></div></div><span class="btn sm">View details</span></div></div>
+              <div class="card"><div class="img r169"><span>Photo</span></div><div class="body"><div class="row between"><span class="chip">Automotive</span><span class="t-sm">#BB‑1038</span></div><div class="t-md">Auto Repair Shop w/ Real Estate</div><div class="kv"><div><span class="lab">Asking</span><b>$1.45M</b></div><div><span class="lab">Revenue</span><b>$1.9M</b></div><div><span class="lab">Cash flow</span><b>$310K</b></div></div><span class="btn sm">View details</span></div></div>
+              <div class="card"><div class="img r169"><span>Photo</span></div><div class="body"><div class="row between"><span class="chip">Services</span><span class="t-sm">#BB‑1035</span></div><div class="t-md">Landscaping Co. — 22 Contracts</div><div class="kv"><div><span class="lab">Asking</span><b>$640K</b></div><div><span class="lab">Revenue</span><b>$1.1M</b></div><div><span class="lab">Cash flow</span><b>$205K</b></div></div><span class="btn sm">View details</span></div></div>
+              <div class="card"><div class="img r169"><span>Photo</span></div><div class="body"><div class="row between"><span class="chip flag">Seller financing</span><span class="t-sm">#BB‑1031</span></div><div class="t-md">Boutique Fitness Studio</div><div class="kv"><div><span class="lab">Asking</span><b>$199K</b></div><div><span class="lab">Revenue</span><b>$410K</b></div><div><span class="lab">Cash flow</span><b>$92K</b></div></div><span class="btn sm">View details</span></div></div>
+            </div>
+            <div class="row" style="justify-content:center;gap:6px"><span class="btn sm pri">1</span><span class="btn sm">2</span><span class="btn sm">3</span><span class="btn sm">Next →</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="sec band"><span class="pin">5</span>
+        <div class="row between"><div class="stack"><div class="t-md">Don't see the right fit?</div><span class="t-sm">60% of our deals sell before they're listed publicly.</span></div><div class="row" style="gap:8px"><div class="field" style="min-width:0;flex:1 1 180px">Email</div><span class="btn pri">Get new listings first</span></div></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    <h3>Build notes</h3>
+    <div class="note"><span class="pin">1</span><p>Page header with breadcrumb and live listing count.</p></div>
+    <div class="note"><span class="pin">2</span><p><strong>Filters</strong> use buyer vocabulary: cash flow (SDE), not "profit". On mobile, filters open from a "Filters (3)" button in a drawer.</p></div>
+    <div class="note"><span class="pin">3</span><p>Sort: Newest, Price, Cash flow. Map view only shows region, never exact address.</p></div>
+    <div class="note"><span class="pin">4</span><p><strong>Listing card</strong>: generic title, listing ID, and three numbers in the same order on every card: Asking · Revenue · Cash flow.</p></div>
+    <div class="note"><span class="pin">5</span><p><strong>Buyer list sign‑up</strong> — a myRealPage lead form, tagged "buyer". The highest‑value capture on the page.</p></div>
+  </aside>
+</section>
+
+<!-- ===================== 03 DETAIL ===================== -->
+<section class="page" id="detail">
+  <div class="page-title">
+    <h2>03 · Listing Detail</h2><span class="slug">/businesses-for-sale/bb-1042</span>
+    <span class="goal">Job: give enough to qualify interest, then ask for an NDA before revealing the rest.</span>
+  </div>
+  <div class="browser">
+    <div class="chrome"><i></i><i></i><i></i><span class="url">yourbrokerage.com/businesses-for-sale/bb-1042-established-cafe</span></div>
+    <div class="canvas">
+      <div class="sec"><span class="pin">1</span>
+        <div class="stack"><span class="t-sm">Businesses for Sale / Food &amp; Beverage / #BB‑1042</span>
+          <div class="row between"><div class="t-xl">Established Café — Downtown Core</div><div class="row" style="gap:8px"><span class="btn sm">Save</span><span class="btn sm">Share</span></div></div>
+          <div class="row" style="gap:8px"><span class="chip">Food &amp; Beverage</span><span class="chip">Est. 2011</span><span class="chip">Leased premises</span><span class="chip flag">Seller financing available</span></div>
+        </div>
+      </div>
+      <div class="sec"><span class="pin">2</span>
+        <div class="grid" style="grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:8px">
+          <div class="img r43"><span>Main photo · interior, no signage</span></div>
+          <div class="grid" style="gap:8px"><div class="img" style="min-height:80px"><span>Photo</span></div><div class="img" style="min-height:80px"><span>+ 11 photos</span></div></div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="split">
+          <div class="stack" style="gap:20px">
+            <div class="stack"><span class="pin">3</span>
+              <div class="kv k4"><div><span class="lab">Asking price</span><b>$285,000</b></div><div><span class="lab">Gross revenue</span><b>$620,400</b></div><div><span class="lab">Cash flow (SDE)</span><b>$118,300</b></div><div><span class="lab">Multiple</span><b>2.4×</b></div><div><span class="lab">FF&amp;E</span><b>$74,000</b></div><div><span class="lab">Inventory</span><b>$8,500 (incl.)</b></div><div><span class="lab">Employees</span><b>4 FT · 6 PT</b></div><div><span class="lab">Rent</span><b>$5,900/mo</b></div></div>
+            </div>
+            <div class="stack"><span class="pin">4</span><div class="t-lg">Business overview</div><div class="lines"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+            <div class="stack"><div class="t-md">Highlights</div><div class="lines"><i></i><i></i><i></i></div></div>
+            <div class="stack"><span class="pin">5</span><div class="t-md">Facility &amp; lease</div>
+              <div class="scroll"><table class="tbl"><tr><th>Size</th><th>Term remaining</th><th>Renewal</th><th>Seating</th></tr><tr><td>1,850 sq ft</td><td>4 yrs</td><td>1 × 5‑yr option</td><td>42 inside · 16 patio</td></tr></table></div>
+            </div>
+            <div class="stack"><div class="t-md">Reason for selling · Training &amp; support</div><div class="lines"><i></i><i></i></div></div>
+            <div class="stack"><span class="pin">6</span>
+              <div class="card band"><div class="body row between" style="padding:16px"><div class="stack" style="gap:4px"><div class="t-md">🔒 Financials, P&amp;L, address and business name</div><span class="t-sm">Available after you sign a confidentiality agreement.</span></div><span class="btn pri">Sign NDA to unlock</span></div></div>
+            </div>
+          </div>
+          <div class="stack" style="gap:14px"><span class="pin">7</span>
+            <div class="card"><div class="body" style="padding:16px;gap:12px">
+              <div class="row" style="gap:12px"><div class="img avatar r11" style="width:52px"></div><div class="stack" style="gap:2px"><div class="t-md">Broker Name</div><span class="t-sm">Listing broker · (604) 555‑0142</span></div></div>
+              <span class="btn pri" style="text-align:center">Request Information (NDA)</span>
+              <span class="btn" style="text-align:center">Ask a question</span>
+              <span class="t-sm">Listing #BB‑1042 · Listed 12 Aug 2026</span>
+            </div></div>
+            <div class="card"><div class="body" style="padding:16px"><span class="lab">General area</span><div class="img r43"><span>Map · approximate zone only</span></div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="sec"><span class="pin">8</span>
+        <div class="t-lg" style="margin-bottom:12px">Similar businesses</div>
+        <div class="grid g3"><div class="card"><div class="img r169"></div><div class="body"><div class="lines"><i></i><i></i></div></div></div><div class="card"><div class="img r169"></div><div class="body"><div class="lines"><i></i><i></i></div></div></div><div class="card"><div class="img r169"></div><div class="body"><div class="lines"><i></i><i></i></div></div></div></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    <h3>Build notes</h3>
+    <div class="note"><span class="pin">1</span><p>Title is descriptive, never the trade name. Chips flag deal terms buyers filter on.</p></div>
+    <div class="note"><span class="pin">2</span><p>Photos must not show signage, menus or staff that identify the business.</p></div>
+    <div class="note"><span class="pin">3</span><p><strong>Key figures grid</strong> — the most-read block. Keep the same 8 fields on every listing; "n/a" rather than hiding a field.</p></div>
+    <div class="note"><span class="pin">4</span><p>Overview: ~150 words, what it is, why it's good, growth upside.</p></div>
+    <div class="note"><span class="pin">5</span><p>Lease terms matter as much as price for most buyers — keep them above the fold on desktop.</p></div>
+    <div class="note"><span class="pin">6</span><p><strong>Gated section</strong> links to the NDA page (04) with the listing ID pre-filled.</p></div>
+    <div class="note"><span class="pin">7</span><p>Sticky broker card on desktop; becomes a bottom bar with "Request info" on mobile.</p></div>
+    <div class="note"><span class="pin">8</span><p>Same industry or price band, 3 cards.</p></div>
+  </aside>
+</section>
+
+<!-- ===================== 04 NDA ===================== -->
+<section class="page" id="nda">
+  <div class="page-title">
+    <h2>04 · Confidentiality Agreement</h2><span class="slug">/request-info</span>
+    <span class="goal">Job: collect a signed NDA and qualify the buyer in one short form.</span>
+  </div>
+  <div class="browser">
+    <div class="chrome"><i></i><i></i><i></i><span class="url">yourbrokerage.com/request-info?listing=BB-1042</span></div>
+    <div class="canvas">
+      <div class="sec"><span class="pin">1</span>
+        <div class="stack"><div class="t-xl">Request full information</div><span class="t-sm">Listing #BB‑1042 · Established Café — Downtown Core</span></div>
+      </div>
+      <div class="sec"><span class="pin">2</span>
+        <div class="steps">
+          <div class="step"><span class="lab">Step 1</span><span class="t-sm">Your details</span></div>
+          <div class="step" style="border-color:var(--line)"><span class="lab" style="color:var(--muted)">Step 2</span><span class="t-sm">Buyer profile</span></div>
+          <div class="step" style="border-color:var(--line)"><span class="lab" style="color:var(--muted)">Step 3</span><span class="t-sm">Review &amp; sign</span></div>
+          <div class="step" style="border-color:var(--line)"><span class="lab" style="color:var(--muted)">Done</span><span class="t-sm">Broker sends CIM</span></div>
+        </div>
+      </div>
+      <div class="sec">
+        <div class="split">
+          <div class="stack" style="gap:14px"><span class="pin">3</span>
+            <div class="grid g2"><div class="stack"><span class="lab">First name</span><div class="field"></div></div><div class="stack"><span class="lab">Last name</span><div class="field"></div></div></div>
+            <div class="grid g2"><div class="stack"><span class="lab">Email</span><div class="field"></div></div><div class="stack"><span class="lab">Phone</span><div class="field"></div></div></div>
+            <div class="grid g2"><div class="stack"><span class="lab">Available capital</span><div class="field">Select range ▾</div></div><div class="stack"><span class="lab">Timeframe to buy</span><div class="field">0–6 months ▾</div></div></div>
+            <div class="stack"><span class="lab">Relevant experience</span><div class="field area"></div></div>
+            <div class="stack"><span class="pin">4</span><span class="lab">Confidentiality agreement</span><div class="field area" style="min-height:130px"><div class="lines"><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div>
+            <span class="check">I agree to the confidentiality agreement above</span>
+            <div class="stack"><span class="lab">Type your full name to sign</span><div class="field"></div></div>
+            <span class="btn pri" style="justify-self:start">Sign &amp; request information</span>
+          </div>
+          <div class="stack"><span class="pin">5</span>
+            <div class="card band"><div class="body" style="padding:16px;gap:10px"><div class="t-md">What happens next</div><div class="lines"><i></i><i></i><i></i><i></i></div><span class="t-sm">Typical reply: within 1 business day.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    <h3>Build notes</h3>
+    <div class="note"><span class="pin">1</span><p>Reached from any listing's "Request info" button; listing ID carried in the URL.</p></div>
+    <div class="note"><span class="pin">2</span><p>Progress steps — real sequence the buyer goes through.</p></div>
+    <div class="note"><span class="pin">3</span><p>Qualifying questions (capital, timeframe) help the broker prioritise. Build as a myRealPage form, or embed e-sign (DocuSign / Dropbox Sign) via link if you need legally stronger signatures.</p></div>
+    <div class="note"><span class="pin">4</span><p>NDA text supplied by your lawyer; scrollable box, plus a downloadable PDF link.</p></div>
+    <div class="note"><span class="pin">5</span><p>Set expectations so buyers don't call chasing the CIM.</p></div>
+  </aside>
+</section>
+
+<!-- ===================== 05 PROPERTY ===================== -->
+<section class="page" id="property">
+  <div class="page-title">
+    <h2>05 · Commercial Property</h2><span class="slug">/commercial-property</span>
+    <span class="goal">Job: show commercial buildings and spaces for sale or lease (MLS / IDX feed).</span>
+  </div>
+  <div class="browser">
+    <div class="chrome"><i></i><i></i><i></i><span class="url">yourbrokerage.com/commercial-property</span></div>
+    <div class="canvas">
+      <div class="sec"><span class="pin">1</span>
+        <div class="row between"><div class="t-xl">Commercial Property</div><div class="row" style="gap:6px"><span class="btn sm pri">For Sale</span><span class="btn sm">For Lease</span></div></div>
+      </div>
+      <div class="sec band"><span class="pin">2</span>
+        <div class="grid g4" style="align-items:end">
+          <div class="stack"><span class="lab">Type</span><div class="field">Retail · Office · Industrial ▾</div></div>
+          <div class="stack"><span class="lab">Area</span><div class="field">Any ▾</div></div>
+          <div class="stack"><span class="lab">Size (sq ft)</span><div class="field">Min – Max</div></div>
+          <span class="btn pri" style="text-align:center">Search</span>
+        </div>
+      </div>
+      <div class="sec"><span class="pin">3</span>
+        <div class="split">
+          <div class="grid g2">
+            <div class="card"><div class="img r43"><span>Photo</span></div><div class="body"><div class="t-md">Retail unit · 2,400 sq ft</div><span class="t-sm">$28/sq ft/yr NNN · Main St</span></div></div>
+            <div class="card"><div class="img r43"><span>Photo</span></div><div class="body"><div class="t-md">Industrial bay · 6,000 sq ft</div><span class="t-sm">For sale $2.1M · 24' clear</span></div></div>
+            <div class="card"><div class="img r43"><span>Photo</span></div><div class="body"><div class="t-md">Office suite · 1,150 sq ft</div><span class="t-sm">$22/sq ft/yr gross</span></div></div>
+            <div class="card"><div class="img r43"><span>Photo</span></div><div class="body"><div class="t-md">Mixed-use building</div><span class="t-sm">For sale $3.8M · 5.2% cap</span></div></div>
+          </div>
+          <div class="img" style="min-height:320px"><span>Map with pins</span></div>
+        </div>
+      </div>
+      <div class="sec"><span class="pin">4</span>
+        <div class="row between"><div class="t-md">Property detail pages use the myRealPage listing template.</div><span class="btn">Ask about off‑market space</span></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    <h3>Build notes</h3>
+    <div class="note"><span class="pin">1</span><p>Sale / lease toggle switches the feed, pricing format ($ vs $/sq ft/yr) and filters.</p></div>
+    <div class="note"><span class="pin">2</span><p>Commercial filters: property type, zoning, size, clear height (industrial).</p></div>
+    <div class="note"><span class="pin">3</span><p>This page can run from myRealPage's MLS/IDX listings. Unlike business listings, exact addresses and map pins are fine here.</p></div>
+    <div class="note"><span class="pin">4</span><p>Keep the default property detail layout; add a lead form linking to Contact.</p></div>
+  </aside>
+</section>
+
+<!-- ===================== 06 SELL ===================== -->
+<section class="page" id="sell">
+  <div class="page-title">
+    <h2>06 · Sell Your Business</h2><span class="slug">/sell-your-business</span>
+    <span class="goal">Job: convince an owner to request a confidential valuation.</span>
+  </div>
+  <div class="browser">
+    <div class="chrome"><i></i><i></i><i></i><span class="url">yourbrokerage.com/sell-your-business</span></div>
+    <div class="canvas">
+      <div class="sec"><span class="pin">1</span>
+        <div class="split">
+          <div class="stack" style="gap:14px;align-content:center"><span class="lab">For owners</span><div class="t-xl">Sell your business confidentially — without your staff or customers finding out.</div><div class="lines"><i></i><i></i></div><span class="btn pri" style="justify-self:start">Get my free valuation</span></div>
+          <div class="img hero-img"><span>Photo · owner at work</span></div>
+        </div>
+      </div>
+      <div class="sec"><span class="pin">2</span>
+        <div class="t-lg" style="margin-bottom:16px">How the sale works</div>
+        <div class="steps">
+          <div class="step"><span class="lab">1 · Valuation</span><span class="t-sm">Review of 3 yrs financials; price range in 7 days.</span></div>
+          <div class="step"><span class="lab">2 · Marketing</span><span class="t-sm">Anonymous listing, CIM, buyer outreach.</span></div>
+          <div class="step"><span class="lab">3 · Buyers &amp; offers</span><span class="t-sm">NDA-screened buyers, meetings, LOIs.</span></div>
+          <div class="step"><span class="lab">4 · Closing</span><span class="t-sm">Due diligence, lease assignment, handover.</span></div>
+        </div>
+      </div>
+      <div class="sec band"><span class="pin">3</span>
+        <div class="grid g3">
+          <div class="stack"><div class="t-md">Confidential by default</div><div class="lines"><i></i><i></i></div></div>
+          <div class="stack"><div class="t-md">Qualified buyers only</div><div class="lines"><i></i><i></i></div></div>
+          <div class="stack"><div class="t-md">Success fee — no sale, no fee</div><div class="lines"><i></i><i></i></div></div>
+        </div>
+      </div>
+      <div class="sec"><span class="pin">4</span>
+        <div class="t-lg" style="margin-bottom:12px">Recently sold</div>
+        <div class="scroll"><table class="tbl">
+          <tr><th>Business</th><th>Area</th><th>Sold</th><th>% of asking</th><th>Days to sell</th></tr>
+          <tr><td>Bakery &amp; café</td><td>North Shore</td><td>Jun 2026</td><td>97%</td><td>112</td></tr>
+          <tr><td>HVAC contractor</td><td>Burnaby</td><td>Apr 2026</td><td>100%</td><td>86</td></tr>
+          <tr><td>Pet grooming salon</td><td>Richmond</td><td>Feb 2026</td><td>92%</td><td>141</td></tr>
+        </table></div>
+      </div>
+      <div class="sec" id="valuation"><span class="pin">5</span>
+        <div class="split">
+          <div class="stack" style="gap:12px">
+            <div class="t-lg">Request a confidential valuation</div>
+            <div class="grid g2"><div class="stack"><span class="lab">Name</span><div class="field"></div></div><div class="stack"><span class="lab">Email / phone</span><div class="field"></div></div></div>
+            <div class="grid g2"><div class="stack"><span class="lab">Industry</span><div class="field">Select ▾</div></div><div class="stack"><span class="lab">Years in business</span><div class="field"></div></div></div>
+            <div class="grid g2"><div class="stack"><span class="lab">Annual revenue</span><div class="field">Select range ▾</div></div><div class="stack"><span class="lab">When do you want to sell?</span><div class="field">Within 12 months ▾</div></div></div>
+            <span class="btn pri" style="justify-self:start">Send my request</span>
+            <span class="t-sm">We never contact your business line or staff.</span>
+          </div>
+          <div class="stack"><div class="card"><div class="body" style="padding:16px"><div class="lines"><i></i><i></i><i></i></div><span class="t-sm">— Seller, bakery</span></div></div></div>
+        </div>
+      </div>
+      <div class="sec"><span class="pin">6</span>
+        <div class="t-lg" style="margin-bottom:10px">Seller FAQ</div>
+        <div class="stack"><div class="field">How is my business valued? ＋</div><div class="field">What are your fees? ＋</div><div class="field">How long does a sale take? ＋</div><div class="field">Do I need to own the building? ＋</div></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    <h3>Build notes</h3>
+    <div class="note"><span class="pin">1</span><p>Lead with confidentiality — owners' #1 fear. Header "Get a Valuation" button jumps to the form (#valuation).</p></div>
+    <div class="note"><span class="pin">2</span><p>A real 4-stage sequence, so numbering is useful here.</p></div>
+    <div class="note"><span class="pin">3</span><p>Three reasons to choose you. Only state your actual fee model.</p></div>
+    <div class="note"><span class="pin">4</span><p>Sold deals table — strongest proof. Use real data or remove.</p></div>
+    <div class="note"><span class="pin">5</span><p><strong>Valuation form</strong>: 8 fields max, tagged "seller" in the myRealPage lead inbox.</p></div>
+    <div class="note"><span class="pin">6</span><p>Accordion FAQ; good for search traffic too.</p></div>
+  </aside>
+</section>
+
+<!-- ===================== 07 BUYERS ===================== -->
+<section class="page" id="buyers">
+  <div class="page-title">
+    <h2>07 · Buyer Guide</h2><span class="slug">/buyers</span>
+    <span class="goal">Job: prepare first-time buyers and capture them on the buyer list.</span>
+  </div>
+  <div class="browser">
+    <div class="chrome"><i></i><i></i><i></i><span class="url">yourbrokerage.com/buyers</span></div>
+    <div class="canvas">
+      <div class="sec"><span class="pin">1</span><div class="stack"><div class="t-xl">Buying a business: what to expect</div><div class="lines" style="max-width:60%"><i></i><i></i></div></div></div>
+      <div class="sec"><span class="pin">2</span>
+        <div class="steps">
+          <div class="step"><span class="lab">1 · Get ready</span><span class="t-sm">Capital, financing pre-approval.</span></div>
+          <div class="step"><span class="lab">2 · Find &amp; NDA</span><span class="t-sm">Review listings, sign NDAs.</span></div>
+          <div class="step"><span class="lab">3 · Offer</span><span class="t-sm">Meet the seller, submit LOI.</span></div>
+          <div class="step"><span class="lab">4 · Due diligence</span><span class="t-sm">Financials, lease, legal, close.</span></div>
+        </div>
+      </div>
+      <div class="sec"><span class="pin">3</span>
+        <div class="grid g3">
+          <div class="card"><div class="body"><div class="t-md">Financing a purchase</div><div class="lines"><i></i><i></i><i></i></div></div></div>
+          <div class="card"><div class="body"><div class="t-md">Reading SDE &amp; multiples</div><div class="lines"><i></i><i></i><i></i></div></div></div>
+          <div class="card"><div class="body"><div class="t-md">Due diligence checklist</div><div class="lines"><i></i><i></i><i></i></div><span class="t-sm">Download PDF</span></div></div>
+        </div>
+      </div>
+      <div class="sec dark"><span class="pin">4</span>
+        <div class="row between"><div class="stack"><div class="t-lg">Join the buyer list</div><span class="t-sm">Get new listings before they go public.</span></div><span class="btn pri">Create buyer profile</span></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    <h3>Build notes</h3>
+    <div class="note"><span class="pin">1</span><p>Simple text page — myRealPage content page template.</p></div>
+    <div class="note"><span class="pin">2</span><p>Real buying sequence, mirrors the seller steps on 06.</p></div>
+    <div class="note"><span class="pin">3</span><p>Resource cards link to Insights articles (09). Checklist PDF can be gated behind email.</p></div>
+    <div class="note"><span class="pin">4</span><p>Buyer profile form: industries, price range, capital, area.</p></div>
+  </aside>
+</section>
+
+<!-- ===================== 08 ABOUT ===================== -->
+<section class="page" id="about">
+  <div class="page-title">
+    <h2>08 · About &amp; Team</h2><span class="slug">/about</span>
+    <span class="goal">Job: build trust — who you are, your track record, credentials.</span>
+  </div>
+  <div class="browser">
+    <div class="chrome"><i></i><i></i><i></i><span class="url">yourbrokerage.com/about</span></div>
+    <div class="canvas">
+      <div class="sec"><span class="pin">1</span>
+        <div class="split"><div class="stack" style="gap:12px"><div class="t-xl">Local brokers for local businesses</div><div class="lines"><i></i><i></i><i></i><i></i></div></div><div class="img r43"><span>Team photo</span></div></div>
+      </div>
+      <div class="sec"><span class="pin">2</span>
+        <div class="grid g4">
+          <div class="stack center"><div class="img avatar r11" style="width:96px"></div><div class="t-md">Name</div><span class="t-sm">Principal Broker</span></div>
+          <div class="stack center"><div class="img avatar r11" style="width:96px"></div><div class="t-md">Name</div><span class="t-sm">Business Broker</span></div>
+          <div class="stack center"><div class="img avatar r11" style="width:96px"></div><div class="t-md">Name</div><span class="t-sm">Commercial Realtor</span></div>
+          <div class="stack center"><div class="img avatar r11" style="width:96px"></div><div class="t-md">Name</div><span class="t-sm">Transaction Coordinator</span></div>
+        </div>
+      </div>
+      <div class="sec band"><span class="pin">3</span>
+        <div class="row" style="justify-content:space-around"><div class="img" style="width:110px;height:44px"><span>Assoc.</span></div><div class="img" style="width:110px;height:44px"><span>Board</span></div><div class="img" style="width:110px;height:44px"><span>Cert.</span></div><div class="img" style="width:110px;height:44px"><span>Award</span></div></div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    <h3>Build notes</h3>
+    <div class="note"><span class="pin">1</span><p>Short story, service area, years active.</p></div>
+    <div class="note"><span class="pin">2</span><p>Each team card opens a bio with direct phone and email (myRealPage agent roster, if on a team account).</p></div>
+    <div class="note"><span class="pin">3</span><p>Credentials strip: real estate board, CBI / IBBA, awards.</p></div>
+  </aside>
+</section>
+
+<!-- ===================== 09 INSIGHTS ===================== -->
+<section class="page" id="insights">
+  <div class="page-title">
+    <h2>09 · Insights (Blog)</h2><span class="slug">/insights</span>
+    <span class="goal">Job: bring in search traffic from owners and buyers researching a sale.</span>
+  </div>
+  <div class="browser">
+    <div class="chrome"><i></i><i></i><i></i><span class="url">yourbrokerage.com/insights</span></div>
+    <div class="canvas">
+      <div class="sec"><span class="pin">1</span>
+        <div class="row between"><div class="t-xl">Insights</div><div class="row" style="gap:6px"><span class="chip flag">All</span><span class="chip">Selling</span><span class="chip">Buying</span><span class="chip">Market reports</span></div></div>
+      </div>
+      <div class="sec"><span class="pin">2</span>
+        <div class="split"><div class="img r169"><span>Featured article image</span></div><div class="stack" style="align-content:center"><span class="lab">Market report · Q3 2026</span><div class="t-lg">What small businesses are selling for this quarter</div><div class="lines"><i></i><i></i><i></i></div></div></div>
+      </div>
+      <div class="sec"><span class="pin">3</span>
+        <div class="grid g3">
+          <div class="card"><div class="img r169"></div><div class="body"><span class="lab">Selling</span><div class="t-md">5 things that lower your valuation</div></div></div>
+          <div class="card"><div class="img r169"></div><div class="body"><span class="lab">Buying</span><div class="t-md">SDE vs EBITDA, explained</div></div></div>
+          <div class="card"><div class="img r169"></div><div class="body"><span class="lab">Selling</span><div class="t-md">Assigning your commercial lease</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    <h3>Build notes</h3>
+    <div class="note"><span class="pin">1</span><p>Category filters. Uses myRealPage's blog module.</p></div>
+    <div class="note"><span class="pin">2</span><p>A recurring quarterly market report gives a reason to return.</p></div>
+    <div class="note"><span class="pin">3</span><p>Article page: title, date, body, author card, and a closing CTA matching the category (seller → valuation, buyer → buyer list).</p></div>
+  </aside>
+</section>
+
+<!-- ===================== 10 CONTACT ===================== -->
+<section class="page" id="contact">
+  <div class="page-title">
+    <h2>10 · Contact</h2><span class="slug">/contact</span>
+    <span class="goal">Job: route each enquiry to the right person fast.</span>
+  </div>
+  <div class="browser">
+    <div class="chrome"><i></i><i></i><i></i><span class="url">yourbrokerage.com/contact</span></div>
+    <div class="canvas">
+      <div class="sec">
+        <div class="split">
+          <div class="stack" style="gap:12px"><span class="pin">1</span>
+            <div class="t-xl">Talk to a broker</div>
+            <div class="stack"><span class="lab">I'm interested in</span><div class="row" style="gap:6px"><span class="btn sm pri">Selling a business</span><span class="btn sm">Buying a business</span><span class="btn sm">Commercial property</span><span class="btn sm">Other</span></div></div>
+            <div class="grid g2"><div class="stack"><span class="lab">Name</span><div class="field"></div></div><div class="stack"><span class="lab">Email</span><div class="field"></div></div></div>
+            <div class="stack"><span class="lab">Phone</span><div class="field"></div></div>
+            <div class="stack"><span class="lab">Message</span><div class="field area"></div></div>
+            <span class="btn pri" style="justify-self:start">Send message</span>
+          </div>
+          <div class="stack" style="gap:12px"><span class="pin">2</span>
+            <div class="card"><div class="body" style="padding:16px;gap:6px"><span class="lab">Office</span><span class="t-md">Street address, City</span><span class="t-sm">Mon–Fri 8:30–5:30</span><span class="t-md">(604) 555‑0142</span><span class="t-sm">info@yourbrokerage.com</span></div></div>
+            <div class="img r43"><span>Map · office location</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <aside class="notes">
+    <h3>Build notes</h3>
+    <div class="note"><span class="pin">1</span><p>The "interested in" toggle routes the lead and tags it in the myRealPage lead inbox.</p></div>
+    <div class="note"><span class="pin">2</span><p>Office details and map. The office map is fine to show; listing locations are not.</p></div>
+  </aside>
+</section>
+
+</div>
