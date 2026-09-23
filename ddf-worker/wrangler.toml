@@ -1,0 +1,17 @@
+name = "ddf-listings"
+main = "src/worker.js"
+compatibility_date = "2026-09-01"
+
+[vars]
+# The website(s) allowed to load listings. Use your real domain, e.g. "https://yourname.com,https://www.yourname.com".
+# "*" lets any site call it, which is fine for testing only.
+ALLOWED_ORIGINS = "*"
+# Optional extra OData filter. Leave empty and set your filters in the DDF feed itself.
+DDF_FILTER = ""
+MAX_LISTINGS = "300"
+CACHE_SECONDS = "3600"
+
+# Secrets are NOT stored here. Add them with:
+#   npx wrangler secret put DDF_CLIENT_ID
+#   npx wrangler secret put DDF_CLIENT_SECRET
+#   npx wrangler secret put ADMIN_KEY

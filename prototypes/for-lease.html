@@ -120,7 +120,7 @@ select{border:1px solid var(--line);background:var(--surface);padding:7px 10px;b
 .need p{margin:6px 0 0;opacity:.85;max-width:60ch}
 
 footer{border-top:1px solid var(--line);background:var(--surface);padding-block:28px;font-size:13px;color:var(--muted)}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
+footer .wrap:first-child{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px}
 footer b{color:var(--ink)}
 
 /* drawer */
@@ -202,6 +202,21 @@ form{display:grid;gap:12px}
 .qa details[open] summary::after{content:"–"}
 .qa details p{margin:0 0 16px;color:var(--muted);max-width:62ch}
 
+/* live data */
+.photo.has-img{background:var(--soft)}
+.photo.has-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card .office{font-size:12px;color:var(--muted)}
+.t-other{background:linear-gradient(160deg,#D6D9DE,#BCC2CA)}
+#lmap{height:min(560px,calc(100vh - 220px));min-height:320px}
+.lpin span{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--ground);border:3px solid var(--surface);font:700 12px var(--body);box-shadow:0 2px 6px rgba(0,0,0,.3)}
+.lpin span.hot{background:var(--brand);color:var(--brand-ink);transform:scale(1.15)}
+.thumbs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin-top:-8px}
+.thumbs img{aspect-ratio:1;object-fit:cover;width:100%;border-radius:6px}
+footer .ddf{display:grid;gap:8px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-size:12px}
+footer .ddf p{margin:0;max-width:110ch}
+.powered{justify-self:start;display:inline-flex;gap:6px;align-items:center;border:1px solid var(--line);border-radius:6px;padding:6px 10px;color:var(--ink);text-decoration:none;font-size:12.5px}
+.powered b{color:#D8232A}
+
 @media (max-width:900px){
   .guide,.faq{grid-template-columns:minmax(0,1fr);gap:24px}
   .faq .shead{position:static}
@@ -247,7 +262,7 @@ form{display:grid;gap:12px}
       <div>
         <div class="crumb">Home / Commercial Property / For Lease</div>
         <h1>Commercial space <span>for lease</span></h1>
-        <p>Retail, office, industrial and restaurant space I'm currently leasing. Rents are shown per square foot per year, the way landlords quote them. Open any space to see the estimated monthly cost.</p>
+        <p>Retail, office, industrial and restaurant space for lease in [City]. Rents are shown per square foot per year, the way landlords quote them. Open any space to see the estimated monthly cost.</p>
       </div>
       <div class="agent">
         <div class="ph" aria-hidden="true">YN</div>
@@ -259,7 +274,7 @@ form{display:grid;gap:12px}
   <div class="zone">
   <section class="filters gutter" aria-label="Filter spaces">
     <div class="wrap">
-      <div class="seg" id="typeSeg" role="group" aria-label="Property type">
+      <div class="seg" id="typeSeg" role="group" aria-label="Property type"><!-- filled from the listings -->
         <button type="button" data-type="all" aria-pressed="true">All</button>
         <button type="button" data-type="Retail" aria-pressed="false">Retail</button>
         <button type="button" data-type="Office" aria-pressed="false">Office</button>
@@ -272,7 +287,7 @@ form{display:grid;gap:12px}
           <select id="fSize"><option value="any">Any size</option><option value="0-1500">Under 1,500 sq ft</option><option value="1500-5000">1,500–5,000 sq ft</option><option value="5000-999999">5,000+ sq ft</option></select></div>
         <div class="sel"><label for="fRent">Total rent</label>
           <select id="fRent"><option value="any">Any</option><option value="35">Up to $35/sq ft</option><option value="45">Up to $45/sq ft</option><option value="55">Up to $55/sq ft</option></select></div>
-        <div class="sel"><label for="fAvail">Available</label>
+        <div class="sel" id="availWrap"><label for="fAvail">Available</label>
           <select id="fAvail"><option value="any">Any time</option><option value="now">Now</option><option value="90">Within 90 days</option></select></div>
         <div class="sel"><label for="fSort">Sort</label>
           <select id="fSort"><option value="new">Newest</option><option value="rent">Lowest rent</option><option value="sizeA">Smallest first</option><option value="sizeD">Largest first</option></select></div>
@@ -310,7 +325,7 @@ form{display:grid;gap:12px}
           <text class="hood" x="266" y="115" font-size="10">Park</text>
           <g id="pins"></g>
         </svg>
-        <div class="mapnote"><span>Schematic — the live site uses myRealPage's map search.</span><span id="mapcount" class="num"></span></div>
+        <div class="mapnote"><span id="mapnote">Schematic map of the sample spaces.</span><span id="mapcount" class="num"></span></div>
       </aside>
     </div>
   </section>
@@ -401,6 +416,11 @@ form{display:grid;gap:12px}
     <div><b>[Your Name]</b>, REALTOR® · (604) 555‑0142 · you@yourname.com</div>
     <div>[Brokerage name] · brokerage address · Independently owned and operated</div>
   </div>
+  <div class="wrap ddf">
+    <a class="powered" href="https://www.realtor.ca/" target="_blank" rel="noopener" aria-label="Powered by REALTOR.ca">Powered by <b>REALTOR.ca</b></a>
+    <p>The trademarks REALTOR®, REALTORS®, and the REALTOR® logo are controlled by The Canadian Real Estate Association (CREA) and identify real estate professionals who are members of CREA. The trademarks MLS®, Multiple Listing Service® and the associated logos are owned by CREA and identify the quality of services provided by real estate professionals who are members of CREA.</p>
+    <p><span id="ddfUpdated"></span> Listing information is provided by the listing brokerage and is deemed reliable but not guaranteed.</p>
+  </div>
 </footer>
 
 <div class="scrim" id="scrim" hidden></div>
@@ -425,54 +445,82 @@ const SPACES=[
   {id:8,type:"Industrial",title:"Small-bay industrial",area:"Uptown",addr:"Unit B · North yards",sf:1400,base:19,add:6,avail:"90",listed:5,term:"2–5 yrs",zoning:"I‑2 Light industrial",x:352,y:40,feat:["18 ft clear","Grade-level door","Office + washroom built out","Fenced yard shared"]},
   {id:9,type:"Restaurant",title:"Café space near the park",area:"Uptown",addr:"Unit 1 · Park Avenue",sf:1100,base:34,add:13,avail:"now",listed:1,term:"5 yrs",zoning:"C‑1 Local commercial",x:300,y:168,feat:["Previously a café — venting in place","Patio permit transferable","Morning foot traffic from the park","Walk-in cooler included"]}
 ];
+// ---------- Live listings ----------
+// Paste your Worker's address here to show real DDF® listings, e.g.
+// const DDF_ENDPOINT = "https://ddf-listings.yourname.workers.dev/listings";
+// Leave it empty ("") to show the sample spaces.
+const DDF_ENDPOINT = "";
+const AGENT_PHONE = "(604) 555‑0142";
+
 const $=s=>document.querySelector(s);
-const fmt=n=>n.toLocaleString("en-CA");
+const esc=v=>String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const safeUrl=u=>/^https:\/\//.test(u||"")?esc(u):"";
+const fmt=n=>Number(n).toLocaleString("en-CA");
 const money=n=>"$"+Math.round(n).toLocaleString("en-CA");
-const total=s=>s.base+s.add;
-const monthly=(s,sf=s.sf)=>total(s)*sf/12;
+const rate=n=>"$"+Number(n).toFixed(2);
 const availLabel=a=>a==="now"?"Available now":a==="90"?"Within 90 days":"Spring 2027";
-const cls=t=>"t-"+t.toLowerCase();
+const TYPE_ORDER=["Retail","Office","Industrial","Restaurant","Flex","Other"];
 const state={type:"all",size:"any",rent:"any",avail:"any",sort:"new"};
+let LIST=[],LIVE=false;
+
+function fromSample(s){
+  const psf=s.base+s.add;
+  return {...s,n:s.id,id:"S"+s.id,psf,monthly:psf*s.sf/12,listed:Date.now()-s.listed*864e5,
+    office:"Sample Realty Ltd.",mls:"C"+(8012400+s.id),url:null,photo:null,photos:[],remarks:null};
+}
+function fromLive(l,i){
+  return {...l,n:i+1,id:String(l.id),feat:[],avail:null,base:null,add:null,listed:Date.parse(l.listed)||0,photos:l.photos||[]};
+}
 
 function filtered(){
-  let r=SPACES.filter(s=>{
+  const r=LIST.filter(s=>{
     if(state.type!=="all"&&s.type!==state.type)return false;
-    if(state.size!=="any"){const[a,b]=state.size.split("-").map(Number);if(s.sf<a||s.sf>=b)return false}
-    if(state.rent!=="any"&&total(s)>Number(state.rent))return false;
+    if(state.size!=="any"){const[a,b]=state.size.split("-").map(Number);if(s.sf==null||s.sf<a||s.sf>=b)return false}
+    if(state.rent!=="any"&&(s.psf==null||s.psf>Number(state.rent)))return false;
     if(state.avail==="now"&&s.avail!=="now")return false;
     if(state.avail==="90"&&s.avail==="later")return false;
     return true;
   });
-  const by={new:(a,b)=>a.listed-b.listed,rent:(a,b)=>total(a)-total(b),sizeA:(a,b)=>a.sf-b.sf,sizeD:(a,b)=>b.sf-a.sf}[state.sort];
+  const last=v=>v==null?Infinity:v;
+  const by={new:(a,b)=>b.listed-a.listed,rent:(a,b)=>last(a.psf)-last(b.psf),sizeA:(a,b)=>last(a.sf)-last(b.sf),sizeD:(a,b)=>(b.sf??-1)-(a.sf??-1)}[state.sort];
   return r.sort(by);
 }
 function photo(s,big){
-  return `<div class="photo ${cls(s.type)}">${ICONS[s.type]}
-    ${s.avail==="now"?'<span class="tag">Available now</span>':""}
-    <span class="ptype">${s.type} · ${s.area}</span>${big?"":`<span class="pn">${s.id}</span>`}</div>`;
+  const labels=`${s.avail==="now"?'<span class="tag">Available now</span>':""}
+    <span class="ptype">${esc(s.type)}${s.area?" · "+esc(s.area):""}</span>${big?"":`<span class="pn">${s.n}</span>`}`;
+  if(s.photo&&safeUrl(s.photo))return `<div class="photo has-img"><img src="${safeUrl(s.photo)}" alt="" loading="lazy">${labels}</div>`;
+  return `<div class="photo t-${esc(s.type.toLowerCase())}">${ICONS[s.type]||ICONS.Flex}${labels}</div>`;
+}
+function buildChips(){
+  const types=TYPE_ORDER.filter(t=>LIST.some(s=>s.type===t));
+  $("#typeSeg").innerHTML=`<button type="button" data-type="all" aria-pressed="true">All</button>`+
+    types.map(t=>`<button type="button" data-type="${t}" aria-pressed="false">${t}</button>`).join("");
 }
 function render(){
   const r=filtered();
-  $("#count").innerHTML=`${r.length} ${r.length===1?"space":"spaces"} <span>of ${SPACES.length} for lease</span>`;
+  $("#count").innerHTML=`${r.length} ${r.length===1?"space":"spaces"} <span>of ${LIST.length} for lease</span>`;
   $("#mapcount").textContent=`${r.length} shown`;
   $("#list").innerHTML=r.length?r.map(s=>`
-    <button class="card" type="button" data-id="${s.id}" aria-label="${s.title}, ${fmt(s.sf)} square feet, ${s.area}">
+    <button class="card" type="button" data-id="${esc(s.id)}" aria-label="${esc(s.title)}${s.sf?`, ${fmt(s.sf)} square feet`:""}${s.area?", "+esc(s.area):""}">
       ${photo(s)}
       <div class="body">
-        <h3>${s.title}</h3>
-        <div class="addr">${s.addr} · ${s.area}</div>
+        <h3>${esc(s.title)}</h3>
+        <div class="addr">${esc([s.addr,s.area].filter(Boolean).join(" · "))}</div>
         <div class="facts num">
-          <div><small>Size</small><b>${fmt(s.sf)} sf</b></div>
-          <div><small>Rent / sf / yr</small><b>$${total(s)}</b></div>
-          <div><small>Est. / month</small><b>${money(monthly(s))}</b></div>
+          <div><small>Size</small><b>${s.sf?fmt(s.sf)+" sf":"—"}</b></div>
+          <div><small>Rent / sf / yr</small><b>${s.psf!=null?rate(s.psf):"—"}</b></div>
+          <div><small>Est. / month</small><b>${s.monthly!=null?money(s.monthly):"Ask"}</b></div>
         </div>
+        <div class="office">Listed by ${esc(s.office||"see REALTOR.ca")}</div>
       </div>
     </button>`).join(""):`
     <div class="empty"><h3>No spaces match those filters</h3><p style="margin:0;color:var(--muted)">Try a wider size or rent range, or tell me what you need and I'll look off-market.</p>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center"><button class="btn" type="button" id="clear">Clear filters</button><button class="btn pri" type="button" onclick="openNeed()">Tell me what you need</button></div></div>`;
+      <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center"><button class="btn" type="button" id="clear">Clear filters</button><button class="btn pri" type="button" id="emptyNeed">Tell me what you need</button></div></div>`;
   const ids=new Set(r.map(s=>s.id));
-  document.querySelectorAll(".pin").forEach(p=>p.classList.toggle("off",!ids.has(+p.dataset.id)));
-  const c=$("#clear"); if(c)c.onclick=clearFilters;
+  document.querySelectorAll(".pin").forEach(p=>p.classList.toggle("off",!ids.has(p.dataset.id)));
+  if(lmap)for(const [id,m] of Object.entries(markers)){ids.has(id)?m.addTo(lmap):m.remove()}
+  const c=$("#clear");if(c)c.onclick=clearFilters;
+  const en=$("#emptyNeed");if(en)en.onclick=openNeed;
 }
 function clearFilters(){
   Object.assign(state,{type:"all",size:"any",rent:"any",avail:"any"});
@@ -480,20 +528,45 @@ function clearFilters(){
   document.querySelectorAll("#typeSeg button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.type==="all"));
   render();
 }
-// pins
-$("#pins").innerHTML=SPACES.map(s=>`<g class="pin" data-id="${s.id}" tabindex="0" role="button" aria-label="Space ${s.id}: ${s.title}"><circle cx="${s.x}" cy="${s.y}" r="14"/><text x="${s.x}" y="${s.y}">${s.id}</text></g>`).join("");
-function hot(id,on){
-  document.querySelectorAll(`[data-id="${id}"]`).forEach(el=>el.classList.toggle("hot",on));
+
+// ---------- Map: schematic for samples, real map for live data ----------
+let lmap=null;const markers={};
+function drawSchematicPins(){
+  $("#pins").innerHTML=LIST.map(s=>`<g class="pin" data-id="${s.id}" tabindex="0" role="button" aria-label="Space ${s.n}: ${esc(s.title)}"><circle cx="${s.x}" cy="${s.y}" r="14"/><text x="${s.x}" y="${s.y}">${s.n}</text></g>`).join("");
 }
+function loadLeaflet(){
+  return new Promise((ok,fail)=>{
+    if(window.L)return ok();
+    const css=document.createElement("link");css.rel="stylesheet";css.href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css";document.head.appendChild(css);
+    const js=document.createElement("script");js.src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js";js.onload=ok;js.onerror=fail;document.head.appendChild(js);
+  });
+}
+async function initLiveMap(){
+  const svg=$("#map");const div=document.createElement("div");div.id="lmap";svg.replaceWith(div);
+  $("#mapnote").textContent="Map data © OpenStreetMap contributors";
+  try{await loadLeaflet()}catch{div.textContent="Map unavailable.";return}
+  lmap=L.map(div,{scrollWheelZoom:false});
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png",{maxZoom:19,attribution:"&copy; OpenStreetMap contributors"}).addTo(lmap);
+  const pts=[];
+  LIST.forEach(s=>{
+    if(s.lat==null||s.lng==null)return;
+    const m=L.marker([s.lat,s.lng],{title:s.title,icon:L.divIcon({className:"lpin",html:`<span data-id="${esc(s.id)}">${s.n}</span>`,iconSize:[28,28],iconAnchor:[14,14]})});
+    m.on("click",()=>openSpace(s.id));markers[s.id]=m;m.addTo(lmap);pts.push([s.lat,s.lng]);
+  });
+  pts.length?lmap.fitBounds(pts,{padding:[30,30],maxZoom:15}):lmap.setView([49.28,-123.12],11);
+  render();
+}
+
+// ---------- Interaction ----------
+function hot(id,on){document.querySelectorAll(`[data-id="${CSS.escape(id)}"]`).forEach(el=>el.classList.toggle("hot",on))}
 document.addEventListener("mouseover",e=>{const el=e.target.closest("[data-id]");if(el)hot(el.dataset.id,true)});
 document.addEventListener("mouseout",e=>{const el=e.target.closest("[data-id]");if(el)hot(el.dataset.id,false)});
-document.addEventListener("click",e=>{const el=e.target.closest(".card,.pin");if(el)openSpace(+el.dataset.id)});
+document.addEventListener("click",e=>{const el=e.target.closest(".card,.pin");if(el)openSpace(el.dataset.id)});
 document.addEventListener("keydown",e=>{
   if(e.key==="Escape"&&!$("#drawer").hidden)closeDrawer();
   const p=e.target.closest&&e.target.closest(".pin");
-  if(p&&(e.key==="Enter"||e.key===" ")){e.preventDefault();openSpace(+p.dataset.id)}
+  if(p&&(e.key==="Enter"||e.key===" ")){e.preventDefault();openSpace(p.dataset.id)}
 });
-// filters
 $("#typeSeg").addEventListener("click",e=>{
   const b=e.target.closest("button");if(!b)return;
   state.type=b.dataset.type;
@@ -504,9 +577,10 @@ $("#typeSeg").addEventListener("click",e=>{
 $("#mapToggle").addEventListener("click",e=>{
   const box=$("#mapbox");const show=box.classList.toggle("collapsed")===false;
   e.currentTarget.textContent=show?"Hide map":"Show map";e.currentTarget.setAttribute("aria-expanded",show);
+  if(show&&lmap)setTimeout(()=>lmap.invalidateSize(),50);
 });
 
-// drawer
+// ---------- Drawer ----------
 let lastFocus=null;
 function openDrawer(html){
   lastFocus=document.activeElement;
@@ -548,38 +622,56 @@ function wireForm(prefix,subject){
     e.preventDefault();
     const n=$("#"+prefix+"name").value.trim(),m=$("#"+prefix+"email").value.trim(),err=$("#formErr");
     if(!n||!/^\S+@\S+\.\S+$/.test(m)){err.textContent="Add your name and a valid email so I can reply.";err.hidden=false;return}
-    e.target.outerHTML=`<div class="done" role="status"><b>Thanks, ${n.replace(/[<>&]/g,"")} — request ready.</b><span>On the live site this goes to the myRealPage lead inbox about ${subject}, and I reply within one business day.</span><small>Prototype: nothing was sent.</small></div>`;
+    e.target.outerHTML=`<div class="done" role="status"><b>Thanks, ${esc(n)} — request ready.</b><span>On the live site this goes to your lead inbox about ${esc(subject)}, and I reply within one business day.</span><small>Prototype: nothing was sent.</small></div>`;
   });
 }
 function openSpace(id){
-  const s=SPACES.find(x=>x.id===id);
-  openDrawer(`${photo(s,true)}
-  <div class="dbody">
-    <div style="display:grid;gap:6px"><span style="font-size:13px;color:var(--muted)">${s.type} · ${s.area} · Listing #L‑${2400+s.id}</span>
-      <h2 id="dTitle">${s.title}</h2><span style="color:var(--muted)">${s.addr}</span></div>
-    <div class="spec num">
-      <div><small>Size</small><b>${fmt(s.sf)} sq ft</b></div>
-      <div><small>Available</small><b>${availLabel(s.avail)}</b></div>
-      <div><small>Base rent</small><b>$${s.base.toFixed(2)} /sf/yr</b></div>
-      <div><small>Additional rent (NNN)</small><b>$${s.add.toFixed(2)} /sf/yr</b></div>
-      <div><small>Term</small><b>${s.term}</b></div>
-      <div><small>Zoning</small><b>${s.zoning}</b></div>
-    </div>
+  const s=LIST.find(x=>x.id===String(id));if(!s)return;
+  const spec=[
+    ["Size",s.sf?fmt(s.sf)+" sq ft":null],
+    ["Available",s.avail?availLabel(s.avail):null],
+    ["Base rent",s.base!=null?rate(s.base)+" /sf/yr":null],
+    ["Additional rent (NNN)",s.add!=null?rate(s.add)+" /sf/yr":null],
+    ["Lease rate",s.base==null&&s.psf!=null?rate(s.psf)+" /sf/yr":null],
+    ["Term",s.term],["Zoning",s.zoning],
+    ["Property type",LIVE?s.subtype:null],
+    ["MLS® number",s.mls],
+    ["Listing brokerage",s.office||"See REALTOR.ca"],
+  ].filter(([,v])=>v);
+  if(spec.length%2)spec.push(["",""]);
+  const min=s.sf?Math.max(50,Math.round(s.sf*.5/50)*50):0;
+  const calc=s.psf!=null&&s.sf?`
     <div class="calc num">
       <h3>What it costs per month</h3>
-      <label for="sfRange">Space you'd take <input type="range" id="sfRange" min="${Math.round(s.sf*.5/50)*50}" max="${s.sf}" step="50" value="${s.sf}"> <b id="sfOut">${fmt(s.sf)} sf</b></label>
-      <div class="line"><span>Base rent</span><span id="cBase"></span></div>
-      <div class="line"><span>Additional rent (tax, insurance, maintenance)</span><span id="cAdd"></span></div>
+      <label for="sfRange">Space you'd take <input type="range" id="sfRange" min="${min}" max="${s.sf}" step="${s.sf>=200?50:10}" value="${s.sf}"> <b id="sfOut">${fmt(s.sf)} sf</b></label>
+      ${s.base!=null?`<div class="line"><span>Base rent</span><span id="cBase"></span></div>
+      <div class="line"><span>Additional rent (tax, insurance, maintenance)</span><span id="cAdd"></span></div>`:
+      `<div class="line"><span>Lease rate × size ÷ 12</span><span>${rate(s.psf)} /sf/yr</span></div>`}
       <div class="line total"><span>Estimated monthly, before GST</span><span id="cTot"></span></div>
-      <small style="color:var(--muted)">Additional rent is the landlord's current estimate and changes each year. Smaller sizes only apply where the landlord will divide the space.</small>
-    </div>
-    <div><h3 style="font-size:16px;margin-bottom:8px">Highlights</h3><ul class="feat">${s.feat.map(f=>`<li>${f}</li>`).join("")}</ul></div>
+      <small style="color:var(--muted)">${s.base!=null?"Additional rent is the landlord's current estimate and changes each year. ":"Check the listing for whether this rate includes additional rent (NNN). "}Smaller sizes only apply where the landlord will divide the space.</small>
+    </div>`:s.monthly!=null?`<div class="calc num"><h3>Asking rent</h3><div class="line total"><span>Per month, before GST</span><span>${money(s.monthly)}</span></div></div>`:
+    `<div class="calc"><h3>Lease rate</h3><span>Not published — <a href="#need" onclick="closeDrawer()">ask me</a> or call ${AGENT_PHONE}.</span></div>`;
+  const gallery=s.photos&&s.photos.length>1?`<div class="thumbs">${s.photos.slice(1,7).map(u=>safeUrl(u)?`<img src="${safeUrl(u)}" alt="" loading="lazy">`:"").join("")}</div>`:"";
+  openDrawer(`${photo(s,true)}
+  <div class="dbody">
+    ${gallery}
+    <div style="display:grid;gap:6px"><span style="font-size:13px;color:var(--muted)">${esc([s.type,s.area,s.mls&&"MLS® "+s.mls].filter(Boolean).join(" · "))}</span>
+      <h2 id="dTitle">${esc(s.title)}</h2><span style="color:var(--muted)">${esc(s.addr||"")}</span></div>
+    <div class="spec num">${spec.map(([k,v])=>`<div><small>${esc(k)}</small><b>${esc(v)}</b></div>`).join("")}</div>
+    ${calc}
+    ${s.remarks?`<div><h3 style="font-size:16px;margin-bottom:8px">About this space</h3><p style="margin:0;white-space:pre-line">${esc(s.remarks)}</p></div>`:""}
+    ${s.feat&&s.feat.length?`<div><h3 style="font-size:16px;margin-bottom:8px">Highlights</h3><ul class="feat">${s.feat.map(f=>`<li>${esc(f)}</li>`).join("")}</ul></div>`:""}
+    ${s.url?`<a class="btn" href="${safeUrl(s.url)}" target="_blank" rel="noopener">View full listing on REALTOR.ca ↗</a>`:""}
     <div style="display:grid;gap:12px"><h3 style="font-size:18px">Ask about this space</h3>${formHTML("s",true)}</div>
   </div>`);
   const r=$("#sfRange");
-  const upd=()=>{const sf=+r.value;$("#sfOut").textContent=fmt(sf)+" sf";$("#cBase").textContent=money(s.base*sf/12);$("#cAdd").textContent=money(s.add*sf/12);$("#cTot").textContent=money(monthly(s,sf))};
-  r.addEventListener("input",upd);upd();
-  wireForm("s","listing #L‑"+(2400+s.id));
+  if(r){
+    const upd=()=>{const sf=+r.value;$("#sfOut").textContent=fmt(sf)+" sf";
+      if(s.base!=null){$("#cBase").textContent=money(s.base*sf/12);$("#cAdd").textContent=money(s.add*sf/12)}
+      $("#cTot").textContent=money(s.psf*sf/12)};
+    r.addEventListener("input",upd);upd();
+  }
+  wireForm("s",s.mls?"MLS® "+s.mls:"this space");
 }
 function openNeed(){
   openDrawer(`<div class="dbody" style="padding-top:56px">
@@ -591,8 +683,37 @@ function openNeed(){
 $("#needBtn").onclick=openNeed;
 document.querySelector('.agent a').addEventListener("click",e=>{e.preventDefault();openNeed()});
 document.querySelectorAll("[data-go]").forEach(a=>a.addEventListener("click",e=>{
-  e.preventDefault();const b=document.querySelector(`#typeSeg button[data-type="${a.dataset.go}"]`);b.click();
+  e.preventDefault();
+  const b=document.querySelector(`#typeSeg button[data-type="${a.dataset.go}"]`);
+  if(b)b.click();
   document.querySelector(".zone").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
 }));
-render();
+
+// ---------- Start ----------
+async function start(){
+  if(!DDF_ENDPOINT){
+    LIST=SPACES.map(fromSample);buildChips();drawSchematicPins();render();
+    $("#ddfUpdated").textContent="Sample listings shown. Live listings appear once the DDF® connection is set up.";
+    return;
+  }
+  LIVE=true;
+  $(".proto").hidden=true;
+  $("#availWrap").hidden=true;
+  $("#count").textContent="Loading listings…";
+  try{
+    const res=await fetch(DDF_ENDPOINT,{headers:{accept:"application/json"}});
+    const data=await res.json();
+    if(!res.ok)throw new Error(data.error||("HTTP "+res.status));
+    LIST=(data.listings||[]).map(fromLive);
+    const when=new Date(data.updated);
+    $("#ddfUpdated").textContent=`Listing data last updated ${when.toLocaleString("en-CA",{dateStyle:"medium",timeStyle:"short"})}.`;
+    buildChips();render();initLiveMap();
+  }catch(err){
+    console.error("DDF listings failed to load:",err);
+    $("#count").textContent="";
+    $("#list").innerHTML=`<div class="empty"><h3>Listings couldn't load right now</h3><p style="margin:0;color:var(--muted)">Please try again in a few minutes, or call me at ${AGENT_PHONE} and I'll send you what's available.</p></div>`;
+  }
+}
+start();
 </script>
+
