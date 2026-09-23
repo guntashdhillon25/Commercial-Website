@@ -155,7 +155,58 @@ form{display:grid;gap:12px}
 .done{background:var(--brand-soft);border-radius:12px;padding:16px;display:grid;gap:6px}
 .done small{color:var(--muted)}
 
+/* SEO content */
+.seo{padding-block:8px 48px;display:grid;gap:56px}
+.shead{display:grid;gap:6px;margin-bottom:20px;max-width:65ch}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand)}
+.shead h2{font-size:clamp(24px,3vw,34px);font-weight:800;line-height:1.1}
+.shead p{margin:0;color:var(--muted)}
+.browse{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.browse > div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.browse h3{font-size:15px;margin-bottom:10px}
+.browse ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.browse a{display:inline-block;padding:6px 12px;border-radius:999px;background:var(--soft);color:var(--ink);text-decoration:none;font-size:13.5px}
+.browse a:hover{background:var(--brand-soft);color:var(--brand)}
+.guide{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:start}
+.prose{max-width:65ch;display:grid;gap:14px}
+.prose h2{font-size:clamp(24px,3vw,34px);font-weight:800;line-height:1.1}
+.prose h3{font-size:18px;margin-top:6px}
+.prose p{margin:0}
+.market{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.market h3{font-size:15px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.market .tw{overflow-x:auto}
+.market table{width:100%;border-collapse:collapse;font-size:13.5px}
+.market th,.market td{padding:9px 16px;text-align:left;border-bottom:1px solid var(--line);white-space:nowrap}
+.market th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.market td:not(:first-child),.market th:not(:first-child){text-align:right}
+.market tbody tr:last-child td{border-bottom:0}
+.market small{display:block;padding:10px 16px;color:var(--muted);font-size:12px;border-top:1px solid var(--line)}
+.res{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.res a{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:grid;gap:8px;align-content:start;text-decoration:none;color:var(--ink);transition:border-color .15s}
+.res a:hover{border-color:var(--brand)}
+.res .kind{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand)}
+.res h3{font-size:17px;line-height:1.2}
+.res p{margin:0;font-size:13.5px;color:var(--muted)}
+.res .meta{font-size:12.5px;color:var(--muted);margin-top:4px}
+.gloss{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:0}
+.gloss div{background:var(--surface);padding:16px 18px}
+.gloss dt{font-weight:700;font-family:var(--display);font-size:16px}
+.gloss dd{margin:4px 0 0;font-size:13.5px;color:var(--muted)}
+.faq{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:40px;align-items:start}
+.faq .shead{position:sticky;top:calc(env(safe-area-inset-top,0px) + 150px)}
+.qa{border-top:1px solid var(--line)}
+.qa details{border-bottom:1px solid var(--line)}
+.qa summary{cursor:pointer;list-style:none;padding:16px 36px 16px 0;font-weight:600;font-size:16px;position:relative}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"+";position:absolute;right:4px;top:12px;font-size:22px;font-weight:400;color:var(--brand)}
+.qa details[open] summary::after{content:"–"}
+.qa details p{margin:0 0 16px;color:var(--muted);max-width:62ch}
+
 @media (max-width:900px){
+  .guide,.faq{grid-template-columns:minmax(0,1fr);gap:24px}
+  .faq .shead{position:static}
+  .res{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gloss{grid-template-columns:repeat(2,minmax(0,1fr))}
   .results{grid-template-columns:minmax(0,1fr)}
   .mapbox{position:relative;top:0;order:-1}
   .mapbox.collapsed{display:none}
@@ -164,6 +215,7 @@ form{display:grid;gap:12px}
   .menu{display:none}
 }
 @media (max-width:620px){
+  .browse,.res,.gloss{grid-template-columns:minmax(0,1fr)}
   .list{grid-template-columns:minmax(0,1fr)}
   .need{grid-template-columns:minmax(0,1fr)}
   .fgroup{margin-left:0}
@@ -204,6 +256,7 @@ form{display:grid;gap:12px}
     </div>
   </section>
 
+  <div class="zone">
   <section class="filters gutter" aria-label="Filter spaces">
     <div class="wrap">
       <div class="seg" id="typeSeg" role="group" aria-label="Property type">
@@ -261,6 +314,76 @@ form{display:grid;gap:12px}
       </aside>
     </div>
   </section>
+
+  </div>
+  <section class="gutter" aria-label="Leasing guide and resources">
+    <div class="wrap seo">
+
+      <div>
+        <div class="shead"><span class="eyebrow">Browse</span><h2>Commercial space for lease by type and area</h2></div>
+        <div class="browse">
+          <div><h3>By property type</h3><ul>
+            <li><a href="#top" data-go="Retail">Retail space for lease</a></li><li><a href="#top" data-go="Office">Office space for lease</a></li><li><a href="#top" data-go="Industrial">Industrial &amp; warehouse for lease</a></li><li><a href="#top" data-go="Restaurant">Restaurant space for lease</a></li><li><a href="#top" data-go="Flex">Flex &amp; showroom space</a></li></ul></div>
+          <div><h3>By neighbourhood</h3><ul>
+            <li><a href="#top">Downtown</a></li><li><a href="#top">Uptown</a></li><li><a href="#top">Mount Pleasant</a></li><li><a href="#top">Harbourside</a></li><li><a href="#top">All areas I cover →</a></li></ul></div>
+        </div>
+      </div>
+
+      <div class="guide">
+        <div class="prose">
+          <span class="eyebrow">Leasing in [City]</span>
+          <h2>Leasing commercial space in [City]: what to know</h2>
+          <p>Whether you’re opening your first shop or moving a growing team, the right space comes down to three things: location, total monthly cost, and lease terms you can live with for five years or more. I help tenants find the right space and negotiate the best terms.</p>
+          <h3>Compare total cost, not just base rent</h3>
+          <p>A space advertised at $24/sf can cost more than one at $30/sf once additional rent is added. Every listing on this page shows both, plus an estimated monthly figure, so you can compare like for like.</p>
+          <h3>Negotiate more than the rent</h3>
+          <p>Free-rent months, a tenant improvement allowance, renewal options and the right to assign your lease if you sell your business are often worth more than a dollar off the rent.</p>
+        </div>
+        <div class="market num">
+          <h3>Typical asking rents in [City]</h3>
+          <div class="tw"><table>
+            <thead><tr><th>Type</th><th>Base $/sf/yr</th><th>Additional</th></tr></thead>
+            <tbody>
+              <tr><td>Retail (street-front)</td><td>$28–$40</td><td>$12–$16</td></tr>
+              <tr><td>Office</td><td>$22–$32</td><td>$14–$18</td></tr>
+              <tr><td>Industrial</td><td>$16–$22</td><td>$5–$8</td></tr>
+              <tr><td>Restaurant</td><td>$30–$42</td><td>$13–$16</td></tr>
+            </tbody>
+          </table></div>
+          <small>Sample ranges for the prototype. Replace with your own figures and update them each quarter.</small>
+        </div>
+      </div>
+
+      <div>
+        <div class="shead"><span class="eyebrow">Resources</span><h2>Leasing resources for tenants</h2><p>Guides I’ve written to help business owners lease with confidence.</p></div>
+        <div class="res">
+          <a href="#top"><span class="kind">Guide</span><h3>How commercial leasing works, step by step</h3><p>From search and offer to lease signing, permits and move-in.</p><span class="meta">8 min read</span></a>
+          <a href="#top"><span class="kind">Checklist</span><h3>20 questions to ask before you sign</h3><p>Use, signage, parking, power, venting, exclusivity, and who fixes the roof.</p><span class="meta">Free checklist</span></a>
+          <a href="#top"><span class="kind">Explainer</span><h3>NNN vs gross leases</h3><p>What additional rent covers, and how to estimate it for next year.</p><span class="meta">5 min read</span></a>
+          <a href="#top"><span class="kind">Market report</span><h3>[City] commercial lease report, Q3 2026</h3><p>Asking rents, vacancy, and what’s leasing fastest.</p><span class="meta">Updated quarterly</span></a>
+        </div>
+      </div>
+
+      <div>
+        <div class="shead"><span class="eyebrow">Glossary</span><h2>Lease terms, in plain English</h2></div>
+        <dl class="gloss">
+          <div><dt>Base rent</dt><dd>What the landlord charges for the space itself, per square foot per year.</dd></div>
+          <div><dt>Additional rent</dt><dd>Your share of property tax, insurance and upkeep. Also called CAM or operating costs.</dd></div>
+          <div><dt>Triple net (NNN)</dt><dd>A lease where you pay base rent plus additional rent. The most common type.</dd></div>
+          <div><dt>TI allowance</dt><dd>Money the landlord puts toward your build-out, usually quoted per square foot.</dd></div>
+          <div><dt>Personal guarantee</dt><dd>You personally promise the rent if your business can’t pay. Often limited in time or amount.</dd></div>
+          <div><dt>Assignment</dt><dd>Transferring your lease to someone else, for example when you sell your business.</dd></div>
+        </dl>
+      </div>
+
+      <div class="faq">
+        <div class="shead"><span class="eyebrow">FAQ</span><h2>Commercial leasing questions I get asked most</h2><p>Don’t see yours? <a href="#need" style="color:var(--brand);font-weight:600">Ask me directly.</a></p></div>
+        <div class="qa"><details><summary>How much does it cost to lease commercial space?</summary><p>Commercial rent is quoted per square foot per year, in two parts: base rent (the landlord’s income) and additional rent (property tax, insurance and building maintenance). Add them together, multiply by the size and divide by 12 for a monthly figure. For example, 1,850 sq ft at $32 base + $14 additional = $46/sf/yr, or about $7,092 a month before GST.</p></details><details><summary>What does triple net (NNN) mean?</summary><p>In a triple net lease, you pay base rent plus your share of the building’s property taxes, insurance and maintenance. That share is the “additional rent” on each listing. In a gross lease, those costs are included in one rent figure.</p></details><details><summary>Do I pay GST on commercial rent?</summary><p>Yes. In Canada, GST applies to commercial rent. If your business is GST-registered you can usually claim it back as an input tax credit. Check with your accountant.</p></details><details><summary>How long is a typical commercial lease?</summary><p>Most retail and office leases run 3 to 10 years, often with an option to renew. Restaurants usually need 10 years or more to make their build-out cost worthwhile. Small industrial and flex units can be shorter.</p></details><details><summary>What do I need to lease a space?</summary><p>Landlords usually ask for a business plan or description, recent financial statements (or personal ones for a new business), a deposit, and often a personal guarantee. I’ll help you put together an application that makes landlords take you seriously.</p></details><details><summary>Who pays your fee as a tenant’s agent?</summary><p>In most commercial leases, the landlord pays the leasing commission, so tenants usually don’t pay me directly. I’ll confirm how it works for each space before you commit.</p></details><details><summary>Can the landlord pay for improvements?</summary><p>Often, yes. Many landlords offer a tenant improvement (TI) allowance, free-rent months, or both, especially on longer leases. These are negotiable, and negotiating them is a big part of what I do for you.</p></details><details><summary>How early should I start looking?</summary><p>Start 6 to 12 months before you need to move in. Finding a space, negotiating, getting permits and building out often takes longer than expected, especially for restaurants.</p></details></div>
+      </div>
+
+    </div>
+  </section>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much does it cost to lease commercial space?", "acceptedAnswer": {"@type": "Answer", "text": "Commercial rent is quoted per square foot per year, in two parts: base rent (the landlord’s income) and additional rent (property tax, insurance and building maintenance). Add them together, multiply by the size and divide by 12 for a monthly figure. For example, 1,850 sq ft at $32 base + $14 additional = $46/sf/yr, or about $7,092 a month before GST."}}, {"@type": "Question", "name": "What does triple net (NNN) mean?", "acceptedAnswer": {"@type": "Answer", "text": "In a triple net lease, you pay base rent plus your share of the building’s property taxes, insurance and maintenance. That share is the “additional rent” on each listing. In a gross lease, those costs are included in one rent figure."}}, {"@type": "Question", "name": "Do I pay GST on commercial rent?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. In Canada, GST applies to commercial rent. If your business is GST-registered you can usually claim it back as an input tax credit. Check with your accountant."}}, {"@type": "Question", "name": "How long is a typical commercial lease?", "acceptedAnswer": {"@type": "Answer", "text": "Most retail and office leases run 3 to 10 years, often with an option to renew. Restaurants usually need 10 years or more to make their build-out cost worthwhile. Small industrial and flex units can be shorter."}}, {"@type": "Question", "name": "What do I need to lease a space?", "acceptedAnswer": {"@type": "Answer", "text": "Landlords usually ask for a business plan or description, recent financial statements (or personal ones for a new business), a deposit, and often a personal guarantee. I’ll help you put together an application that makes landlords take you seriously."}}, {"@type": "Question", "name": "Who pays your fee as a tenant’s agent?", "acceptedAnswer": {"@type": "Answer", "text": "In most commercial leases, the landlord pays the leasing commission, so tenants usually don’t pay me directly. I’ll confirm how it works for each space before you commit."}}, {"@type": "Question", "name": "Can the landlord pay for improvements?", "acceptedAnswer": {"@type": "Answer", "text": "Often, yes. Many landlords offer a tenant improvement (TI) allowance, free-rent months, or both, especially on longer leases. These are negotiable, and negotiating them is a big part of what I do for you."}}, {"@type": "Question", "name": "How early should I start looking?", "acceptedAnswer": {"@type": "Answer", "text": "Start 6 to 12 months before you need to move in. Finding a space, negotiating, getting permits and building out often takes longer than expected, especially for restaurants."}}]}</script>
 
   <section class="gutter" id="need">
     <div class="wrap need">
@@ -467,5 +590,9 @@ function openNeed(){
 }
 $("#needBtn").onclick=openNeed;
 document.querySelector('.agent a').addEventListener("click",e=>{e.preventDefault();openNeed()});
+document.querySelectorAll("[data-go]").forEach(a=>a.addEventListener("click",e=>{
+  e.preventDefault();const b=document.querySelector(`#typeSeg button[data-type="${a.dataset.go}"]`);b.click();
+  document.querySelector(".zone").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"});
+}));
 render();
 </script>
