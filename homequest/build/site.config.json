@@ -1,0 +1,13 @@
+{
+  "domain": "https://www.homequest.example",
+  "businessName": "HomeQuest Commercial",
+  "shortName": "HomeQuest",
+  "tagline": "Commercial real estate · BC",
+  "brokerage": "[Brokerage name]",
+  "phone": "604-555-0142",
+  "email": "commercial@homequest.example",
+  "address": { "street": "", "city": "", "region": "BC", "postalCode": "", "country": "CA" },
+  "listingSearchUrl": "/search/",
+  "ogImage": "",
+  "lastUpdated": "2026-09-23"
+}

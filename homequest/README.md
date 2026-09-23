@@ -61,21 +61,36 @@ Each page sets its own title, meta description, canonical URL, robots tag and Op
 
 Filtered searches (for example, with a budget or a feature filter) are set to `noindex, follow`, with a canonical URL pointing to the nearest landing page. This stops thousands of near-duplicate filter pages from competing with the landing pages.
 
-**Planned URL structure**
+**URLs** are flat and keyword-led, for example `/retail-space-for-lease-surrey/`, `/commercial-real-estate-langley/`, `/businesses-for-sale-richmond/`, `/commercial-lease-costs/` and `/commercial-real-estate-glossary/`. The full list is in `myrealpage/pages.csv`.
 
-| Prototype | Live site |
+## Launching
+
+The prototype (`index.html`) is the design reference. It switches pages with `#` links, so search engines would see it as a single page. **Don't publish it as the website.** Publish the pages built from it instead:
+
+```
+node build/build.mjs
+```
+
+This reads the content from `index.html` and your business details from `build/site.config.json`, then writes:
+
+| Output | What it is |
 |---|---|
-| `#lease`, `#buy`, `#businesses` | `/commercial-real-estate/for-lease/`, `/commercial-real-estate/for-sale/`, `/businesses-for-sale/` |
-| `#retail-lease-surrey` | `/commercial-real-estate/for-lease/retail/surrey/` |
-| `#area-langley` | `/commercial-real-estate/langley/` |
-| `#listing-hq101` | `/listings/hq101-grocery-anchored-plaza-unit-surrey/` |
-| `#learn-lease-costs`, `#glossary` | `/guides/lease-costs/`, `/guides/glossary/` |
+| `site/` | The finished site: 141 real pages, one folder per URL, each with its own title, meta description, canonical URL, Open Graph tags and JSON-LD. Also `sitemap.xml`, `robots.txt` and `assets/homequest.css`. Upload it to any static host, or use it as the reference for myRealPage. |
+| `myrealpage/pages/*.html` | Each page's content as one block to paste into a myRealPage page's HTML block. The page URL, SEO title and meta description are listed at the top of each file. |
+| `myrealpage/pages.csv` | Every page's URL, SEO title, meta description and H1, for filling in each page's SEO settings. |
+| `myrealpage/site-header-code.html` | Fonts, styles and site-wide business schema. Paste once into the site-wide header code. The styles only apply inside `.hq` blocks, so they won't change your myRealPage theme. |
+| `myrealpage/site-menu-and-footer.html` | Optional menu and footer, if your theme lets you replace its own. |
+| `build/SEO-AUDIT.md` | Checks every page: unique titles (60 characters or fewer) and descriptions (70–160), one H1, and working internal links. It also lists the business details still to fill in. |
 
-**Important for the live site:** the prototype switches pages with `#` links inside one file. Search engines treat that as a single page. On myRealPage, each landing page, guide and listing needs to be its own page at the URLs above, with the content in the page itself (not loaded by script). Before launch, also:
+**Before launch**
 
-- submit an XML sitemap
-- set up a Google Business Profile with the same name, address and phone number
-- replace the example price ranges with current figures, and add real listing photos with descriptive alt text
+1. Fill in `build/site.config.json` (domain, phone, email, brokerage, office address, the URL of your myRealPage listing search page, and optionally a 1200×630 link-preview image), then run the build again.
+2. On each landing page, place a myRealPage listing widget where the page says "Current listings". Each file notes the filter to use, for example *Retail space for lease in Surrey*.
+3. Place your myRealPage lead form on `/contact/`.
+4. Submit `sitemap.xml` in Google Search Console, and set up a Google Business Profile with the same name, phone and address.
+5. Review the area descriptions and the typical-price table (`MARKET` in `index.html`), and update the prices each quarter.
+
+If myRealPage can't use one of these URLs exactly, keep the same slug where possible. Change `landingPath()` in `build/build.mjs` so the sitemap, canonical URLs and internal links all match, then rebuild.
 
 ## Colours: Cobalt
 

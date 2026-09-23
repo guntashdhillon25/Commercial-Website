@@ -830,7 +830,7 @@ h1,h2,h3{letter-spacing:-.01em}
 
 <!-- Term -->
 <dialog id="dlgTerm" class="small" aria-labelledby="tTitle">
-  <div class="dlg-head"><div><p style="margin:0 0 2px;font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">In plain language</p><h2 id="tTitle"></h2></div><button class="icon-btn" type="button" data-close aria-label="Close"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+  <div class="dlg-head"><div><p style="margin:0 0 2px;font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)">Definition</p><h2 id="tTitle"></h2></div><button class="icon-btn" type="button" data-close aria-label="Close"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
   <div class="dlg-body term-body" id="tBody"></div>
   <div class="dlg-foot"><button class="btn btn-sec" type="button" data-close>Got it</button><button class="btn btn-pri" type="button" id="tAsk">Ask an advisor</button></div>
 </dialog>
@@ -1120,7 +1120,7 @@ const MARKET = [
 ];
 
 const ARTICLES = [
-  {slug:'leasing-commercial-space', cat:'Leasing', read:7, rel:{deal:'lease'}, title:'How to lease commercial space: a step-by-step guide', desc:'The steps from working out what you need to getting the keys, with typical timelines for each.',
+  {slug:'leasing-commercial-space', url:'how-to-lease-commercial-space', cat:'Leasing', read:7, rel:{deal:'lease'}, title:'How to lease commercial space: a step-by-step guide', desc:'The steps from working out what you need to getting the keys, with typical timelines for each.',
    body:[['Start 6 to 12 months ahead',['Finding a space, negotiating and getting permits usually takes longer than people expect. Most tenants need 4 to 10 weeks to find and agree on a space, then more time for permits and build-out. Restaurants and medical offices often take longer.']],
     ['1. Work out what you need',['Write down the size range, the areas that work for your customers and staff, your total monthly budget, and anything the space must have, such as parking, loading doors or a kitchen. If you aren’t sure what type of property you need, our {{guide|guided search}} can help.']],
     ['2. Compare total cost, not just rent',['Landlords quote rent [[psf|per square foot per year]], plus [[additional-rent|additional rent]]. A space with low base rent can cost more once additional rent is added, so compare the estimated monthly total. See {{learn-lease-costs|what commercial space really costs}}.']],
@@ -1129,20 +1129,20 @@ const ARTICLES = [
     ['5. Negotiate and sign the lease',['Once the main terms are agreed, the landlord’s lawyer prepares the lease. Have your own lawyer review it. Look closely at renewal options, who pays for repairs, whether you can transfer the lease if you sell your business, and any personal guarantee.']],
     ['6. Permits, build-out and move-in',['Most businesses need a business licence, and many need building permits for changes to the space. Ask for a rent-free fixturing period to cover the weeks you spend building out before you open.']]],
    faq:[['How long does it take to lease commercial space?','Usually 4 to 10 weeks from the first viewing to signing, plus time for permits and build-out.'],['Do I need a lawyer to sign a commercial lease?','It’s strongly recommended. Commercial leases are long, and they give tenants fewer protections than residential leases do.']]},
-  {slug:'lease-costs', cat:'Leasing', read:5, rel:{deal:'lease'}, title:'What commercial space really costs each month', desc:'How base rent, additional rent and GST add up, with a worked example.',
+  {slug:'lease-costs', url:'commercial-lease-costs', cat:'Leasing', read:5, rel:{deal:'lease'}, title:'What commercial space really costs each month', desc:'How base rent, additional rent and GST add up, with a worked example.',
    body:[['Rent is quoted per square foot per year',['Commercial rent is almost always quoted in dollars per square foot per year. A “$32” space doesn’t cost $32 a month; it costs $32 for every square foot, every year.']],
     ['Base rent plus additional rent',['Most leases are [[net-lease|net leases]]: you pay base rent for the space, plus [[additional-rent|additional rent]] for your share of property taxes, insurance and building upkeep. Additional rent is an estimate, adjusted each year to match actual costs.']],
     ['A worked example',['<b>1,450 sf at $32 base rent and $11.50 additional rent:</b>','LIST:$32 + $11.50 = $43.50 per square foot per year|$43.50 × 1,450 sf = $63,075 a year|$63,075 ÷ 12 = $5,256 a month|Plus 5% GST = about $5,519 a month']],
     ['Upfront costs',['Expect a deposit of about 2 to 3 months’ rent when you sign, plus your build-out, furniture and equipment, permits and legal fees. Ask whether the landlord will offer a tenant improvement allowance or free-rent months, especially on a longer lease.']],
     ['Costs that change',['Additional rent goes up and down with taxes and building costs, and base rent usually steps up every year or two. Ask for last year’s actual additional rent and the rent schedule for the full term, so you can budget beyond the first year. Then compare {{lease|spaces for lease}} on their monthly totals.']]],
    faq:[['Is GST charged on commercial rent?','Yes. GST applies to commercial rent in Canada. GST-registered businesses can usually claim it back.'],['What does additional rent include?','Usually property taxes, building insurance and the upkeep of shared areas such as parking lots, landscaping, snow removal and the roof. Your lease lists exactly what is included.']]},
-  {slug:'net-vs-gross-lease', cat:'Leasing', read:4, rel:{deal:'lease'}, title:'Net vs. gross leases, explained', desc:'Two ways landlords charge for building costs, and how to compare them.',
+  {slug:'net-vs-gross-lease', url:'net-vs-gross-lease', cat:'Leasing', read:4, rel:{deal:'lease'}, title:'Net vs. gross leases, explained', desc:'Two ways landlords charge for building costs, and how to compare them.',
    body:[['Net lease',['In a [[net-lease|net lease]], you pay base rent plus your share of the building’s costs as additional rent. It’s the most common type for retail, industrial and many offices in BC. You may also see “triple net” or “NNN”, meaning taxes, insurance and maintenance are all passed on to tenants.']],
     ['Gross lease',['In a [[gross-lease|gross lease]], one rent covers the space and the building’s costs. It’s simpler to budget for, and more common for small offices, medical suites and shared buildings.']],
     ['How to compare them',['Convert both to a total monthly cost. A net lease at $30 plus $14 additional rent costs about the same as a gross lease at $44. Then look at what happens over time: with a net lease you carry the risk of rising taxes and costs; with a gross lease the landlord does, and prices that into the rent.']],
     ['Questions to ask',['LIST:What exactly is included in additional rent?|What was last year’s actual additional rent?|Is there a cap on management fee increases?|Who pays for major repairs, such as the roof or heating system?']]],
    faq:[['Which is better, a net or a gross lease?','Neither is always better. Compare the total cost over the whole lease, and who pays when building costs go up.']]},
-  {slug:'buying-a-business', cat:'Buying a business', read:7, rel:{types:['business']}, title:'Buying a small business: a practical checklist', desc:'How businesses are priced, what to check, and how the process works from NDA to closing.',
+  {slug:'buying-a-business', url:'buying-a-business-checklist', cat:'Buying a business', read:7, rel:{types:['business']}, title:'Buying a small business: a practical checklist', desc:'How businesses are priced, what to check, and how the process works from NDA to closing.',
    body:[['How small businesses are priced',['Most small businesses are priced on [[sde|owner’s cash flow (SDE)]]: what the business earns for one full-time owner before loans and taxes. Asking prices are often 1.5 to 3 times SDE, depending on the industry, how steady the income is and how much depends on the current owner.']],
     ['Start with the confidentiality agreement',['Owners keep sales private, so you’ll sign a short [[nda|confidentiality agreement]] before you see the name, address and financial statements. It doesn’t commit you to buy. See all {{businesses|businesses for sale}}.']],
     ['What to check',['LIST:At least three years of financial statements and tax returns|How SDE was calculated, and which expenses were added back|The lease: time left, renewal options and whether it can be transferred|Staff: who is key, and whether they plan to stay|Customers: whether a few large ones make up most of the sales|Equipment condition, and what the price includes|Licences and permits that need to be transferred']],
@@ -1150,21 +1150,21 @@ const ARTICLES = [
     ['Paying for it',['Buyers often combine savings with a bank or BDC loan. Some sellers accept part of the price over time (vendor financing), which also shows they believe in the business. See [[financing|how financing works]].']],
     ['From offer to closing',['Your offer is usually subject to [[due-diligence|due diligence]], financing and the landlord agreeing to transfer the lease. After closing, most sellers train the new owner for a few weeks.']]],
    faq:[['How much money do I need to buy a small business?','Lenders usually expect you to put in 20–50% of the price from your own funds, plus working capital for the first few months.'],['Will the seller train me?','Most do. Two to eight weeks of training is common, and it’s usually written into the purchase agreement.']]},
-  {slug:'commercial-zoning', cat:'Zoning', read:5, rel:{}, title:'Commercial zoning in BC, in plain language', desc:'What zoning is, how to check what a property allows, and what to do if your use isn’t permitted.',
+  {slug:'commercial-zoning', url:'commercial-zoning-bc', cat:'Zoning', read:5, rel:{}, title:'Commercial zoning in BC: what it allows and how to check', desc:'What zoning is, how to check what a property allows, and what to do if your use isn’t permitted.',
    body:[['What zoning does',['[[zoning|Zoning]] is each city’s set of rules for what a property can be used for and what can be built on it. It decides whether a space can be a café, a clinic, a gym or a warehouse, and sets limits on building height, parking and signs.']],
     ['Every city uses its own codes',['A “C-2” zone in Vancouver is different from a “C-2” zone in Surrey or Burnaby. Always read the zoning bylaw for the city where the property is, or ask us to check. In Langley, check whether the property is in the City or the Township, as they have separate bylaws.']],
     ['Common zone types',['LIST:<b>Commercial:</b> shops, offices, restaurants and services|<b>Industrial:</b> warehousing, manufacturing, repair and trades, with limited retail|<b>Mixed-use:</b> shops at street level with homes or offices above|<b>Comprehensive development (CD):</b> a custom zone written for one site, with its own list of allowed uses']],
     ['How to check before you sign',['Look up the property’s zoning on the city’s online map, then find your use in the bylaw. Some uses need extra approvals even when the zone allows them, such as liquor licences, daycares or cannabis stores. Make your offer subject to confirming your use with the city.']],
     ['If your use isn’t allowed',['You can apply for a rezoning or a temporary use permit, but it can take a year or more and isn’t guaranteed. In most cases it’s faster to find a property that already allows your use.']]],
    faq:[['Can I open a gym in a commercial zone?','Often, but not always. Some zones list fitness studios as a permitted use and some don’t, and parking rules can be an issue. Check the bylaw for the specific property.']]},
-  {slug:'cap-rates', cat:'Investing', read:5, rel:{types:['investment']}, title:'Cap rates explained for first-time investors', desc:'How to calculate a cap rate, what it tells you, and what it doesn’t.',
+  {slug:'cap-rates', url:'cap-rates-explained', cat:'Investing', read:5, rel:{types:['investment']}, title:'Cap rates explained for first-time investors', desc:'How to calculate a cap rate, what it tells you, and what it doesn’t.',
    body:[['The formula',['[[cap-rate|Cap rate]] = [[noi|net operating income]] ÷ price. A building earning $271,600 a year after running costs, priced at $4,850,000, has a cap rate of 5.6%.']],
     ['What it tells you',['The cap rate is the yearly return you’d earn if you paid cash. It lets you compare properties of different sizes and prices on the same scale.']],
     ['What it doesn’t tell you',['LIST:How secure the income is: a 7% cap rate with a tenant leaving next year can be worse than 5% with long leases|Upcoming costs, such as a new roof|Your return after a mortgage|Whether rents are below market and could rise']],
     ['Check the numbers yourself',['Ask for the rent roll, the leases and two to three years of operating expenses. Recalculate NOI with realistic vacancy and management costs; some listings leave these out.']],
     ['Financing',['Lenders look at how comfortably the income covers the mortgage payments. Expect to need 25–35% down. Each investment listing on this site shows the estimated income left after a mortgage. See {{investment-buy|investment properties for sale}}.']]],
    faq:[['Is a higher cap rate better?','It means more income for the price, but usually comes with more risk, such as shorter leases, weaker tenants or an older building.']]},
-  {slug:'lease-or-buy', cat:'Planning', read:5, rel:{}, title:'Should your business lease or buy its space?', desc:'The trade-offs between leasing and owning, and a quick way to compare them.',
+  {slug:'lease-or-buy', url:'lease-or-buy-commercial-property', cat:'Planning', read:5, rel:{}, title:'Should your business lease or buy its space?', desc:'The trade-offs between leasing and owning, and a quick way to compare them.',
    body:[['Leasing: flexibility and lower upfront cost',['Leasing keeps your cash in the business and makes it easier to move or grow. It’s the usual choice for new businesses and for anyone who isn’t sure where they’ll be in 5 to 10 years. Browse {{lease|space for lease}}.']],
     ['Buying: control and equity',['Owning your space means no landlord, no rent increases and a property that can gain value over time. It suits established businesses that plan to stay put. Browse {{buy|property for sale}}.']],
     ['A quick comparison',['Compare your total monthly rent with the monthly cost of owning: mortgage payment, property taxes, insurance, maintenance and any strata fees. Then consider the down payment (typically 25–35%) and what that cash could earn if you kept it in the business instead.']],
@@ -1329,7 +1329,7 @@ function viewHome() {
   return `
   <section class="hero"><div class="wrap hero-grid">
     <div>
-      <h1>Find the right commercial space, <span class="mark">in plain language.</span></h1>
+      <h1>Commercial real estate for lease and sale in <span class="mark">Metro Vancouver</span></h1>
       <p class="hero-lede">Search space to lease, property to buy and businesses for sale across Metro Vancouver and the Fraser Valley. Not sure what you need? Tell us what you’re planning and we’ll point you to the right kind of property.</p>
     </div>
     <form class="search-card" id="heroForm" role="search" aria-label="Search listings">
@@ -1350,7 +1350,7 @@ function viewHome() {
   </div></section>
 
   <section class="section"><div class="wrap">
-    <div class="sec-head"><div><span class="eyebrow">Guided search</span><h2>Start with what you’re planning</h2><p>No real estate terms needed. Pick the closest match and we’ll show the property types that fit.</p></div></div>
+    <div class="sec-head"><div><span class="eyebrow">Guided search</span><h2>Start with what you’re planning</h2><p>Pick the closest match and we’ll show the property types that fit.</p></div></div>
     <div class="goals">
       ${GOALS.map(g => `<button type="button" class="goal" data-goal="${g.id}"><b>${g.label}</b><span>${g.hint}</span></button>`).join('')}
       <a class="goal alt" href="#guide"><b>Something else</b><span>Answer a few questions and we’ll guide you</span></a>
@@ -1374,7 +1374,7 @@ function viewHome() {
 
   <section class="section"><div class="wrap">
     <div class="why">
-      <div><h3>We explain as we go</h3><p>Terms like ${term('additional-rent', 'additional rent')} and ${term('cap-rate', 'cap rate')} are explained right where you see them, in plain language.</p></div>
+      <div><h3>We explain as we go</h3><p>Terms like ${term('additional-rent', 'additional rent')} and ${term('cap-rate', 'cap rate')} are defined right on the page, so you don’t need to look them up.</p></div>
       <div><h3>Real monthly costs</h3><p>Lease prices are shown as an estimated monthly total, not just a price per square foot, so you can compare spaces with your budget.</p></div>
       <div><h3>One advisor, start to finish</h3><p>From the first viewing to signing, you deal with the same person, who knows the local market and the paperwork.</p></div>
     </div>
@@ -1887,20 +1887,20 @@ function nounFor(ctx) {
 const slugLabel = h => { const p = parseSlug(h); return nounFor({deal:p.deal, type:p.types[0] || null, city:null}) + (p.city ? ' in ' + p.city : ''); };
 const lower1 = s => s.charAt(0).toLowerCase() + s.slice(1);
 
+// Live-site URLs: flat, keyword-led slugs (the same scheme the build script uses)
+const nounSlug = ctx => slugify(nounFor(ctx).replace('Commercial and industrial land', 'Commercial land').replace(/ and /g, ' '));
 function pathFor(h) {
   if (!h || h === 'home' || h === 'faq') return '/';
   if (h.startsWith('listing-')) { const l = byId(h.slice(8)); return l ? `/listings/${l.id}-${slugify(l.title)}-${citySlug(l.city)}/` : '/'; }
-  if (h === 'learn') return '/guides/';
-  if (h === 'glossary') return '/guides/glossary/';
-  if (h.startsWith('learn-')) return `/guides/${h.slice(6)}/`;
+  if (h === 'learn') return '/commercial-real-estate-guides/';
+  if (h === 'glossary') return '/commercial-real-estate-glossary/';
+  if (h.startsWith('learn-')) { const a = ARTICLES.find(x => x.slug === h.slice(6)); return `/${a ? a.url : h.slice(6)}/`; }
   if (h === 'guide') return '/help-me-choose/';
   if (h === 'search' || h === 'saved') return '/search/';
   const p = parseSlug(h); if (!p) return '/';
-  const c = p.city ? citySlug(p.city) + '/' : '';
-  if (p.base === null) return `/commercial-real-estate/${c}`;
-  if (p.base === 'businesses') return `/businesses-for-sale/${c}`;
-  const [t, d] = p.base.includes('-') ? p.base.split('-') : [null, p.base];
-  return `/commercial-real-estate/${d === 'lease' ? 'for-lease' : 'for-sale'}/${t ? t + '/' : ''}${c}`;
+  const cs = p.city ? '-' + citySlug(p.city) : '';
+  if (p.base === null) return `/commercial-real-estate${cs}/`;
+  return `/${nounSlug({deal:p.deal, type:p.types[0] || null})}${cs}/`;
 }
 
 /* inline markup in content: [[term|text]], {{route|text}}, and "LIST:a|b|c" paragraphs */
@@ -1944,7 +1944,7 @@ function seoIntro(ctx) {
   if (t) parts.push(t.intro.replace(/\.$/, '') + (ctx.city ? ` in ${ctx.city}, BC.` : ` across ${REGION}.`));
   else if (dk) parts.push(`${dk === 'lease' ? 'Retail, office, industrial and restaurant space for lease' : 'Offices, warehouses, investment property, land and businesses for sale'}${ctx.city ? ` in ${ctx.city}, BC` : ` across ${REGION}`}.`);
   if (A) parts.push(A.short);
-  if (!parts.length) parts.push(`Space for lease, property for sale and businesses for sale across ${REGION}, explained in plain language.`);
+  if (!parts.length) parts.push(`Space for lease, property for sale and businesses for sale across ${REGION}.`);
   return parts.join(' ');
 }
 function seoFaq(ctx) {
@@ -2064,9 +2064,9 @@ function viewLearn() {
   const cats = [...new Set(ARTICLES.map(a => a.cat))];
   return `<div class="wrap article-hub">
     ${crumbs([['Home', 'home'], ['Guides', 'learn']])}
-    <header class="page-head"><h1 id="p-h" tabindex="-1">Commercial real estate guides</h1><p class="lede-seo">Plain-language guides for tenants, buyers and investors in ${REGION}. Short, practical and free of jargon.</p></header>
+    <header class="page-head"><h1 id="p-h" tabindex="-1">Commercial real estate guides</h1><p class="lede-seo">Guides for tenants, buyers and investors in ${REGION}: costs, leases, zoning, financing and buying a business.</p></header>
     ${cats.map(c => `<section class="hub-sec"><h2>${c}</h2><div class="articles">${ARTICLES.filter(a => a.cat === c).map(articleCard).join('')}</div></section>`).join('')}
-    <section class="hub-sec"><h2>Glossary</h2><div class="articles"><a class="article-card" href="#glossary"><span class="k">Reference</span><h3>Commercial real estate glossary</h3><p>${Object.keys(TERMS).length} terms explained in plain language, from additional rent to zoning.</p><span class="m">Reference</span></a></div></section>
+    <section class="hub-sec"><h2>Glossary</h2><div class="articles"><a class="article-card" href="#glossary"><span class="k">Reference</span><h3>Commercial real estate glossary</h3><p>${Object.keys(TERMS).length} terms with examples, from additional rent to zoning.</p><span class="m">Reference</span></a></div></section>
     <div class="band" style="margin-bottom:56px"><div><h2>Rather talk it through?</h2><p>Tell us what you’re planning and an advisor will explain your options in a 15-minute call.</p></div><div class="acts"><button class="btn btn-pri" type="button" data-contact="requirements">Discuss your requirements</button></div></div>
   </div>`;
 }
@@ -2078,7 +2078,7 @@ function viewArticle(a) {
     <header class="page-head"><span class="eyebrow">${a.cat}</span><h1 id="p-h" tabindex="-1">${a.title}</h1><p class="lede-seo">${a.desc}</p><p class="hint">${a.read} min read · Updated September 2026 · By the HomeQuest Commercial team</p></header>
     <div class="prose">${a.body.map(([h, ps]) => `<h2>${h}</h2>${ps.map(para).join('')}`).join('')}</div>
     ${a.faq ? `<section><h2>Common questions</h2>${faqHTML(a.faq)}</section>` : ''}
-    <div class="band inline"><div><h2>Have a question about your situation?</h2><p>An advisor can answer it in plain language, usually the same day.</p></div><div class="acts"><button class="btn btn-pri" type="button" data-contact="requirements">Ask an advisor</button></div></div>
+    <div class="band inline"><div><h2>Have a question about your situation?</h2><p>An advisor can answer it, usually the same day.</p></div><div class="acts"><button class="btn btn-pri" type="button" data-contact="requirements">Ask an advisor</button></div></div>
   </article>
   ${rel.length ? `<section class="section" style="padding-top:0"><div class="sec-head"><h2>Listings related to this guide</h2></div><div class="cards" style="padding-bottom:0">${rel.map(card).join('')}</div></section>` : ''}
   <section class="section"><div class="sec-head"><h2>More guides</h2><a class="btn btn-sec btn-sm" href="#learn">All guides</a></div><div class="articles">${more.map(articleCard).join('')}</div></section>
@@ -2088,7 +2088,7 @@ function viewGlossary() {
   const ks = Object.keys(TERMS).sort((a, b) => TERMS[a].t.localeCompare(TERMS[b].t));
   return `<div class="wrap"><div class="article">
     ${crumbs([['Home', 'home'], ['Guides', 'learn'], ['Glossary', 'glossary']])}
-    <header class="page-head"><h1 id="p-h" tabindex="-1">Commercial real estate glossary</h1><p class="lede-seo">The terms you’ll see on commercial listings and leases, explained in plain language.</p></header>
+    <header class="page-head"><h1 id="p-h" tabindex="-1">Commercial real estate glossary</h1><p class="lede-seo">The terms you’ll see on commercial listings and leases, with examples.</p></header>
     <dl class="gloss">${ks.map(k => `<div id="term-${k}"><dt>${TERMS[k].t}</dt><dd>${TERMS[k].b.map(p => `<p>${p}</p>`).join('')}${TERMS[k].ex ? `<p class="ex"><b>Example:</b> ${TERMS[k].ex}</p>` : ''}</dd></div>`).join('')}</dl>
     <div class="band inline"><div><h2>Still unsure what something means?</h2><p>Ask us. There’s no such thing as a basic question.</p></div><div class="acts"><button class="btn btn-pri" type="button" data-contact="requirements">Ask an advisor</button></div></div>
   </div></div>`;
@@ -2183,12 +2183,12 @@ function route() {
   } else if (h === 'learn') {
     nav = 'learn';
     v.innerHTML = viewLearn();
-    setSeo({h, title:'Commercial real estate guides | HomeQuest', desc:`Plain-language guides to leasing, buying and investing in commercial real estate in ${REGION}: costs, leases, zoning, cap rates and buying a business.`, schema:[{'@type':'CollectionPage', name:'Commercial real estate guides'}, bcLD([['Home', 'home'], ['Guides', 'learn']])]});
+    setSeo({h, title:'Commercial real estate guides | HomeQuest', desc:`Guides to leasing, buying and investing in commercial real estate in ${REGION}: costs, leases, zoning, cap rates and buying a business.`, schema:[{'@type':'CollectionPage', name:'Commercial real estate guides'}, bcLD([['Home', 'home'], ['Guides', 'learn']])]});
     focusEl = $('#p-h'); window.scrollTo(0, 0);
   } else if (h === 'glossary') {
     nav = 'learn';
     v.innerHTML = viewGlossary();
-    setSeo({h, title:'Commercial real estate glossary | HomeQuest', desc:'Additional rent, cap rate, net lease, zoning, SDE and other commercial real estate terms, explained in plain language with examples.', schema:[{'@type':'DefinedTermSet', name:'Commercial real estate glossary', hasDefinedTerm:Object.values(TERMS).map(t => ({'@type':'DefinedTerm', name:t.t, description:plain(t.b[0])}))}, bcLD([['Home', 'home'], ['Guides', 'learn'], ['Glossary', 'glossary']])]});
+    setSeo({h, title:'Commercial real estate glossary | HomeQuest', desc:'Additional rent, cap rate, net lease, zoning, SDE and other commercial real estate terms, defined with examples.', schema:[{'@type':'DefinedTermSet', name:'Commercial real estate glossary', hasDefinedTerm:Object.values(TERMS).map(t => ({'@type':'DefinedTerm', name:t.t, description:plain(t.b[0])}))}, bcLD([['Home', 'home'], ['Guides', 'learn'], ['Glossary', 'glossary']])]});
     focusEl = $('#p-h'); window.scrollTo(0, 0);
   } else if (h.startsWith('learn-') && ARTICLES.find(a => a.slug === h.slice(6))) {
     nav = 'learn';
@@ -2198,7 +2198,7 @@ function route() {
     focusEl = $('#p-h'); window.scrollTo(0, 0);
   } else {
     v.innerHTML = viewHome();
-    setSeo({h:'home', title:'Commercial real estate for lease and sale in BC | HomeQuest', desc:`Search commercial space for lease, property for sale and businesses for sale in ${REGION}. Monthly costs, zoning and plain-language advice on every listing.`,
+    setSeo({h:'home', title:'Commercial Real Estate, Metro Vancouver | HomeQuest', desc:`Search commercial space for lease, property for sale and businesses for sale in ${REGION}. Monthly costs, zoning and local advice on every listing.`,
       schema:[{'@type':'WebSite', name:'HomeQuest Commercial', url:SITE + '/', potentialAction:{'@type':'SearchAction', target:SITE + '/search/?q={search_term_string}', 'query-input':'required name=search_term_string'}}, faqLD(HOME_FAQ)]});
     focusEl = $('main'); window.scrollTo(0, 0);
     if (h === 'faq') { const f = $('#faq'); f && f.scrollIntoView(); }
