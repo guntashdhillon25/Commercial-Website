@@ -203,7 +203,7 @@ textarea.input{padding:12px 14px;min-height:108px;resize:vertical;line-height:1.
 .s-bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line);padding-block:12px}
 .fbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .fbar .loc-wrap{flex:1 1 260px;min-width:0}
-.fbar .sel{flex:0 1 180px}
+.fbar .sel{flex:0 1 210px}
 .btn-filter .n{display:inline-grid;place-items:center;min-width:22px;height:22px;padding:0 6px;border-radius:11px;background:var(--ink);color:var(--on-ink);font-size:12.5px;font-weight:700}
 .btn-filter.on{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
 .m-only{display:none}
@@ -415,6 +415,110 @@ body.has-bar .toast{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}}
 
+/* ============ SEO content ============ */
+.bc{display:flex;flex-wrap:wrap;gap:2px 6px;list-style:none;margin:0;padding:16px 0 0;font-size:14.5px;color:var(--muted)}
+.bc li{display:flex;align-items:center;gap:6px;min-width:0}
+.bc li + li::before{content:"/";color:var(--line-2)}
+.bc a{color:var(--ink-2);text-decoration:none;min-height:32px;display:inline-flex;align-items:center}
+.bc a:hover{color:var(--accent);text-decoration:underline}
+.bc [aria-current]{color:var(--ink);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:40ch}
+.m-crumb{display:none}
+.lede-seo{color:var(--ink-2);max-width:72ch;margin-top:8px;font-size:16.5px}
+.seo{border-top:1px solid var(--line);padding-block:44px 64px;display:grid;gap:48px}
+.seo h2{font-size:clamp(22px,2.4vw,28px);margin-bottom:12px}
+.seo-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:48px;align-items:start}
+.seo-grid .prose{max-width:none}
+.prose h3{font-size:18px;color:var(--ink);margin-top:10px}
+.prose h2{color:var(--ink)}
+.seo-side{display:grid;gap:14px;align-content:start}
+.seo-side h3{font-size:17px}
+.seo-side h3:not(:first-child){margin-top:14px}
+.districts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.districts > div{background:var(--surface);padding:14px 16px;display:grid;gap:4px;align-content:start}
+.districts b{font-size:16px;color:var(--ink)}
+.districts span{font-size:14.5px;color:var(--muted)}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:var(--r);background:var(--surface)}
+table.mk{border-collapse:collapse;width:100%;min-width:460px;font-size:14.5px;font-variant-numeric:tabular-nums}
+.mk th,.mk td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.mk thead th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.mk tbody th{font-weight:600}
+.mk tr:last-child > *{border-bottom:0}
+.mk tr.hi > *{background:var(--accent-soft)}
+.guide-links{list-style:none;padding:0;display:grid;border-top:1px solid var(--line)}
+.guide-links li{display:flex;justify-content:space-between;gap:12px;align-items:center;border-bottom:1px solid var(--line);min-height:48px;padding-block:6px}
+.guide-links a{font-weight:600;color:var(--ink);text-decoration:none}
+.guide-links a:hover{color:var(--accent);text-decoration:underline}
+.guide-links span{font-size:13.5px;color:var(--muted);white-space:nowrap}
+.related{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:32px}
+.related h3{font-size:17px;margin-bottom:8px}
+.linkgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px;list-style:none;padding:0;margin:0}
+.linkgrid.one{grid-template-columns:minmax(0,1fr)}
+.linkgrid a{display:flex;justify-content:space-between;gap:12px;min-height:44px;align-items:center;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);font-weight:500;font-size:15px}
+.linkgrid a:hover{color:var(--accent)}
+.linkgrid a:hover{text-decoration:underline}
+.linkgrid a span{color:var(--muted);font-size:13.5px;font-variant-numeric:tabular-nums;font-weight:500}
+.browse{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+.browse h3{font-size:17px;margin-bottom:6px}
+.articles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.article-card{display:grid;gap:6px;align-content:start;padding:18px 20px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);color:var(--ink);text-decoration:none}
+.article-card:hover{border-color:var(--ink);color:var(--ink)}
+.article-card .k,.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.article-card h3{font-size:18px;line-height:1.25}
+.article-card p{color:var(--muted);font-size:15px}
+.article-card .m{font-size:13.5px;color:var(--muted);margin-top:4px}
+.page-head{display:grid;gap:8px}
+.page-head h1{font-size:clamp(30px,4vw,44px);letter-spacing:-.025em}
+.article{max-width:760px;margin-inline:auto;padding-block:0 56px;display:grid;gap:32px}
+.article .prose{max-width:none;font-size:17px;line-height:1.7;gap:16px}
+.article .prose h2{font-size:24px;margin-top:14px}
+.article-hub{display:grid;gap:40px}
+.hub-sec h2{font-size:22px;margin-bottom:14px}
+.gloss{display:grid;border-top:1px solid var(--line)}
+.gloss > div{display:grid;grid-template-columns:200px minmax(0,1fr);gap:8px 32px;padding-block:18px;border-bottom:1px solid var(--line)}
+.gloss dt{font:700 18px/1.3 var(--display)}
+.gloss dd{display:grid;gap:8px;color:var(--ink-2)}
+.gloss .ex{background:var(--surface-2);border-radius:var(--r-sm);padding:10px 12px;font-size:15px}
+.popular{margin-top:32px;padding-top:24px;border-top:1px solid var(--line)}
+.popular h2{font:700 14px var(--body);color:var(--ink);margin-bottom:6px;letter-spacing:0}
+.popular .linkgrid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.popular .linkgrid a{font-size:14px;color:var(--ink-2);min-height:40px}
+
+/* prototype tools */
+.proto{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:4px 14px}
+.proto button{background:none;border:0;padding:0 2px;min-height:28px;font:600 12.5px var(--body);color:var(--ink);text-decoration:underline;text-underline-offset:3px;display:inline-flex;align-items:center;gap:6px}
+.proto button:hover{color:var(--accent)}
+.proto .dots{display:inline-flex}
+.proto .dots i{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--surface-2);margin-left:-3px}
+.pal{display:grid;grid-template-columns:auto auto minmax(0,1fr);gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:var(--r-sm);cursor:pointer;background:var(--surface)}
+.pal:hover{border-color:var(--line-2)}
+.pal:has(input:checked){border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.pal input{width:20px;height:20px;margin:0;accent-color:var(--ink)}
+.pal .sw{display:flex}
+.pal .sw i{width:22px;height:22px;border-radius:50%;border:2px solid var(--surface);box-shadow:0 0 0 1px var(--line);margin-left:-6px}
+.pal .sw i:first-child{margin-left:0}
+.pal .sw i:nth-child(4){margin-left:4px}
+.pal b{display:block;font-size:15.5px}
+.pal small{display:block;color:var(--muted);font-size:13.5px}
+#dlgPalette::backdrop{background:transparent}
+@media (min-width:641px){#dlgPalette{margin:56px 16px auto auto;max-height:calc(100% - 72px)}}
+.serp{display:grid;gap:3px;padding:16px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);font-family:Arial,sans-serif}
+.serp-url{font-size:13px;color:var(--ink-2);overflow-wrap:anywhere}
+.serp-title{font-size:19px;line-height:1.3;color:#1a0dab}
+:root[data-theme="dark"] .serp-title{color:#99c3ff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .serp-title{color:#99c3ff}}
+.serp-desc{font-size:14px;color:var(--ink-2);line-height:1.5}
+.seo-checks{display:grid;border-top:1px solid var(--line)}
+.seo-checks > div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:12px;padding-block:9px;border-bottom:1px solid var(--line);font-size:14.5px}
+.seo-checks dt{color:var(--muted)}
+.seo-checks dd{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;overflow-wrap:anywhere;min-width:0}
+.mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px}
+.st{display:inline-flex;align-items:center;min-height:22px;padding:0 8px;border-radius:5px;font-size:12.5px;font-weight:700;background:var(--surface-2);color:var(--ink-2)}
+.st.ok{background:var(--ok-soft);color:var(--ok)}
+.st.warn{background:var(--biz-soft);color:var(--biz)}
+.seo-more summary{cursor:pointer;font-weight:600;min-height:40px;display:flex;align-items:center}
+.seo-more ul{padding-left:20px;font-size:14.5px;display:grid;gap:4px}
+.seo-more pre{margin:0;max-height:320px;overflow:auto;background:var(--surface-2);border-radius:var(--r-sm);padding:12px;font:12.5px/1.5 ui-monospace,Menlo,Consolas,monospace}
+
 /* ============ Responsive ============ */
 @media (max-width:1080px){
   .main-nav{display:none}
@@ -445,6 +549,12 @@ body.has-bar .toast{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
   .why{grid-template-columns:minmax(0,1fr);gap:20px}
   .foot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .band{grid-template-columns:minmax(0,1fr);padding:22px}
+  .seo-grid{grid-template-columns:minmax(0,1fr);gap:32px}
+  .browse{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .articles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .popular .linkgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .d-bc{display:none}
+  .m-crumb{display:flex}
 }
 @media (max-width:640px){
   .hero{padding-block:28px 24px}
@@ -482,6 +592,10 @@ body.has-bar .toast{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
   .card-cta{padding-top:4px;font-size:14.5px}
   .band.inline{padding:18px}
   .foot-grid{grid-template-columns:minmax(0,1fr)}
+  .browse,.articles,.districts,.linkgrid,.popular .linkgrid{grid-template-columns:minmax(0,1fr)}
+  .gloss > div{grid-template-columns:minmax(0,1fr)}
+  .seo-checks > div{grid-template-columns:minmax(0,1fr);gap:2px}
+  .seo{padding-block:32px 48px;gap:36px}
 }
 @media (max-width:380px){
   .card{grid-template-columns:96px minmax(0,1fr)}
@@ -492,7 +606,7 @@ body.has-bar .toast{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
 </style>
 
 <a class="skip" href="#main">Skip to content</a>
-<div class="proto" role="note">Design prototype · sample listings, not real properties · built to be rebuilt on myRealPage</div>
+<div class="proto"><span>Design prototype · sample listings · built to be rebuilt on myRealPage</span><button type="button" id="palBtn" aria-haspopup="dialog"><span class="dots" aria-hidden="true" id="palDots"></span>Colour scheme</button><button type="button" id="seoBtn" aria-haspopup="dialog">SEO details for this page</button></div>
 
 <header class="site-head">
   <div class="wrap head-row">
@@ -505,6 +619,7 @@ body.has-bar .toast{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
       <a href="#buy" data-nav="buy">Buy property</a>
       <a href="#businesses" data-nav="businesses">Businesses for sale</a>
       <a href="#guide" data-nav="guide">Help me choose</a>
+      <a href="#learn" data-nav="learn">Guides</a>
     </nav>
     <div class="head-tools">
       <a class="icon-btn" href="#saved" aria-label="Saved listings" id="savedLink">
@@ -535,8 +650,9 @@ body.has-bar .toast{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
       </div>
       <div><h2>Search</h2><ul><li><a href="#lease">Space for lease</a></li><li><a href="#buy">Property for sale</a></li><li><a href="#businesses">Businesses for sale</a></li><li><a href="#saved">Saved listings</a></li></ul></div>
       <div><h2>Get help</h2><ul><li><a href="#guide">Help me choose</a></li><li><button class="link-btn" type="button" data-contact="requirements" style="color:var(--ink-2);text-decoration:none;font-weight:500;min-height:32px">Discuss your requirements</button></li><li><a href="#home" data-faq>Common questions</a></li></ul></div>
-      <div><h2>Plain-language guides</h2><ul><li><button class="link-btn" type="button" data-term="additional-rent" style="color:var(--ink-2);text-decoration:none;font-weight:500;min-height:32px">Additional rent</button></li><li><button class="link-btn" type="button" data-term="cap-rate" style="color:var(--ink-2);text-decoration:none;font-weight:500;min-height:32px">Cap rate</button></li><li><button class="link-btn" type="button" data-term="zoning" style="color:var(--ink-2);text-decoration:none;font-weight:500;min-height:32px">Zoning</button></li><li><button class="link-btn" type="button" data-term="due-diligence" style="color:var(--ink-2);text-decoration:none;font-weight:500;min-height:32px">Due diligence</button></li></ul></div>
+      <div><h2>Guides</h2><ul><li><a href="#learn-leasing-commercial-space">How to lease commercial space</a></li><li><a href="#learn-lease-costs">What space really costs</a></li><li><a href="#learn-buying-a-business">Buying a business</a></li><li><a href="#learn-cap-rates">Cap rates explained</a></li><li><a href="#glossary">Glossary</a></li><li><a href="#learn">All guides</a></li></ul></div>
     </div>
+    <div class="popular" id="popular"></div>
     <div class="legal">
       <p>[Brokerage name], independently owned and operated. Information is believed reliable but not guaranteed; confirm all details before relying on them.</p>
       <p>MLS®, REALTOR® and the associated logos are trademarks of The Canadian Real Estate Association. © 2026 HomeQuest.</p>
@@ -578,11 +694,25 @@ body.has-bar .toast{bottom:calc(92px + env(safe-area-inset-bottom,0px))}
       <li><a href="#buy" data-close>Buy property <span aria-hidden="true">→</span></a></li>
       <li><a href="#businesses" data-close>Businesses for sale <span aria-hidden="true">→</span></a></li>
       <li><a href="#guide" data-close>Help me choose <span aria-hidden="true">→</span></a></li>
+      <li><a href="#learn" data-close>Guides <span aria-hidden="true">→</span></a></li>
       <li><a href="#saved" data-close>Saved listings <span aria-hidden="true">→</span></a></li>
     </ul>
     <button class="btn btn-pri btn-block" type="button" data-contact="requirements">Discuss your requirements</button>
     <p class="hint" style="text-align:center">Or call <span class="num" style="color:var(--ink);font-weight:600">604-555-0142</span></p>
   </div>
+</dialog>
+
+<!-- Colour scheme (prototype tool) -->
+<dialog id="dlgPalette" class="small" aria-labelledby="pTitle">
+  <div class="dlg-head"><div><h2 id="pTitle">Colour scheme</h2><p>Try each one. It applies to every page, in light and dark mode.</p></div><button class="icon-btn" type="button" data-close aria-label="Close"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+  <div class="dlg-body" id="pBody"></div>
+  <div class="dlg-foot"><button class="btn btn-pri" type="button" data-close>Done</button></div>
+</dialog>
+
+<!-- SEO review (prototype tool) -->
+<dialog id="dlgSeo" aria-labelledby="sTitle">
+  <div class="dlg-head"><div><h2 id="sTitle">SEO details for this page</h2><p>What search engines would see on the live site.</p></div><button class="icon-btn" type="button" data-close aria-label="Close"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+  <div class="dlg-body" id="sBody"></div>
 </dialog>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -737,6 +867,168 @@ const GOALS = [
   {id:'build', label:'Buy land to build on', hint:'Development and industrial sites', types:['land'], deal:'sale', why:'Land listings show what the current zoning allows you to build.', tip:['zoning','Zoning decides what you can build. Rezoning is possible but can take a year or more.']}
 ];
 
+/* ================= SEO content ================= */
+const SITE = 'https://www.homequest.example';
+const REGION = 'Metro Vancouver and the Fraser Valley';
+
+const AREAS = {
+  surrey: {short:'Surrey is BC’s second-largest city and one of the fastest-growing commercial markets in the region.',
+    intro:'Surrey has several town centres rather than one downtown, so the right area depends on who your customers are. Retail and services follow the new housing in Fleetwood, Clayton and South Surrey. Offices cluster around City Centre and its SkyTrain stations, and Campbell Heights is one of the region’s main industrial parks.',
+    districts:[['City Centre','Towers, offices and SkyTrain access around King George Boulevard. Suits professional offices and services.'],['Newton','Established retail along King George Boulevard and 72 Avenue, with a large, diverse customer base.'],['Fleetwood','Neighbourhood plazas along Fraser Highway, where the SkyTrain extension to Langley is being built.'],['Guildford','Regional shopping around Guildford Town Centre, close to Highway 1.'],['Cloverdale','Historic town centre, plus light industrial land near Highway 10 and Highway 15.'],['Campbell Heights','Modern industrial business park near Highway 1 and the Pacific Highway border crossing.']],
+    access:'Highway 1, Highway 99, Highway 10 and Highway 15, and the SkyTrain Expo Line to City Centre.',
+    faq:[['Which part of Surrey is best for a retail business?','It depends on your customers. Newton and Guildford have established shopping traffic. Fleetwood, Clayton and South Surrey have newer plazas near fast-growing neighbourhoods, with more parking and newer buildings.'],['Is Surrey a good place for warehouse space?','Yes. Campbell Heights, Cloverdale and Port Kells have large, modern industrial buildings with good truck access to the highways and the US border.']]},
+  vancouver: {short:'Vancouver has the region’s highest rents and busiest shopping streets.',
+    intro:'Vancouver’s commercial space is spread along its high streets, such as Main Street, Commercial Drive and West 4th Avenue, as well as downtown. Space is tighter and rents are higher than in the suburbs, but foot traffic and transit access are hard to match. Industrial space is scarce and concentrated near False Creek Flats and the Fraser River.',
+    districts:[['Downtown','The region’s main office district, plus Robson Street and other major shopping streets.'],['Mount Pleasant','Main Street and Broadway: independent shops, restaurants and creative offices, with the Broadway Subway under construction.'],['Kitsilano','West 4th Avenue and West Broadway, with strong neighbourhood shopping and dining.'],['Commercial Drive','A long-established street of cafés, restaurants and independent shops.'],['False Creek Flats','Light industrial space, studios, breweries and tech offices east of Main Street.']],
+    access:'SkyTrain Expo, Millennium and Canada lines, and frequent buses on the main streets.',
+    faq:[['Why are commercial rents higher in Vancouver?','There is little room for new commercial space and demand is high, especially on busy streets near transit. Many tenants accept higher rent in exchange for more foot traffic and a better-known location.'],['Can I find restaurant space with a kitchen in Vancouver?','Yes. Spaces with a kitchen already built come up often, especially on Main Street, Commercial Drive and in Kitsilano. They tend to lease quickly, so it helps to have an advisor watching for them.']]},
+  burnaby: {short:'Burnaby combines major office and shopping centres on SkyTrain with busy industrial areas.',
+    intro:'Burnaby’s growth is centred on four town centres along SkyTrain: Metrotown, Brentwood, Lougheed and Edmonds, each with new office towers and shopping. South Burnaby and the Still Creek area have established industrial and business parks close to Vancouver.',
+    districts:[['Metrotown','One of the region’s largest shopping centres, with office towers and Expo Line stations.'],['Brentwood','A fast-growing town centre on the Millennium Line, with new retail and office space.'],['Lougheed','A town centre where the Millennium Line meets the Lougheed Highway.'],['Edmonds','Neighbourhood shopping and services in southeast Burnaby.'],['Big Bend','Industrial and business park land along the Fraser River in south Burnaby.'],['Still Creek','Business park and light industrial space near Highway 1 and the Vancouver border.']],
+    access:'Highway 1 and the Lougheed Highway, and the SkyTrain Expo and Millennium lines.',
+    faq:[['Is Burnaby good for office space near transit?','Yes. Metrotown, Brentwood and Lougheed all have office buildings a short walk from SkyTrain, often at lower rents than downtown Vancouver.'],['Does Burnaby have industrial space for lease?','Yes, mainly in Big Bend along the Fraser River and around Still Creek. Vacancy is usually low, so good units lease quickly.']]},
+  langley: {short:'Langley offers newer buildings, more parking and lower rents than cities closer to Vancouver.',
+    intro:'Langley is two separate municipalities: the City of Langley, around the downtown core, and the much larger Township of Langley, which includes Willoughby, Walnut Grove and the Gloucester industrial area. Zoning and permits depend on which one a property is in, so check this early.',
+    districts:[['Langley City','Downtown shops and services around Fraser Highway, plus Willowbrook shopping centre.'],['Willoughby','Rapidly growing neighbourhoods with new retail along 200 Street and 208 Street.'],['Walnut Grove','Established shopping near Highway 1 and 200 Street.'],['Gloucester','Large industrial estates beside Highway 1 at 264 Street.'],['Aldergrove','A small-town commercial centre near the Aldergrove border crossing.']],
+    access:'Highway 1, Highway 10 and Fraser Highway. The SkyTrain extension to Langley City is under construction.',
+    faq:[['What’s the difference between the City and the Township of Langley?','They are separate municipalities with their own zoning, permits and property taxes. The City of Langley is the smaller downtown area. The Township covers everything else, including Willoughby, Walnut Grove and Gloucester.'],['Is Langley good for warehouse space?','Yes. Gloucester and the areas along Highway 1 have large modern buildings with dock loading, often at lower rents than in Burnaby or Richmond.']]},
+  richmond: {short:'Richmond is a major retail and business hub next to Vancouver International Airport.',
+    intro:'Richmond’s city centre along No. 3 Road has some of the region’s busiest shopping and dining, and the Canada Line connects it to Vancouver. Its location next to the airport and the Fraser River makes it a key area for warehousing and distribution.',
+    districts:[['Central Richmond','Shopping centres, restaurants and offices along No. 3 Road and the Canada Line.'],['Bridgeport','Hotels, offices and entertainment near the airport and Highway 99.'],['Ironwood','Large-format retail near Steveston Highway and Highway 99.'],['East Richmond','Industrial areas along Highway 91 and River Road, close to the airport and port.'],['Steveston','A historic fishing village with waterfront shops and restaurants.']],
+    access:'Highway 99 and Highway 91, the Canada Line, and Vancouver International Airport next door.',
+    faq:[['Is Richmond good for a restaurant or café?','Yes. Central Richmond has one of the busiest food scenes in the region. Competition is strong, so the location within a plaza and the parking matter a lot.'],['Why is Richmond popular for warehouses?','It sits between the airport, the port and Vancouver, which cuts delivery times. Industrial space here is in high demand, so rents are higher than in the Fraser Valley.']]},
+  abbotsford: {short:'Abbotsford is the Fraser Valley’s largest city, with lower costs and room to grow.',
+    intro:'Abbotsford serves the whole central Fraser Valley. Rents and prices are generally lower than in Metro Vancouver, and there is more land for new industrial buildings. Highway 1 and the Sumas border crossing make it a good base for businesses that ship to the US.',
+    districts:[['Historic Downtown','Independent shops, cafés and services on Essendene Avenue and Montrose Avenue.'],['West Abbotsford','Neighbourhood plazas and services near Highway 1.'],['Sumas Way','The main retail corridor, with large stores and plazas leading to the US border.'],['Airport area','Industrial land and business parks around Abbotsford International Airport.']],
+    access:'Highway 1, Highway 11 to the Sumas border crossing, and Abbotsford International Airport.',
+    faq:[['Are commercial rents cheaper in Abbotsford?','Usually, yes. Rents and sale prices are generally lower than in Metro Vancouver, which is why many growing businesses choose the Fraser Valley for larger spaces.'],['Can I buy an investment property in Abbotsford?','Yes. Neighbourhood plazas and small industrial buildings in Abbotsford often have higher cap rates than similar properties closer to Vancouver.']]},
+  delta: {short:'Delta is one of the region’s key industrial areas, close to the port and Highway 17.',
+    intro:'Delta has large industrial areas at Tilbury and Annacis Island, close to the Deltaport container terminal and the main highways. Its retail mainly serves the neighbourhoods: North Delta along Scott Road, and the villages of Ladner and Tsawwassen.',
+    districts:[['Tilbury','A major industrial area with modern warehouses near Highway 17 and Highway 99.'],['Annacis Island','An industrial island in the Fraser River with manufacturing and distribution.'],['North Delta','Shopping along Scott Road and 120 Street, next to Surrey.'],['Ladner','A village centre with independent shops and services.'],['Tsawwassen','Tsawwassen Mills shopping centre and the BC Ferries terminal.']],
+    access:'Highway 17, Highway 91 and Highway 99, close to Deltaport and the Tsawwassen ferry terminal.',
+    faq:[['Why do logistics companies choose Delta?','It’s close to Deltaport and the main highways, so trucks can reach the port, the airport and the US border quickly.'],['Is there retail space in Delta?','Yes, mostly neighbourhood plazas in North Delta, Ladner and Tsawwassen. These suit services, food and everyday retail.']]},
+  coquitlam: {short:'Coquitlam is a growing Tri-Cities hub on the Millennium Line.',
+    intro:'Coquitlam’s commercial core is around Coquitlam Centre and the Millennium Line stations at Lincoln and Coquitlam Central. Burquitlam and the Lougheed corridor are adding new mixed-use buildings, and United Boulevard is a long-established area for industrial and large-format retail.',
+    districts:[['City Centre','Coquitlam Centre, offices and new towers near the Millennium Line.'],['Burquitlam','A fast-growing area around Burquitlam station, with new shops at street level.'],['Austin Heights','Neighbourhood shopping and services along Austin Avenue.'],['Maillardville','A historic area along Brunette Avenue with small shops and services.'],['United Boulevard','Industrial and large-format retail near Highway 1 and the Fraser River.']],
+    access:'Highway 1, the Lougheed Highway and the Mary Hill Bypass, and the SkyTrain Millennium Line.',
+    faq:[['Is Coquitlam good for an auto repair or trades business?','Yes. United Boulevard and the industrial areas near the Fraser River have zoning for repair shops and trades, with good access to Highway 1.'],['Where is new retail space in Coquitlam?','Most new space is at street level in mixed-use buildings around the SkyTrain stations, especially in Burquitlam and City Centre.']]},
+  'new-westminster': {short:'New Westminster is a compact, walkable city with five SkyTrain stations.',
+    intro:'New Westminster is one of the region’s oldest cities. It is small but central, with shops and restaurants on Columbia Street, Uptown around Sixth Street, and medical offices near Royal Columbian Hospital in Sapperton. Queensborough, across the river, has industrial land and a shopping centre.',
+    districts:[['Downtown','Heritage storefronts on Columbia Street, the Quay and New Westminster station.'],['Uptown','Shopping and services around Sixth Street and Sixth Avenue.'],['Sapperton','Medical and professional offices near Royal Columbian Hospital.'],['Queensborough','Industrial land and Queensborough Landing shopping centre.']],
+    access:'Five SkyTrain Expo Line stations and Highway 91A, next to Burnaby, Surrey and Coquitlam.',
+    faq:[['Is New Westminster good for a medical office?','Yes, especially in Sapperton near Royal Columbian Hospital, where clinics and specialists cluster.'],['Are there heritage buildings for sale in New Westminster?','Downtown has many older buildings with shops on the ground floor and apartments or offices above. Check for heritage status, which can limit changes to the outside of the building.']]}
+};
+
+const TYPE_SEO = {
+  retail: {lease:{noun:'Retail space', intro:'Storefronts, plaza units and street-level shops for lease.'}, sale:{noun:'Retail property', intro:'Strata retail units and retail buildings for sale.'},
+    about:'Retail space is for businesses that serve customers in person: shops, salons, clinics, services, showrooms and takeout. Visibility, parking and the businesses next door matter as much as the space itself.',
+    check:['Your use is allowed under the zoning','Signage: where your sign can go and how big it can be','Parking for your customers, and whether it is shared','Exclusive-use clauses that stop a competitor opening next door','Power, plumbing and ventilation for your equipment','The total monthly cost, including additional rent'],
+    faq:[['How much does retail space cost to lease?','Retail rent is quoted per square foot per year, plus additional rent for taxes and upkeep. Add both, multiply by the size and divide by 12 for a monthly figure. Every listing here shows that estimate.'],['What is an inline retail unit?','A unit in the middle of a row of shops, as opposed to an end unit. End units usually have more visibility and sometimes room for a drive-thru, and they cost more.']]},
+  office: {lease:{noun:'Office space', intro:'Office suites, full floors and medical offices for lease.'}, sale:{noun:'Office property', intro:'Strata offices and office buildings for sale.'},
+    about:'Office space ranges from small suites for a few people to full floors for large teams, plus medical and dental offices with plumbing already installed. Transit access and parking often matter most to staff and clients.',
+    check:['How many people it seats, and room to grow','Parking and transit for staff and clients','Building hours and after-hours access','Who pays for improvements such as walls and wiring','Whether furniture is included','For medical use: plumbing, accessibility and zoning for clinics'],
+    faq:[['How much office space do I need?','A common rule of thumb is 150 to 250 square feet per person, including meeting rooms and a kitchen. Open-plan offices need less; offices with many private rooms need more.'],['Can I buy an office instead of leasing one?','Yes. A strata office lets a business own its own unit, often with a mortgage payment close to what it would pay in rent. You’ll usually need a down payment of 25–35%.']]},
+  industrial: {lease:{noun:'Industrial and warehouse space', intro:'Warehouses, workshops and industrial units for lease.'}, sale:{noun:'Industrial property', intro:'Strata warehouse units and industrial buildings for sale.'},
+    about:'Industrial space is for businesses that store, make, fix or ship things. Clear height, loading doors, power and yard space usually decide whether a building works before price does.',
+    check:['Clear height for your racking or equipment','Dock-level and drive-in doors for your trucks','Power supply (amps and voltage) for your machines','Sprinklers and floor strength for what you store','Yard space for trucks and trailers','Zoning for your specific activity'],
+    faq:[['What is the difference between dock and grade loading?','A dock door is at truck-bed height, so pallets roll straight on and off a semi-trailer. A grade-level (drive-in) door is at ground level, so vans and smaller trucks can drive inside.'],['Why is industrial space hard to find in Metro Vancouver?','Mountains, water, farmland and the US border limit how much land can be built on, so industrial vacancy is usually low. It helps to start looking 6 to 12 months ahead.']]},
+  restaurant: {lease:{noun:'Restaurant space', intro:'Restaurant and café spaces for lease, including spaces with a kitchen already built.'},
+    about:'Restaurant space needs things most retail units don’t: a kitchen hood and fire suppression, a grease trap, enough power and gas, and zoning that allows food service. Spaces where a restaurant operated before can save months of work.',
+    check:['Kitchen hood, fire suppression and grease trap','Gas and power capacity','Zoning, and the number of seats allowed','Whether a liquor licence is possible','Patio permits','Allowed opening hours, and the neighbours (noise and smells)'],
+    faq:[['What is a second-generation restaurant space?','A space where a restaurant operated before and left behind the kitchen hood, fire suppression, grease trap and plumbing. It can save a large part of the build-out cost and months of permits.'],['How long is a restaurant lease?','Usually 10 years or more, often with renewal options. The longer term gives you time to earn back what you spend on the build-out.']]},
+  business: {sale:{noun:'Businesses', intro:'Operating businesses for sale, with staff, customers and equipment in place.'},
+    about:'Buying a business means taking over a working operation: customers, staff, equipment, suppliers and usually the lease. Most small businesses are priced on what they earn for their owner each year.',
+    check:['Owner’s cash flow (SDE), and how it was calculated','Three years of financial statements and tax returns','Time left on the lease, and whether it can be transferred to you','Whether key staff and customers are likely to stay','What’s included: equipment, inventory, brand and website','How much training the seller will give'],
+    faq:[['Why are business listings confidential?','Owners don’t want staff, customers or competitors to find out before a sale is agreed. You sign a short confidentiality agreement (NDA) to see the name, address and financial statements.'],['How are small businesses valued?','Usually as a multiple of the owner’s yearly cash flow (SDE), often between 1.5 and 3 times, depending on the industry, how steady the income is and how much depends on the owner.']]},
+  investment: {sale:{noun:'Investment property', intro:'Income-producing buildings for sale, with tenants already in place.'},
+    about:'Investment properties already have tenants paying rent. They are compared by cap rate (the yearly income as a percentage of the price), the strength of the tenants and how long their leases have left.',
+    check:['Net operating income, with the rent roll and expenses','Who the tenants are, and how long their leases run','Which costs tenants pay and which the owner pays','Building condition and upcoming repairs','The risk if a major tenant leaves','Financing: the down payment, and how well the income covers the mortgage'],
+    faq:[['What is a good cap rate?','There isn’t one right number. Lower cap rates usually mean safer tenants or better locations; higher cap rates pay more income but may carry more risk. Compare cap rates between similar properties in similar areas.'],['Can I finance an investment property?','Yes. Lenders usually want a down payment of 25–35% and will check that the rental income comfortably covers the mortgage payments.']]},
+  land: {sale:{noun:'Commercial and industrial land', intro:'Development and industrial land for sale.'},
+    about:'Buying land lets you build exactly what you need, but it takes longer. Zoning, services (water, sewer and power) and environmental reports decide what you can build and how soon.',
+    check:['Current zoning, and what it allows','Services at the lot line: water, sewer and power','Environmental reports (Phase I and II)','Soil and flood conditions','Development cost charges and permit timelines','Access for trucks and customers'],
+    faq:[['What does serviced land mean?','Water, sewer and power are already available at the property line, so a new building can connect without paying for long extensions.'],['How long does it take to build on commercial land?','If the zoning already allows your building, allow roughly a year for design and permits before construction starts. A rezoning can add a year or more.']]}
+};
+
+const LEASE_FAQ = [
+  ['How much does it cost to lease commercial space?','Commercial rent is quoted per square foot per year, in two parts: base rent and additional rent (taxes, insurance and upkeep). Add them, multiply by the size and divide by 12, then add 5% GST. We show this monthly estimate on every listing.'],
+  ['How long is a typical commercial lease?','Most retail and office leases run 3 to 10 years, often with an option to renew. Restaurants usually sign for 10 years or more.'],
+  ['Do tenants pay a commission?','In most commercial leases, the landlord pays the leasing commission. We’ll confirm how it works before you commit.']];
+const SALE_FAQ = [
+  ['How much down payment do I need for commercial property?','Lenders usually ask for 25–35% of the price. Businesses buying their own premises may qualify for less through programs such as BDC.'],
+  ['What costs are there on top of the price?','Plan for property transfer tax (1% of the first $200,000 and 2% of the rest for commercial property), 5% GST unless you are GST-registered, legal fees, inspections and an appraisal.'],
+  ['How long does it take to buy a commercial property?','Usually 60 to 120 days from accepted offer to completion, including 30 to 60 days of due diligence.']];
+const HOME_FAQ = [
+  ['How much will a commercial lease really cost each month?','Add the base rent and the [[additional-rent|additional rent]], multiply by the size in square feet, and divide by 12. Then add 5% GST. We do this for you on every listing.'],
+  ['Do I pay a commission to use HomeQuest?','In most leases and purchases, the landlord or seller pays the commission. We’ll tell you up front if a deal is different.'],
+  ['How much do I need to buy commercial property?','Plan for a down payment of about 25–35% of the price, plus property transfer tax, legal fees and inspections. See [[financing|financing]] for details.'],
+  ['How long does it take to lease a space?','Usually 4 to 10 weeks from the first viewing to signing. Restaurants and medical offices can take longer because of permits.'],
+  ['Which areas does HomeQuest cover?','Metro Vancouver and the Fraser Valley, including Surrey, Vancouver, Burnaby, Langley, Richmond, Abbotsford, Delta, Coquitlam and New Westminster.'],
+  ['What happens after I send a question?','An advisor replies within one business day, usually the same day. You won’t be added to a mailing list unless you ask.']];
+
+// Example ranges only; replace with current market data before launch.
+const MARKET = [
+  ['Retail','$28–42 + $11–16','$700–1,100/sf (strata)'],
+  ['Office','$24–36 + $14–19','$650–950/sf (strata)'],
+  ['Industrial','$18–24 + $4.50–7','$550–750/sf (strata)'],
+  ['Restaurant','$32–50 + $13–17','Usually leased'],
+  ['Investment','–','4.5–6% cap rates'],
+  ['Industrial land','–','$3.5M–6M per acre']
+];
+
+const ARTICLES = [
+  {slug:'leasing-commercial-space', cat:'Leasing', read:7, rel:{deal:'lease'}, title:'How to lease commercial space: a step-by-step guide', desc:'The steps from working out what you need to getting the keys, with typical timelines for each.',
+   body:[['Start 6 to 12 months ahead',['Finding a space, negotiating and getting permits usually takes longer than people expect. Most tenants need 4 to 10 weeks to find and agree on a space, then more time for permits and build-out. Restaurants and medical offices often take longer.']],
+    ['1. Work out what you need',['Write down the size range, the areas that work for your customers and staff, your total monthly budget, and anything the space must have, such as parking, loading doors or a kitchen. If you aren’t sure what type of property you need, our {{guide|guided search}} can help.']],
+    ['2. Compare total cost, not just rent',['Landlords quote rent [[psf|per square foot per year]], plus [[additional-rent|additional rent]]. A space with low base rent can cost more once additional rent is added, so compare the estimated monthly total. See {{learn-lease-costs|what commercial space really costs}}.']],
+    ['3. View and shortlist',['Visit your top 3 to 5 spaces. Check the condition, power, washrooms, parking, signage and neighbours. Ask what the previous tenant used the space for, and why they left.']],
+    ['4. Make an offer to lease',['An [[loi|offer to lease]] sets out the rent, the length of the lease, the start date, any free-rent period and any work the landlord will do. It usually includes conditions, such as confirming your use with the city, that give you time to check before you commit.']],
+    ['5. Negotiate and sign the lease',['Once the main terms are agreed, the landlord’s lawyer prepares the lease. Have your own lawyer review it. Look closely at renewal options, who pays for repairs, whether you can transfer the lease if you sell your business, and any personal guarantee.']],
+    ['6. Permits, build-out and move-in',['Most businesses need a business licence, and many need building permits for changes to the space. Ask for a rent-free fixturing period to cover the weeks you spend building out before you open.']]],
+   faq:[['How long does it take to lease commercial space?','Usually 4 to 10 weeks from the first viewing to signing, plus time for permits and build-out.'],['Do I need a lawyer to sign a commercial lease?','It’s strongly recommended. Commercial leases are long, and they give tenants fewer protections than residential leases do.']]},
+  {slug:'lease-costs', cat:'Leasing', read:5, rel:{deal:'lease'}, title:'What commercial space really costs each month', desc:'How base rent, additional rent and GST add up, with a worked example.',
+   body:[['Rent is quoted per square foot per year',['Commercial rent is almost always quoted in dollars per square foot per year. A “$32” space doesn’t cost $32 a month; it costs $32 for every square foot, every year.']],
+    ['Base rent plus additional rent',['Most leases are [[net-lease|net leases]]: you pay base rent for the space, plus [[additional-rent|additional rent]] for your share of property taxes, insurance and building upkeep. Additional rent is an estimate, adjusted each year to match actual costs.']],
+    ['A worked example',['<b>1,450 sf at $32 base rent and $11.50 additional rent:</b>','LIST:$32 + $11.50 = $43.50 per square foot per year|$43.50 × 1,450 sf = $63,075 a year|$63,075 ÷ 12 = $5,256 a month|Plus 5% GST = about $5,519 a month']],
+    ['Upfront costs',['Expect a deposit of about 2 to 3 months’ rent when you sign, plus your build-out, furniture and equipment, permits and legal fees. Ask whether the landlord will offer a tenant improvement allowance or free-rent months, especially on a longer lease.']],
+    ['Costs that change',['Additional rent goes up and down with taxes and building costs, and base rent usually steps up every year or two. Ask for last year’s actual additional rent and the rent schedule for the full term, so you can budget beyond the first year. Then compare {{lease|spaces for lease}} on their monthly totals.']]],
+   faq:[['Is GST charged on commercial rent?','Yes. GST applies to commercial rent in Canada. GST-registered businesses can usually claim it back.'],['What does additional rent include?','Usually property taxes, building insurance and the upkeep of shared areas such as parking lots, landscaping, snow removal and the roof. Your lease lists exactly what is included.']]},
+  {slug:'net-vs-gross-lease', cat:'Leasing', read:4, rel:{deal:'lease'}, title:'Net vs. gross leases, explained', desc:'Two ways landlords charge for building costs, and how to compare them.',
+   body:[['Net lease',['In a [[net-lease|net lease]], you pay base rent plus your share of the building’s costs as additional rent. It’s the most common type for retail, industrial and many offices in BC. You may also see “triple net” or “NNN”, meaning taxes, insurance and maintenance are all passed on to tenants.']],
+    ['Gross lease',['In a [[gross-lease|gross lease]], one rent covers the space and the building’s costs. It’s simpler to budget for, and more common for small offices, medical suites and shared buildings.']],
+    ['How to compare them',['Convert both to a total monthly cost. A net lease at $30 plus $14 additional rent costs about the same as a gross lease at $44. Then look at what happens over time: with a net lease you carry the risk of rising taxes and costs; with a gross lease the landlord does, and prices that into the rent.']],
+    ['Questions to ask',['LIST:What exactly is included in additional rent?|What was last year’s actual additional rent?|Is there a cap on management fee increases?|Who pays for major repairs, such as the roof or heating system?']]],
+   faq:[['Which is better, a net or a gross lease?','Neither is always better. Compare the total cost over the whole lease, and who pays when building costs go up.']]},
+  {slug:'buying-a-business', cat:'Buying a business', read:7, rel:{types:['business']}, title:'Buying a small business: a practical checklist', desc:'How businesses are priced, what to check, and how the process works from NDA to closing.',
+   body:[['How small businesses are priced',['Most small businesses are priced on [[sde|owner’s cash flow (SDE)]]: what the business earns for one full-time owner before loans and taxes. Asking prices are often 1.5 to 3 times SDE, depending on the industry, how steady the income is and how much depends on the current owner.']],
+    ['Start with the confidentiality agreement',['Owners keep sales private, so you’ll sign a short [[nda|confidentiality agreement]] before you see the name, address and financial statements. It doesn’t commit you to buy. See all {{businesses|businesses for sale}}.']],
+    ['What to check',['LIST:At least three years of financial statements and tax returns|How SDE was calculated, and which expenses were added back|The lease: time left, renewal options and whether it can be transferred|Staff: who is key, and whether they plan to stay|Customers: whether a few large ones make up most of the sales|Equipment condition, and what the price includes|Licences and permits that need to be transferred']],
+    ['Asset sale or share sale',['In an asset sale, you buy the business’s equipment, brand and customer list, usually through a new company. In a share sale, you buy the company itself, including its history. Asset sales are more common for small businesses. Your accountant and lawyer can advise which suits you.']],
+    ['Paying for it',['Buyers often combine savings with a bank or BDC loan. Some sellers accept part of the price over time (vendor financing), which also shows they believe in the business. See [[financing|how financing works]].']],
+    ['From offer to closing',['Your offer is usually subject to [[due-diligence|due diligence]], financing and the landlord agreeing to transfer the lease. After closing, most sellers train the new owner for a few weeks.']]],
+   faq:[['How much money do I need to buy a small business?','Lenders usually expect you to put in 20–50% of the price from your own funds, plus working capital for the first few months.'],['Will the seller train me?','Most do. Two to eight weeks of training is common, and it’s usually written into the purchase agreement.']]},
+  {slug:'commercial-zoning', cat:'Zoning', read:5, rel:{}, title:'Commercial zoning in BC, in plain language', desc:'What zoning is, how to check what a property allows, and what to do if your use isn’t permitted.',
+   body:[['What zoning does',['[[zoning|Zoning]] is each city’s set of rules for what a property can be used for and what can be built on it. It decides whether a space can be a café, a clinic, a gym or a warehouse, and sets limits on building height, parking and signs.']],
+    ['Every city uses its own codes',['A “C-2” zone in Vancouver is different from a “C-2” zone in Surrey or Burnaby. Always read the zoning bylaw for the city where the property is, or ask us to check. In Langley, check whether the property is in the City or the Township, as they have separate bylaws.']],
+    ['Common zone types',['LIST:<b>Commercial:</b> shops, offices, restaurants and services|<b>Industrial:</b> warehousing, manufacturing, repair and trades, with limited retail|<b>Mixed-use:</b> shops at street level with homes or offices above|<b>Comprehensive development (CD):</b> a custom zone written for one site, with its own list of allowed uses']],
+    ['How to check before you sign',['Look up the property’s zoning on the city’s online map, then find your use in the bylaw. Some uses need extra approvals even when the zone allows them, such as liquor licences, daycares or cannabis stores. Make your offer subject to confirming your use with the city.']],
+    ['If your use isn’t allowed',['You can apply for a rezoning or a temporary use permit, but it can take a year or more and isn’t guaranteed. In most cases it’s faster to find a property that already allows your use.']]],
+   faq:[['Can I open a gym in a commercial zone?','Often, but not always. Some zones list fitness studios as a permitted use and some don’t, and parking rules can be an issue. Check the bylaw for the specific property.']]},
+  {slug:'cap-rates', cat:'Investing', read:5, rel:{types:['investment']}, title:'Cap rates explained for first-time investors', desc:'How to calculate a cap rate, what it tells you, and what it doesn’t.',
+   body:[['The formula',['[[cap-rate|Cap rate]] = [[noi|net operating income]] ÷ price. A building earning $271,600 a year after running costs, priced at $4,850,000, has a cap rate of 5.6%.']],
+    ['What it tells you',['The cap rate is the yearly return you’d earn if you paid cash. It lets you compare properties of different sizes and prices on the same scale.']],
+    ['What it doesn’t tell you',['LIST:How secure the income is: a 7% cap rate with a tenant leaving next year can be worse than 5% with long leases|Upcoming costs, such as a new roof|Your return after a mortgage|Whether rents are below market and could rise']],
+    ['Check the numbers yourself',['Ask for the rent roll, the leases and two to three years of operating expenses. Recalculate NOI with realistic vacancy and management costs; some listings leave these out.']],
+    ['Financing',['Lenders look at how comfortably the income covers the mortgage payments. Expect to need 25–35% down. Each investment listing on this site shows the estimated income left after a mortgage. See {{investment-buy|investment properties for sale}}.']]],
+   faq:[['Is a higher cap rate better?','It means more income for the price, but usually comes with more risk, such as shorter leases, weaker tenants or an older building.']]},
+  {slug:'lease-or-buy', cat:'Planning', read:5, rel:{}, title:'Should your business lease or buy its space?', desc:'The trade-offs between leasing and owning, and a quick way to compare them.',
+   body:[['Leasing: flexibility and lower upfront cost',['Leasing keeps your cash in the business and makes it easier to move or grow. It’s the usual choice for new businesses and for anyone who isn’t sure where they’ll be in 5 to 10 years. Browse {{lease|space for lease}}.']],
+    ['Buying: control and equity',['Owning your space means no landlord, no rent increases and a property that can gain value over time. It suits established businesses that plan to stay put. Browse {{buy|property for sale}}.']],
+    ['A quick comparison',['Compare your total monthly rent with the monthly cost of owning: mortgage payment, property taxes, insurance, maintenance and any strata fees. Then consider the down payment (typically 25–35%) and what that cash could earn if you kept it in the business instead.']],
+    ['Questions to ask yourself',['LIST:Will I need the same size and location in 10 years?|Can I make the down payment without starving the business of cash?|Would I rather spend time running the business or managing a building?|Could I rent part of the space to another business?']]],
+   faq:[['Can my business buy its own building with a small down payment?','Businesses buying their own premises can sometimes put down less than 25% through programs such as BDC. Speak with a commercial lender early.']]}
+];
+
 /* ================= Utilities ================= */
 const $ = (s, r = document) => r.querySelector(s);
 const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -749,6 +1041,7 @@ const store = {
   set(k, v) { try { localStorage.setItem('hq-' + k, JSON.stringify(v)); } catch (e) {} }
 };
 const byId = id => L.find(l => l.id === id);
+const dol = n => '$' + (Number.isInteger(n) ? n : n.toFixed(2));
 const monthly = (l, sf) => Math.round((l.rent + l.add) * (sf || l.sfMin || l.sf) / 12);
 const kind = l => l.type === 'business' ? 'biz' : l.deal === 'lease' ? 'lease' : l.type === 'investment' ? 'inv' : l.type === 'land' ? 'land' : 'sale';
 const dealLabel = l => l.type === 'business' ? 'Business for sale' : l.deal === 'lease' ? 'For lease' : 'For sale';
@@ -821,7 +1114,7 @@ let guide = {step:0, goal:null, deal:null, budget:null, areas:[]};
 let lastListing = null;
 
 function priceOf(l) {
-  if (l.deal === 'lease') return {main: money(monthly(l)), unit: l.sfMin ? '/mo from' : '/mo', sub: l.leaseType === 'Gross' ? `$${l.rent}/sf/yr, all-in (gross)` : `$${l.rent}/sf/yr + $${l.add.toFixed(2)} additional rent`, pin: short(monthly(l)) + '/mo'};
+  if (l.deal === 'lease') return {main: money(monthly(l)), unit: l.sfMin ? '/mo from' : '/mo', sub: l.leaseType === 'Gross' ? `${dol(l.rent)}/sf/yr, all-in (gross)` : `${dol(l.rent)}/sf/yr + $${l.add.toFixed(2)} additional rent`, pin: short(monthly(l)) + '/mo'};
   if (l.type === 'business') return {main: money(l.price), unit:'', sub:`Owner cash flow ${short(l.sde)}/yr`, pin: short(l.price)};
   if (l.type === 'investment') return {main: money(l.price), unit:'', sub:`${l.cap}% cap rate · ${short(l.noi)} income/yr`, pin: short(l.price)};
   if (l.acres) return {main: money(l.price), unit:'', sub:`${short(l.price / l.acres)} per acre`, pin: short(l.price)};
@@ -950,6 +1243,8 @@ function viewHome() {
     <div class="cards" style="padding-bottom:0">${fresh.map(card).join('')}</div>
   </div></section>
 
+  ${homeSeoSections()}
+
   <section class="section"><div class="wrap">
     <div class="band">
       <div><h2>Tell us what you need. We’ll do the searching.</h2>
@@ -968,23 +1263,16 @@ function viewHome() {
 
   <section class="section" id="faq"><div class="wrap">
     <div class="sec-head"><div><h2>Common questions</h2></div></div>
-    <div class="faq">
-      <details><summary>How much will a commercial lease really cost each month?</summary><div class="a"><p>Add the base rent and the ${term('additional-rent', 'additional rent')}, multiply by the size in square feet, and divide by 12. Then add 5% GST. We do this for you on every listing.</p></div></details>
-      <details><summary>Do I pay a commission to use HomeQuest?</summary><div class="a"><p>In most leases and purchases, the landlord or seller pays the commission. We’ll tell you up front if a deal is different.</p></div></details>
-      <details><summary>How much do I need to buy commercial property?</summary><div class="a"><p>Plan for a down payment of about 25–35% of the price, plus property transfer tax, legal fees and inspections. See ${term('financing', 'financing')} for details.</p></div></details>
-      <details><summary>How long does it take to lease a space?</summary><div class="a"><p>Usually 4 to 10 weeks from the first viewing to signing. Restaurants and medical offices can take longer because of permits.</p></div></details>
-      <details><summary>What happens after I send a question?</summary><div class="a"><p>An advisor replies within one business day, usually the same day. You won’t be added to a mailing list unless you ask.</p></div></details>
-    </div>
+    ${faqHTML(HOME_FAQ)}
+  </div>
   </div></section>`;
 }
 
 function searchTitle() {
   if (S.savedOnly) return 'Saved listings';
-  let t;
-  if (S.types.length === 1) t = S.types[0] === 'business' ? 'Businesses for sale' : TYPES[S.types[0]].long + (S.deal === 'lease' ? ' for lease' : S.deal === 'sale' ? ' for sale' : '');
-  else t = S.deal === 'lease' ? 'Commercial space for lease' : S.deal === 'sale' ? 'Commercial property for sale' : 'All commercial listings';
-  const place = S.areas.length === 1 ? S.areas[0] : S.areas.length > 1 ? S.areas.length + ' areas' : '';
-  return t + (place ? ' in ' + place : '');
+  const ctx = ctxOf(S);
+  if (!ctx.type && S.deal === 'any' && !S.areas.length) return 'All commercial listings';
+  return nounFor(ctx) + (ctx.city ? ` in ${ctx.city}, BC` : S.areas.length > 1 ? ` in ${S.areas.length} areas` : '');
 }
 function viewSearch() {
   return `
@@ -999,8 +1287,9 @@ function viewSearch() {
     </form>
   </div></div>
   <div class="wrap">
+    <div id="r-bc"></div>
     <div class="r-head">
-      <div><h1 id="r-title" tabindex="-1">${searchTitle()}</h1><p class="r-count" id="r-count" aria-live="polite"></p></div>
+      <div><h1 id="r-title" tabindex="-1">${searchTitle()}</h1><p class="r-count" id="r-count" aria-live="polite"></p><p class="lede-seo" id="r-intro"></p></div>
       <div class="r-tools">
         <span class="sel"><label for="f-sort" class="sr-only">Sort</label><select id="f-sort">${selOptions('sort')}</select></span>
         <div class="seg" role="group" aria-label="View as"><button type="button" data-view="list" aria-pressed="${S.view === 'list'}">List</button><button type="button" data-view="map" aria-pressed="${S.view === 'map'}">Map</button></div>
@@ -1009,6 +1298,7 @@ function viewSearch() {
     <div class="chips" id="r-chips"></div>
     <div id="r-note"></div>
     <div id="r-body"></div>
+    <div id="r-seo"></div>
   </div>`;
 }
 function syncControls() {
@@ -1046,6 +1336,16 @@ function renderResults() {
   const body = $('#r-body'); if (!body) return;
   const r = results();
   syncControls();
+  const slug = slugFor(S), h = slug || 'search';
+  if (location.hash.slice(1) !== h) history.replaceState(null, '', '#' + h);
+  lastResultsHash = h;
+  const ctx = ctxOf(S);
+  $('#r-bc').innerHTML = S.savedOnly ? '' : crumbs(landingCrumbs(ctx).map((c, i, a) => i === a.length - 1 ? [searchTitle(), h] : c));
+  $('#r-intro').textContent = S.savedOnly ? '' : seoIntro(ctx);
+  $('#r-seo').innerHTML = S.savedOnly ? '' : seoBlock(ctx);
+  currentNav = ctx.type === 'business' ? 'businesses' : S.deal === 'lease' ? 'lease' : S.deal === 'sale' ? 'buy' : '';
+  $$('.main-nav a').forEach(a => a.dataset.nav === currentNav ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+  searchSeo(r);
   $('#r-count').textContent = r.length === 1 ? '1 listing' : `${r.length} listings`;
   $('#r-chips').innerHTML = activeFilters().map((f, i) => `<span class="chip">${esc(f.label)}<button type="button" data-chip="${i}" aria-label="Remove filter: ${esc(f.label)}">${ICON.x}</button></span>`).join('') + (activeFilters().length > 1 ? '<button type="button" class="link-btn" data-clear-all style="min-height:36px;font-size:14.5px">Clear all</button>' : '');
   $('#r-note').innerHTML = contextNote(r);
@@ -1126,7 +1426,7 @@ function updateShowBtn() { const n = results().length; $('#fShow').textContent =
 /* ---------- Detail ---------- */
 function keyFacts(l) {
   const k = kind(l);
-  if (k === 'lease') return [['Est. monthly total', money(monthly(l)) + (l.sfMin ? ' from' : ''), 'additional-rent'], ['Size', sizeText(l)], ['Base rent', `$${l.rent}/sf/yr`, 'psf'], ['Additional rent', l.add ? `$${l.add.toFixed(2)}/sf/yr` : 'Included', 'additional-rent'], ['Lease type', l.leaseType, l.leaseType === 'Net' ? 'net-lease' : 'gross-lease'], ['Available', l.avail]];
+  if (k === 'lease') return [['Est. monthly total', money(monthly(l)) + (l.sfMin ? ' from' : ''), 'additional-rent'], ['Size', sizeText(l)], ['Base rent', `${dol(l.rent)}/sf/yr`, 'psf'], ['Additional rent', l.add ? `$${l.add.toFixed(2)}/sf/yr` : 'Included', 'additional-rent'], ['Lease type', l.leaseType, l.leaseType === 'Net' ? 'net-lease' : 'gross-lease'], ['Available', l.avail]];
   if (k === 'biz') return [['Asking price', money(l.price)], ['Yearly sales', money(l.rev)], ['Owner cash flow', money(l.sde) + '/yr', 'sde'], ['Price vs. cash flow', (l.price / l.sde).toFixed(1) + '×', 'sde'], ['Staff', l.staff], ['In business since', l.est]];
   if (k === 'inv') return [['Price', money(l.price)], ['Yearly income (NOI)', money(l.noi), 'noi'], ['Cap rate', l.cap + '%', 'cap-rate'], ['Occupancy', l.occ + '% leased'], ['Tenants', l.tenants], ['Building size', sizeText(l)]];
   if (k === 'land') return [['Price', money(l.price)], ['Site size', l.acres + ' acres'], ['Price per acre', money(l.price / l.acres)], ['Zoning', l.zone, 'zoning'], ['Services', 'At lot line'], ['Title', 'Freehold']];
@@ -1172,7 +1472,7 @@ function updateCalc() {
     const l = byId(lc.dataset.id), r = $('#c-sf'), sf = r ? +r.value : l.sf;
     if (r) $('#c-sf-o').textContent = fmt(sf) + ' sf';
     const base = l.rent * sf / 12, add = l.add * sf / 12;
-    $('#c-rows').innerHTML = `<div><dt>Base rent <span class="hint">($${l.rent} × ${fmt(sf)} sf ÷ 12)</span></dt><dd>${money(base)}</dd></div>
+    $('#c-rows').innerHTML = `<div><dt>Base rent <span class="hint">(${dol(l.rent)} × ${fmt(sf)} sf ÷ 12)</span></dt><dd>${money(base)}</dd></div>
       <div><dt>Additional rent ${l.add ? `<span class="hint">($${l.add.toFixed(2)} × ${fmt(sf)} sf ÷ 12)</span>` : ''}</dt><dd>${l.add ? money(add) : 'Included'}</dd></div>
       <div><dt>GST (5%) ${termQ('gst', 'GST')}</dt><dd>${money((base + add) * .05)}</dd></div>
       <div class="total"><dt>Estimated monthly total</dt><dd>${money((base + add) * 1.05)}</dd></div>`;
@@ -1212,7 +1512,8 @@ function viewDetail(l) {
   const similar = L.filter(x => x.id !== l.id && (x.type === l.type || (x.deal === l.deal && x.city === l.city))).slice(0, 3);
   const det = l.details;
   return `<div class="wrap">
-    <a class="crumb" href="#search">${ICON.back} Back to results</a>
+    <div class="d-bc">${crumbs(listingCrumbs(l))}</div>
+    <a class="crumb m-crumb" href="#${lastResultsHash}">${ICON.back} Back to results</a>
     <div class="d-head">
       <div class="badges"><span class="badge ${dealCls(l)}">${dealLabel(l)}</span><span class="badge">${TYPES[l.type].long}</span>${l.isNew ? '<span class="badge">New this week</span>' : ''}</div>
       <h1 id="d-title" tabindex="-1">${esc(l.title)}</h1>
@@ -1227,7 +1528,7 @@ function viewDetail(l) {
     <div class="d-grid">
       <div class="d-main">
         <section aria-label="Key facts"><dl class="kf">${keyFacts(l).map(([k, v, t]) => `<div><dt>${k}${t ? termQ(t, k) : ''}</dt><dd>${v}</dd></div>`).join('')}</dl></section>
-        <section aria-labelledby="h-over"><h2 id="h-over">Overview</h2><div class="prose"><p>${esc(l.desc)}</p><ul class="ticks">${l.points.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div></section>
+        <section aria-labelledby="h-over"><h2 id="h-over">Overview</h2><div class="prose"><p style="color:var(--ink)">${summaryOf(l)}</p><p>${esc(l.desc)}</p><ul class="ticks">${l.points.map(x => `<li>${esc(x)}</li>`).join('')}</ul></div></section>
         ${costSection(l)}
         ${z ? `<section aria-labelledby="h-zone"><h2 id="h-zone">What you can use it for</h2><div class="zone">
           <div class="zone-code"><b>${l.zone}</b><span>${z.name} ${termQ('zoning', 'zoning')}</span></div>
@@ -1238,6 +1539,7 @@ function viewDetail(l) {
           <dl class="dl" id="detList">${det.map((d, i) => `<div ${i >= 6 ? 'data-more hidden' : ''}><dt>${d[0]}</dt><dd>${d[1]}</dd></div>`).join('')}</dl>
           ${det.length > 6 ? `<button class="btn btn-ghost btn-sm" type="button" id="moreDet" aria-expanded="false" aria-controls="detList" style="margin-top:8px;padding-left:0">Show all ${det.length} details</button>` : ''}
         </section>
+        ${areaSection(l)}
         ${nextSteps(l)}
       </div>
       <aside class="d-side" aria-label="Contact about this listing">
@@ -1414,50 +1716,417 @@ $('#cForm').addEventListener('submit', e => {
   $('#cBody [data-close]').focus();
 });
 
+/* ================= SEO: landing pages, meta and structured data ================= */
+const citySlug = c => c.toLowerCase().replace(/ /g, '-');
+const slugify = s => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const CITY_BY_SLUG = Object.fromEntries(CITIES.map(c => [citySlug(c), c]));
+const BASES = {lease:{deal:'lease', types:[]}, buy:{deal:'sale', types:[]}, businesses:{deal:'sale', types:['business']}};
+['retail', 'office', 'industrial', 'restaurant'].forEach(t => BASES[t + '-lease'] = {deal:'lease', types:[t]});
+['retail', 'office', 'industrial', 'investment', 'land'].forEach(t => BASES[t + '-buy'] = {deal:'sale', types:[t]});
+const LEASE_BASES = ['retail-lease', 'office-lease', 'industrial-lease', 'restaurant-lease'];
+const SALE_BASES = ['office-buy', 'industrial-buy', 'retail-buy', 'investment-buy', 'land-buy', 'businesses'];
+
+function parseSlug(h) {
+  if (h.startsWith('area-')) { const c = CITY_BY_SLUG[h.slice(5)]; return c ? {base:null, deal:'any', types:[], city:c} : null; }
+  let city = null, base = h;
+  for (const [s, c] of Object.entries(CITY_BY_SLUG)) if (h.endsWith('-' + s)) { city = c; base = h.slice(0, -(s.length + 1)); break; }
+  const b = BASES[base];
+  return b ? {base, deal:b.deal, types:[...b.types], city} : null;
+}
+function stateFromSlug(h) { const p = parseSlug(h); return {...DEFAULT(), deal:p.deal, types:p.types, areas:p.city ? [p.city] : []}; }
+const countSlug = h => L.filter(l => matches(l, stateFromSlug(h))).length;
+function slugFor(s) {
+  const extra = s.q || s.price !== 'any' || s.size !== 'any' || s.feat.length || s.zone.length || s.lease !== 'any' || s.cap || s.fresh || s.savedOnly;
+  if (extra || s.areas.length > 1 || s.types.length > 1) return null;
+  const city = s.areas[0] ? '-' + citySlug(s.areas[0]) : '';
+  const t = s.types[0];
+  let base = null;
+  if (!t) base = s.deal === 'lease' ? 'lease' : s.deal === 'sale' ? 'buy' : null;
+  else if (t === 'business') base = 'businesses';
+  else if (s.deal !== 'any') base = t + (s.deal === 'lease' ? '-lease' : '-buy');
+  if (base && !BASES[base]) return null;
+  if (!base) return !t && city ? 'area' + city : null;
+  return base + city;
+}
+const ctxOf = s => ({deal:s.deal, type:s.types.length === 1 ? s.types[0] : null, city:s.areas.length === 1 ? s.areas[0] : null});
+const dealKey = d => d === 'lease' ? 'lease' : d === 'sale' ? 'sale' : null;
+function nounFor(ctx) {
+  if (ctx.type === 'business') return 'Businesses for sale';
+  const dk = dealKey(ctx.deal);
+  if (ctx.type && dk && TYPE_SEO[ctx.type][dk]) return TYPE_SEO[ctx.type][dk].noun + (dk === 'lease' ? ' for lease' : ' for sale');
+  if (ctx.type) return TYPES[ctx.type].long;
+  return dk === 'lease' ? 'Commercial space for lease' : dk === 'sale' ? 'Commercial property for sale' : 'Commercial real estate';
+}
+const slugLabel = h => { const p = parseSlug(h); return nounFor({deal:p.deal, type:p.types[0] || null, city:null}) + (p.city ? ' in ' + p.city : ''); };
+const lower1 = s => s.charAt(0).toLowerCase() + s.slice(1);
+
+function pathFor(h) {
+  if (!h || h === 'home' || h === 'faq') return '/';
+  if (h.startsWith('listing-')) { const l = byId(h.slice(8)); return l ? `/listings/${l.id}-${slugify(l.title)}-${citySlug(l.city)}/` : '/'; }
+  if (h === 'learn') return '/guides/';
+  if (h === 'glossary') return '/guides/glossary/';
+  if (h.startsWith('learn-')) return `/guides/${h.slice(6)}/`;
+  if (h === 'guide') return '/help-me-choose/';
+  if (h === 'search' || h === 'saved') return '/search/';
+  const p = parseSlug(h); if (!p) return '/';
+  const c = p.city ? citySlug(p.city) + '/' : '';
+  if (p.base === null) return `/commercial-real-estate/${c}`;
+  if (p.base === 'businesses') return `/businesses-for-sale/${c}`;
+  const [t, d] = p.base.includes('-') ? p.base.split('-') : [null, p.base];
+  return `/commercial-real-estate/${d === 'lease' ? 'for-lease' : 'for-sale'}/${t ? t + '/' : ''}${c}`;
+}
+
+/* inline markup in content: [[term|text]], {{route|text}}, and "LIST:a|b|c" paragraphs */
+const md = s => s.replace(/\[\[([\w-]+)\|([^\]]+)\]\]/g, (m, k, t) => term(k, t)).replace(/\{\{([\w-]+)\|([^}]+)\}\}/g, (m, h, t) => `<a href="#${h}">${t}</a>`);
+const plain = s => s.replace(/\[\[[\w-]+\|([^\]]+)\]\]/g, '$1').replace(/\{\{[\w-]+\|([^}]+)\}\}/g, '$1').replace(/<[^>]+>/g, '');
+const para = p => p.startsWith('LIST:') ? `<ul class="ticks">${p.slice(5).split('|').map(x => `<li>${md(x)}</li>`).join('')}</ul>` : `<p>${md(p)}</p>`;
+function faqHTML(list, id) {
+  return `<div class="faq" ${id ? `id="${id}"` : ''}>${list.map(([q, a]) => `<details><summary>${q}</summary><div class="a"><p>${md(a)}</p></div></details>`).join('')}</div>`;
+}
+const linkList = (hs, cls = '') => `<ul class="linkgrid ${cls}">${hs.map(h => { const n = countSlug(h); return `<li><a href="#${h}">${slugLabel(h)}<span>${n || '–'}</span></a></li>`; }).join('')}</ul>`;
+function marketTable(hi) {
+  return `<div class="tw"><table class="mk"><caption class="sr-only">Typical asking prices</caption>
+    <thead><tr><th scope="col">Type</th><th scope="col">To lease, $/sf/yr (base + additional)</th><th scope="col">To buy</th></tr></thead>
+    <tbody>${MARKET.map(r => `<tr${hi && r[0].toLowerCase().startsWith(hi) ? ' class="hi"' : ''}><th scope="row">${r[0]}</th><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('')}</tbody></table></div>
+    <p class="hint">Example ranges for the prototype. Replace them with current market figures before launch and update them each quarter.</p>`;
+}
+function relatedArticles(ctx, n = 3) {
+  const score = a => (a.rel.types && ctx.type && a.rel.types.includes(ctx.type) ? 3 : 0) + (a.rel.deal && a.rel.deal === ctx.deal ? 2 : 0) + (!a.rel.deal && !a.rel.types ? 1 : 0);
+  return [...ARTICLES].sort((a, b) => score(b) - score(a)).slice(0, n);
+}
+const articleCard = a => `<a class="article-card" href="#learn-${a.slug}"><span class="k">${a.cat}</span><h3>${a.title}</h3><p>${a.desc}</p><span class="m">${a.read} min read</span></a>`;
+function crumbs(items) {
+  return `<nav aria-label="Breadcrumb"><ol class="bc">${items.map(([n, h], i) => i === items.length - 1 ? `<li><span aria-current="page">${esc(n)}</span></li>` : `<li><a href="#${h}">${esc(n)}</a></li>`).join('')}</ol></nav>`;
+}
+function landingCrumbs(ctx) {
+  const it = [['Home', 'home']];
+  const cs = ctx.city ? '-' + citySlug(ctx.city) : '';
+  if (ctx.deal === 'any' || (!ctx.type && ctx.deal === 'any')) { if (ctx.city) it.push([ctx.city, 'area' + cs]); else it.push(['All listings', 'search']); return it; }
+  const top = ctx.type === 'business' ? ['Businesses for sale', 'businesses'] : ctx.deal === 'lease' ? ['Space for lease', 'lease'] : ['Property for sale', 'buy'];
+  it.push(top);
+  if (ctx.type && ctx.type !== 'business') {
+    if (ctx.city) it.push([ctx.city, top[1] + cs]);
+    it.push([TYPE_SEO[ctx.type][dealKey(ctx.deal)] ? TYPE_SEO[ctx.type][dealKey(ctx.deal)].noun : TYPES[ctx.type].long, (slugFor(S) || 'search')]);
+  } else if (ctx.city) it.push([ctx.city, top[1] + cs]);
+  return it;
+}
+function seoIntro(ctx) {
+  const dk = dealKey(ctx.deal), A = ctx.city ? AREAS[citySlug(ctx.city)] : null;
+  const t = ctx.type && TYPE_SEO[ctx.type][dk || (ctx.type === 'business' ? 'sale' : 'lease')];
+  const parts = [];
+  if (t) parts.push(t.intro.replace(/\.$/, '') + (ctx.city ? ` in ${ctx.city}, BC.` : ` across ${REGION}.`));
+  else if (dk) parts.push(`${dk === 'lease' ? 'Retail, office, industrial and restaurant space for lease' : 'Offices, warehouses, investment property, land and businesses for sale'}${ctx.city ? ` in ${ctx.city}, BC` : ` across ${REGION}`}.`);
+  if (A) parts.push(A.short);
+  if (!parts.length) parts.push(`Space for lease, property for sale and businesses for sale across ${REGION}, explained in plain language.`);
+  return parts.join(' ');
+}
+function seoFaq(ctx) {
+  const A = ctx.city ? AREAS[citySlug(ctx.city)] : null, T = ctx.type ? TYPE_SEO[ctx.type] : null, dk = dealKey(ctx.deal);
+  return [...(A ? A.faq : []), ...(T ? T.faq : []), ...(dk === 'lease' ? LEASE_FAQ : dk === 'sale' && ctx.type !== 'business' ? SALE_FAQ : [])].slice(0, 7);
+}
+function seoBlock(ctx) {
+  const A = ctx.city ? AREAS[citySlug(ctx.city)] : null, T = ctx.type ? TYPE_SEO[ctx.type] : null, dk = dealKey(ctx.deal);
+  const noun = nounFor(ctx), where = ctx.city ? ' in ' + ctx.city : '';
+  const cs = ctx.city ? '-' + citySlug(ctx.city) : '';
+  const cur = slugFor(S);
+  const baseOf = cur ? (parseSlug(cur).base) : null;
+  let related = '';
+  if (baseOf && (T || dk)) related += `<div><h3>${noun} in other areas</h3>${linkList(CITIES.filter(c => c !== ctx.city).map(c => baseOf + '-' + citySlug(c)))}</div>`;
+  if (A) related += `<div><h3>More in ${ctx.city}</h3>${linkList([...LEASE_BASES, ...SALE_BASES].map(b => b + cs).filter(h => h !== cur))}</div>`;
+  if (!A && !T) related += `<div><h3>By property type</h3>${linkList(dk === 'sale' ? SALE_BASES : dk === 'lease' ? LEASE_BASES : [...LEASE_BASES, ...SALE_BASES])}</div>`;
+  const faqs = seoFaq(ctx);
+  return `<section class="seo" aria-labelledby="seo-h">
+    <div class="seo-grid">
+      <div class="prose">
+        <h2 id="seo-h">${noun}${where}: what to know</h2>
+        ${A ? `<p>${A.intro}</p>` : ''}${T ? `<p>${T.about}</p>` : ''}${!A && !T ? `<p>${REGION_TEXT}</p>` : ''}
+        ${A ? `<h3>Where to look in ${ctx.city}</h3><div class="districts">${A.districts.map(([n, d]) => `<div><b>${n}</b><span>${d}</span></div>`).join('')}</div><p class="hint">Getting around: ${A.access}</p>` : ''}
+        ${T ? `<h3>What to check before you ${dk === 'sale' || ctx.type === 'business' ? 'buy' : 'lease'}</h3><ul class="ticks">${T.check.map(c => `<li>${c}</li>`).join('')}</ul>` : ''}
+      </div>
+      <aside class="seo-side" aria-label="Prices and guides">
+        <h3>Typical asking prices</h3>
+        ${marketTable(ctx.type)}
+        <h3>Guides</h3>
+        <ul class="guide-links">${relatedArticles(ctx).map(a => `<li><a href="#learn-${a.slug}">${a.title}</a><span>${a.read} min read</span></li>`).join('')}<li><a href="#learn">All guides</a></li></ul>
+      </aside>
+    </div>
+    ${faqs.length ? `<div><h2>Questions about ${lower1(noun)}${where}</h2>${faqHTML(faqs)}</div>` : ''}
+    <div class="related">${related}</div>
+  </section>`;
+}
+const REGION_TEXT = `HomeQuest covers commercial real estate across ${REGION}: shops and restaurants on busy high streets, offices near SkyTrain, warehouses near the port and highways, and businesses for sale. Rents and prices generally fall the further you go from Vancouver, while newer buildings and parking become easier to find.`;
+
+function summaryOf(l) {
+  const k = kind(l), kindWord = {retail:'retail space', office:'office space', industrial:'industrial space', restaurant:'restaurant space'}[l.type];
+  if (k === 'lease') return `${sizeText(l)} of ${kindWord} for lease in ${l.area}, ${l.city}, zoned ${l.zone}. Asking ${dol(l.rent)}/sf/yr${l.add ? ` plus $${l.add.toFixed(2)} additional rent` : ', all-in (gross)'}: about ${money(monthly(l))} a month${l.sfMin ? ' for the smallest unit' : ''}. Available ${l.avail === 'Now' ? 'now' : l.avail}.`;
+  if (k === 'biz') return `${l.title} for sale in ${l.city}. Asking ${money(l.price)}, with yearly sales of ${money(l.rev)} and owner cash flow of ${money(l.sde)}. In business since ${l.est}, with ${l.staff} staff.`;
+  if (k === 'inv') return `${sizeText(l)} investment property for sale in ${l.area}, ${l.city}. Asking ${money(l.price)}: a ${l.cap}% cap rate on ${money(l.noi)} net operating income, ${l.occ}% leased to ${l.tenants} tenants.`;
+  if (k === 'land') return `${l.acres}-acre ${l.zone}-zoned site for sale in ${l.area}, ${l.city}. Asking ${money(l.price)}, about ${money(l.price / l.acres)} per acre.`;
+  return `${sizeText(l)} ${kindWord.replace(' space', '')} property for sale in ${l.area}, ${l.city}, zoned ${l.zone}. Asking ${money(l.price)} (${money(l.price / l.sf)}/sf).`;
+}
+function listingSlugs(l) {
+  const cs = '-' + citySlug(l.city);
+  const base = l.type === 'business' ? 'businesses' : l.type + (l.deal === 'lease' ? '-lease' : '-buy');
+  const top = l.type === 'business' ? 'businesses' : l.deal === 'lease' ? 'lease' : 'buy';
+  return {base: BASES[base] ? base : top, top, cs};
+}
+function listingCrumbs(l) {
+  const {base, top, cs} = listingSlugs(l);
+  const it = [['Home', 'home'], [top === 'businesses' ? 'Businesses for sale' : top === 'lease' ? 'Space for lease' : 'Property for sale', top], [l.city, top + cs]];
+  if (base !== top) it.push([TYPE_SEO[l.type][l.deal === 'lease' ? 'lease' : 'sale'].noun, base + cs]);
+  it.push([l.title, 'listing-' + l.id]);
+  return it;
+}
+function areaSection(l) {
+  const A = AREAS[citySlug(l.city)], d = !l.conf && A.districts.find(x => x[0] === l.area);
+  const {base, cs} = listingSlugs(l);
+  return `<section aria-labelledby="h-area"><h2 id="h-area">About ${d ? l.area + ', ' : ''}${l.city}</h2><div class="prose">
+    <p>${d ? d[1] + ' ' : ''}${A.short}</p><p>${A.intro}</p><p class="hint">Getting around: ${A.access}</p></div>
+    <ul class="linkgrid" style="margin-top:16px">${[base + cs, 'area' + cs, base].map(h => `<li><a href="#${h}">${h.startsWith('area-') ? 'All commercial real estate in ' + l.city : slugLabel(h)}<span>${countSlug(h)}</span></a></li>`).join('')}</ul></section>`;
+}
+
+/* ---------- head tags ---------- */
+const ORG = {'@type':'RealEstateAgent', '@id':SITE + '/#org', name:'HomeQuest Commercial', url:SITE + '/', telephone:'+1-604-555-0142', email:'commercial@homequest.example',
+  address:{'@type':'PostalAddress', addressRegion:'BC', addressCountry:'CA'}, areaServed:CITIES.map(c => ({'@type':'City', name:c + ', BC'}))};
+const bcLD = items => ({'@type':'BreadcrumbList', itemListElement:items.map(([n, h], i) => ({'@type':'ListItem', position:i + 1, name:n, item:SITE + pathFor(h)}))});
+const faqLD = list => ({'@type':'FAQPage', mainEntity:list.map(([q, a]) => ({'@type':'Question', name:q, acceptedAnswer:{'@type':'Answer', text:plain(a)}}))});
+let SEO = {};
+function metaTag(attr, key, val) {
+  let m = document.head.querySelector(`meta[${attr}="${key}"]`);
+  if (!m) { m = document.createElement('meta'); m.setAttribute(attr, key); document.head.appendChild(m); }
+  m.setAttribute('content', val);
+}
+function setSeo(o) {
+  const url = SITE + pathFor(o.canonical || o.h), robots = o.robots || 'index, follow';
+  document.title = o.title;
+  metaTag('name', 'description', o.desc); metaTag('name', 'robots', robots);
+  metaTag('property', 'og:title', o.title); metaTag('property', 'og:description', o.desc); metaTag('property', 'og:url', url); metaTag('property', 'og:type', o.og || 'website');
+  let c = document.head.querySelector('link[rel="canonical"]'); if (!c) { c = document.createElement('link'); c.rel = 'canonical'; document.head.appendChild(c); } c.href = url;
+  let s = document.getElementById('ld'); if (!s) { s = document.createElement('script'); s.type = 'application/ld+json'; s.id = 'ld'; document.head.appendChild(s); }
+  const graph = [ORG, ...(o.schema || [])];
+  s.textContent = JSON.stringify({'@context':'https://schema.org', '@graph':graph}, null, 2);
+  SEO = {...o, url, robots, graph};
+}
+function searchSeo(r) {
+  const ctx = ctxOf(S), slug = slugFor(S);
+  const simple = {...DEFAULT(), deal:S.deal, types:S.types.slice(0, 1), areas:S.areas.slice(0, 1)};
+  const canon = slug || slugFor(simple) || (S.deal === 'sale' ? 'buy' : 'lease');
+  const noun = nounFor(ctx), where = ctx.city ? ` in ${ctx.city}, BC` : '';
+  const k = ctx.type === 'business' ? 'Sales, owner cash flow and lease details, with names shared after a free NDA.' : ctx.deal === 'sale' ? 'Prices, cap rates, zoning and financing estimates for each property.' : 'Estimated monthly cost, zoning and photos for every space.';
+  const desc = S.savedOnly ? 'Your saved commercial listings.' : `Browse ${r.length} ${lower1(noun)} listing${r.length === 1 ? '' : 's'}${where || ' in ' + REGION}. ${k} Book a viewing online.`;
+  const title = S.savedOnly ? 'Saved listings | HomeQuest Commercial' : `${noun}${where} | HomeQuest`;
+  const items = landingCrumbs(ctx);
+  setSeo({h: slug || 'search', canonical: canon, title, desc, robots: slug ? 'index, follow' : 'noindex, follow',
+    schema: [{'@type':'CollectionPage', name:searchTitle(), url:SITE + pathFor(canon), description:desc},
+      {'@type':'ItemList', numberOfItems:r.length, itemListElement:r.slice(0, 20).map((l, i) => ({'@type':'ListItem', position:i + 1, url:SITE + pathFor('listing-' + l.id), name:l.title}))},
+      bcLD(items), ...(seoFaq(ctx).length ? [faqLD(seoFaq(ctx))] : [])]});
+}
+function listingSeo(l) {
+  const lease = l.deal === 'lease';
+  const offer = {'@type':'Offer', priceCurrency:'CAD', availability:'https://schema.org/InStock', businessFunction:'http://purl.org/goodrelations/v1#' + (lease ? 'LeaseOut' : 'Sell'),
+    ...(lease ? {priceSpecification:{'@type':'UnitPriceSpecification', price:monthly(l), priceCurrency:'CAD', unitCode:'MON', description:`Estimated monthly total: ${dol(l.rent)}/sf/yr base rent + $${l.add}/sf/yr additional rent`}} : {price:l.price})};
+  setSeo({h:'listing-' + l.id, og:'article', title:`${l.title} | ${TYPES[l.type].label} ${lease ? 'for lease' : 'for sale'} in ${l.city}`, desc:summaryOf(l).slice(0, 158),
+    schema:[{'@type':'RealEstateListing', name:l.title, url:SITE + pathFor('listing-' + l.id), description:summaryOf(l) + ' ' + l.desc, datePosted:'2026-09-16', offers:offer,
+      contentLocation:{'@type':'Place', name:`${l.area}, ${l.city}`, address:{'@type':'PostalAddress', addressLocality:l.city, addressRegion:'BC', addressCountry:'CA'}}, provider:{'@id':SITE + '/#org'}},
+      bcLD(listingCrumbs(l))]});
+}
+
+/* ---------- guide pages ---------- */
+function viewLearn() {
+  const cats = [...new Set(ARTICLES.map(a => a.cat))];
+  return `<div class="wrap article-hub">
+    ${crumbs([['Home', 'home'], ['Guides', 'learn']])}
+    <header class="page-head"><h1 id="p-h" tabindex="-1">Commercial real estate guides</h1><p class="lede-seo">Plain-language guides for tenants, buyers and investors in ${REGION}. Short, practical and free of jargon.</p></header>
+    ${cats.map(c => `<section class="hub-sec"><h2>${c}</h2><div class="articles">${ARTICLES.filter(a => a.cat === c).map(articleCard).join('')}</div></section>`).join('')}
+    <section class="hub-sec"><h2>Glossary</h2><div class="articles"><a class="article-card" href="#glossary"><span class="k">Reference</span><h3>Commercial real estate glossary</h3><p>${Object.keys(TERMS).length} terms explained in plain language, from additional rent to zoning.</p><span class="m">Reference</span></a></div></section>
+    <div class="band" style="margin-bottom:56px"><div><h2>Rather talk it through?</h2><p>Tell us what you’re planning and an advisor will explain your options in a 15-minute call.</p></div><div class="acts"><button class="btn btn-pri" type="button" data-contact="requirements">Discuss your requirements</button></div></div>
+  </div>`;
+}
+function viewArticle(a) {
+  const rel = L.filter(l => (a.rel.types && a.rel.types.includes(l.type)) || (a.rel.deal && l.deal === a.rel.deal && l.type !== 'business')).slice(0, 3);
+  const more = ARTICLES.filter(x => x !== a).slice(0, 3);
+  return `<div class="wrap"><article class="article">
+    ${crumbs([['Home', 'home'], ['Guides', 'learn'], [a.title, 'learn-' + a.slug]])}
+    <header class="page-head"><span class="eyebrow">${a.cat}</span><h1 id="p-h" tabindex="-1">${a.title}</h1><p class="lede-seo">${a.desc}</p><p class="hint">${a.read} min read · Updated September 2026 · By the HomeQuest Commercial team</p></header>
+    <div class="prose">${a.body.map(([h, ps]) => `<h2>${h}</h2>${ps.map(para).join('')}`).join('')}</div>
+    ${a.faq ? `<section><h2>Common questions</h2>${faqHTML(a.faq)}</section>` : ''}
+    <div class="band inline"><div><h2>Have a question about your situation?</h2><p>An advisor can answer it in plain language, usually the same day.</p></div><div class="acts"><button class="btn btn-pri" type="button" data-contact="requirements">Ask an advisor</button></div></div>
+  </article>
+  ${rel.length ? `<section class="section" style="padding-top:0"><div class="sec-head"><h2>Listings related to this guide</h2></div><div class="cards" style="padding-bottom:0">${rel.map(card).join('')}</div></section>` : ''}
+  <section class="section"><div class="sec-head"><h2>More guides</h2><a class="btn btn-sec btn-sm" href="#learn">All guides</a></div><div class="articles">${more.map(articleCard).join('')}</div></section>
+  </div>`;
+}
+function viewGlossary() {
+  const ks = Object.keys(TERMS).sort((a, b) => TERMS[a].t.localeCompare(TERMS[b].t));
+  return `<div class="wrap"><div class="article">
+    ${crumbs([['Home', 'home'], ['Guides', 'learn'], ['Glossary', 'glossary']])}
+    <header class="page-head"><h1 id="p-h" tabindex="-1">Commercial real estate glossary</h1><p class="lede-seo">The terms you’ll see on commercial listings and leases, explained in plain language.</p></header>
+    <dl class="gloss">${ks.map(k => `<div id="term-${k}"><dt>${TERMS[k].t}</dt><dd>${TERMS[k].b.map(p => `<p>${p}</p>`).join('')}${TERMS[k].ex ? `<p class="ex"><b>Example:</b> ${TERMS[k].ex}</p>` : ''}</dd></div>`).join('')}</dl>
+    <div class="band inline"><div><h2>Still unsure what something means?</h2><p>Ask us. There’s no such thing as a basic question.</p></div><div class="acts"><button class="btn btn-pri" type="button" data-contact="requirements">Ask an advisor</button></div></div>
+  </div></div>`;
+}
+function homeSeoSections() {
+  const areas = CITIES.map(c => 'area-' + citySlug(c));
+  return `
+  <section class="section"><div class="wrap">
+    <div class="sec-head"><div><h2>Browse commercial real estate</h2><p>Every property type and area has its own page, with listings, typical prices and local advice.</p></div></div>
+    <div class="browse">
+      <div><h3>Space for lease</h3>${linkList(['lease', ...LEASE_BASES], 'one')}</div>
+      <div><h3>Property and businesses for sale</h3>${linkList(['buy', ...SALE_BASES], 'one')}</div>
+      <div><h3>By area</h3><ul class="linkgrid one">${areas.map(h => `<li><a href="#${h}">${CITY_BY_SLUG[h.slice(5)]}<span>${countSlug(h) || '–'}</span></a></li>`).join('')}</ul></div>
+    </div>
+  </div></section>
+  <section class="section"><div class="wrap seo-grid">
+    <div class="prose"><h2>Commercial real estate in ${REGION}</h2><p>${REGION_TEXT}</p>
+      <p>Most commercial space here is leased rather than bought. Rent is quoted ${term('psf', 'per square foot per year')}, usually on a ${term('net-lease', 'net lease')}, so every listing on HomeQuest also shows an estimated monthly total. If you’re buying, we show the down payment, ${term('ptt', 'property transfer tax')} and an estimated mortgage payment.</p>
+      <p>Industrial space is in short supply across the region, and good retail units on busy streets lease quickly. If you have a specific need, it helps to tell us early so we can watch for space before it’s advertised.</p></div>
+    <aside class="seo-side"><h3>Typical asking prices</h3>${marketTable()}</aside>
+  </div></section>
+  <section class="section"><div class="wrap">
+    <div class="sec-head"><div><h2>Guides for tenants, buyers and investors</h2><p>Short, practical explanations of how commercial real estate works.</p></div><a class="btn btn-sec btn-sm" href="#learn">All guides</a></div>
+    <div class="articles">${ARTICLES.slice(0, 6).map(articleCard).join('')}</div>
+  </div></section>`;
+}
+function popularSearches() {
+  const picks = ['retail-lease-surrey', 'office-lease-vancouver', 'industrial-lease-langley', 'restaurant-lease-vancouver', 'office-lease-burnaby', 'industrial-lease-delta', 'retail-lease-langley', 'office-buy-surrey', 'industrial-buy-delta', 'investment-buy-abbotsford', 'land-buy-surrey', 'businesses-richmond'];
+  $('#popular').innerHTML = `<h2>Popular searches</h2><ul class="linkgrid">${picks.map(h => `<li><a href="#${h}">${slugLabel(h)}</a></li>`).join('')}</ul>`;
+}
+
+/* ---------- SEO review panel (prototype tool) ---------- */
+function openSeoPanel() {
+  const v = $('#view');
+  const h1 = $$('h1', v), h2 = $$('h2', v).map(x => x.textContent.trim());
+  const words = (v.innerText || v.textContent).split(/\s+/).filter(Boolean).length;
+  const links = $$('a[href^="#"]', v).length;
+  const tl = SEO.title.length, dl = SEO.desc.length;
+  const chk = (ok, good, bad) => `<span class="st ${ok ? 'ok' : 'warn'}">${ok ? good : bad}</span>`;
+  const types = SEO.graph.map(g => g['@type']);
+  const path = pathFor(SEO.canonical || SEO.h).split('/').filter(Boolean);
+  $('#sBody').innerHTML = `
+    <div class="serp" aria-label="Search result preview"><span class="serp-url">homequest.example${path.length ? ' › ' + path.join(' › ') : ''}</span><span class="serp-title">${esc(tl > 62 ? SEO.title.slice(0, 60) + '…' : SEO.title)}</span><span class="serp-desc">${esc(dl > 160 ? SEO.desc.slice(0, 157) + '…' : SEO.desc)}</span></div>
+    <dl class="seo-checks">
+      <div><dt>Title</dt><dd>${tl} characters ${chk(tl >= 30 && tl <= 62, 'Good', 'Aim for 30–60')}</dd></div>
+      <div><dt>Meta description</dt><dd>${dl} characters ${chk(dl >= 70 && dl <= 160, 'Good', 'Aim for 70–160')}</dd></div>
+      <div><dt>Main heading (H1)</dt><dd>${h1.length === 1 ? esc(h1[0].textContent) : h1.length + ' found'} ${chk(h1.length === 1, 'One H1', 'Use exactly one')}</dd></div>
+      <div><dt>Page URL</dt><dd class="mono">${esc(SEO.url)}</dd></div>
+      <div><dt>Indexing</dt><dd>${SEO.robots} ${SEO.robots.startsWith('noindex') ? '<span class="st">Filtered view: points search engines to the main page</span>' : ''}</dd></div>
+      <div><dt>Structured data</dt><dd>${types.join(', ')}</dd></div>
+      <div><dt>Words on page</dt><dd>${fmt(words)} ${chk(words >= 300 || SEO.robots.startsWith('noindex'), 'Good', 'Thin: add content')}</dd></div>
+      <div><dt>Internal links</dt><dd>${links}</dd></div>
+    </dl>
+    <details class="seo-more"><summary>Heading outline (${h2.length} H2s)</summary><ul>${h2.map(t => `<li>${esc(t)}</li>`).join('')}</ul></details>
+    <details class="seo-more"><summary>Structured data (JSON-LD)</summary><pre>${esc(JSON.stringify({'@context':'https://schema.org', '@graph':SEO.graph}, null, 2))}</pre></details>
+    <p class="proto-note">A review tool for this prototype only. It isn’t part of the live site.</p>`;
+  $('#dlgSeo').showModal();
+}
+
+/* ================= Colour schemes ================= */
+const PALETTES = {
+  cobalt:{name:'Cobalt', note:'Crisp blue actions on cool grey. Clear and product-like.',
+    light:{bg:'#F3F5F4', surface:'#FFFFFF', surface2:'#EAEEEC', ink:'#0D1719', ink2:'#2A3638', muted:'#536062', line:'#D5DCDA', line2:'#A9B4B1', accent:'#1D44C4', hover:'#16379F', soft:'#E3E9FB', onAccent:'#FFFFFF', onInk:'#FFFFFF'},
+    dark:{bg:'#0A1011', surface:'#121A1C', surface2:'#1A2426', ink:'#E7EEEC', ink2:'#C3CECB', muted:'#9AA8A6', line:'#253032', line2:'#3F4D4F', accent:'#8EA6FF', hover:'#B0C1FF', soft:'#1B2447', onAccent:'#0A1011', onInk:'#0A1011'}},
+  evergreen:{name:'Evergreen', note:'Deep green on soft sage-grey. Calm and established.',
+    light:{bg:'#F2F5F2', surface:'#FFFFFF', surface2:'#E7EDE8', ink:'#0C1A14', ink2:'#28382F', muted:'#506158', line:'#D3DDD6', line2:'#A6B5AB', accent:'#0B6B4F', hover:'#08553F', soft:'#DDEFE6', onAccent:'#FFFFFF', onInk:'#FFFFFF'},
+    dark:{bg:'#09110D', surface:'#111B16', surface2:'#19261F', ink:'#E6EFEA', ink2:'#C1CFC7', muted:'#96A89E', line:'#22302A', line2:'#3C4D44', accent:'#5FD0A5', hover:'#86DEBC', soft:'#0F2E22', onAccent:'#06120D', onInk:'#09110D'}},
+  harbour:{name:'Harbour', note:'Navy text with a teal accent. Coastal and corporate.',
+    light:{bg:'#F2F4F7', surface:'#FFFFFF', surface2:'#E8ECF2', ink:'#0E1B2E', ink2:'#2A3850', muted:'#525F73', line:'#D5DBE4', line2:'#A7B2C2', accent:'#0A6A7A', hover:'#075562', soft:'#DCEEF1', onAccent:'#FFFFFF', onInk:'#FFFFFF'},
+    dark:{bg:'#0A0F18', surface:'#111827', surface2:'#182133', ink:'#E7ECF4', ink2:'#C3CCDA', muted:'#97A3B6', line:'#222D40', line2:'#3B4860', accent:'#5CC8D8', hover:'#86D8E4', soft:'#0F2B33', onAccent:'#061218', onInk:'#0A0F18'}},
+  brass:{name:'Navy & brass', note:'Navy with warm brass buttons. Premium and traditional.',
+    light:{bg:'#F4F3F0', surface:'#FFFFFF', surface2:'#ECE9E3', ink:'#121A2B', ink2:'#2E3647', muted:'#5A5F6B', line:'#DDD8CF', line2:'#B3AC9F', accent:'#8A5A0F', hover:'#6F480B', soft:'#F4EAD6', onAccent:'#FFFFFF', onInk:'#FFFFFF'},
+    dark:{bg:'#0C0F16', surface:'#141925', surface2:'#1C2230', ink:'#ECEAE4', ink2:'#CBC7BD', muted:'#A09B90', line:'#262C3A', line2:'#414859', accent:'#E0B25E', hover:'#EDC77F', soft:'#33280F', onAccent:'#16110A', onInk:'#0C0F16'}},
+  burgundy:{name:'Burgundy', note:'A deep wine accent on warm grey. Confident and upscale.',
+    light:{bg:'#F5F3F3', surface:'#FFFFFF', surface2:'#EDE8E8', ink:'#1B1416', ink2:'#3A2F32', muted:'#645A5D', line:'#DFD7D8', line2:'#B5A9AB', accent:'#8C1D3A', hover:'#711730', soft:'#F6E3E8', onAccent:'#FFFFFF', onInk:'#FFFFFF'},
+    dark:{bg:'#110C0D', surface:'#1A1315', surface2:'#241B1E', ink:'#F0E9EA', ink2:'#D3C8CA', muted:'#A99C9F', line:'#2F2427', line2:'#4C3D41', accent:'#F08AA5', hover:'#F6ABBF', soft:'#3A1520', onAccent:'#1A0A0F', onInk:'#110C0D'}},
+  graphite:{name:'Graphite', note:'Black and white only, with colour saved for status. Minimal.',
+    light:{bg:'#F4F4F3', surface:'#FFFFFF', surface2:'#EAEAE8', ink:'#111111', ink2:'#333333', muted:'#5E5E5C', line:'#DADAD7', line2:'#ADADA9', accent:'#111111', hover:'#333333', soft:'#EAEAE8', onAccent:'#FFFFFF', onInk:'#FFFFFF'},
+    dark:{bg:'#0B0B0B', surface:'#151515', surface2:'#1E1E1E', ink:'#EDEDEB', ink2:'#CACAC7', muted:'#9C9C98', line:'#2A2A2A', line2:'#454545', accent:'#EDEDEB', hover:'#FFFFFF', soft:'#262626', onAccent:'#0B0B0B', onInk:'#0B0B0B'}}
+};
+(function paletteCSS() {
+  const TOK = {bg:'--bg', surface:'--surface', surface2:'--surface-2', ink:'--ink', ink2:'--ink-2', muted:'--muted', line:'--line', line2:'--line-2', accent:'--accent', hover:'--accent-hover', soft:'--accent-soft', onAccent:'--on-accent', onInk:'--on-ink'};
+  const decl = p => Object.entries(p).map(([k, v]) => `${TOK[k]}:${v}`).join(';') + `;--sale:${p.accent};--sale-soft:${p.soft}`;
+  let css = '';
+  for (const [id, P] of Object.entries(PALETTES)) {
+    if (id === 'cobalt') continue;
+    css += `:root[data-palette="${id}"]{${decl(P.light)}}@media (prefers-color-scheme:dark){:root[data-palette="${id}"]:not([data-theme="light"]){${decl(P.dark)}}}:root[data-palette="${id}"][data-theme="dark"]{${decl(P.dark)}}`;
+  }
+  document.head.insertAdjacentHTML('beforeend', `<style id="palettes">${css}</style>`);
+})();
+function applyPalette(id) {
+  if (!PALETTES[id]) id = 'cobalt';
+  if (id === 'cobalt') delete document.documentElement.dataset.palette; else document.documentElement.dataset.palette = id;
+  store.set('palette', id);
+}
+function openPalettes() {
+  const cur = document.documentElement.dataset.palette || 'cobalt';
+  const mode = document.documentElement.dataset.theme || 'system';
+  $('#pBody').innerHTML = `
+    <fieldset class="fgroup"><legend class="sr-only">Colour scheme</legend>
+      ${Object.entries(PALETTES).map(([id, P]) => `<label class="pal"><input type="radio" name="pal" value="${id}" ${id === cur ? 'checked' : ''}>
+        <span class="sw" aria-hidden="true"><i style="background:${P.light.bg}"></i><i style="background:${P.light.ink}"></i><i style="background:${P.light.accent}"></i><i style="background:${P.dark.bg}"></i><i style="background:${P.dark.accent}"></i></span>
+        <span><b>${P.name}</b><small>${P.note}</small></span></label>`).join('')}
+    </fieldset>
+    <fieldset class="fgroup"><legend>Mode</legend>
+      <div class="seg" style="display:flex">${['system', 'light', 'dark'].map(m => `<label style="flex:1"><input type="radio" name="pmode" value="${m}" ${m === mode ? 'checked' : ''}><span style="width:100%">${m[0].toUpperCase() + m.slice(1)}</span></label>`).join('')}</div>
+    </fieldset>`;
+  $('#dlgPalette').showModal();
+}
+
 /* ================= Router ================= */
 const NAV_OF = {lease:'lease', buy:'buy', businesses:'businesses', guide:'guide'};
 let currentNav = '';
 let firstRender = true;
+let lastResultsHash = 'search';
 function route() {
   let h = location.hash.slice(1) || 'home';
   const bar = $('#mobileBar'); bar.hidden = true; document.body.classList.remove('has-bar');
-  const presets = {lease: {deal:'lease'}, buy: {deal:'sale'}, businesses: {deal:'sale', types:['business']}, saved: {savedOnly:true}};
-  if (presets[h]) {
-    currentNav = h === 'saved' ? '' : h;
-    S = {...DEFAULT(), view:S.view, sort:S.sort, ...presets[h]};
-    history.replaceState(null, '', '#search');
-    h = 'search';
-  }
+  if (h === 'saved') { S = {...DEFAULT(), view:S.view, sort:S.sort, savedOnly:true}; h = 'search'; }
+  else if (parseSlug(h)) { S = {...stateFromSlug(h), view:S.view, sort:S.sort}; h = 'search'; }
   const v = $('#view');
-  let focusEl = null;
+  let focusEl = null, nav = '';
+  const restore = lastListing && searchScroll;
+  if (h !== 'search') lastListing = null;
   if (h.startsWith('listing-') && byId(h.slice(8))) {
     const l = byId(h.slice(8)); lastListing = l.id;
     v.innerHTML = viewDetail(l);
     updateCalc();
     bar.innerHTML = actionButtons(l, true); bar.hidden = false; document.body.classList.add('has-bar');
-    document.title = l.title + ' · HomeQuest Commercial';
-    focusEl = $('#d-title');
-    window.scrollTo(0, 0);
+    listingSeo(l);
+    focusEl = $('#d-title'); window.scrollTo(0, 0);
   } else if (h === 'search') {
     v.innerHTML = viewSearch(); renderResults();
-    document.title = searchTitle() + ' · HomeQuest Commercial';
     focusEl = $('#r-title');
-    if (lastListing && searchScroll) { window.scrollTo(0, searchScroll); } else window.scrollTo(0, 0);
+    window.scrollTo(0, restore ? searchScroll : 0);
     lastListing = null;
+    nav = currentNav;
   } else if (h === 'guide') {
-    currentNav = 'guide';
+    nav = 'guide';
     v.innerHTML = viewGuide();
-    document.title = 'Help me choose · HomeQuest Commercial';
-    focusEl = $('#g-h'); window.scrollTo(0, 0); lastListing = null;
+    setSeo({h:'guide', title:'Not sure what you need? Help me choose | HomeQuest', desc:'Answer four quick questions about what you’re planning and we’ll show the commercial property types, budgets and areas that fit. No real estate terms needed.', schema:[{'@type':'WebPage', name:'Help me choose'}, bcLD([['Home', 'home'], ['Help me choose', 'guide']])]});
+    focusEl = $('#g-h'); window.scrollTo(0, 0);
+  } else if (h === 'learn') {
+    nav = 'learn';
+    v.innerHTML = viewLearn();
+    setSeo({h, title:'Commercial real estate guides | HomeQuest', desc:`Plain-language guides to leasing, buying and investing in commercial real estate in ${REGION}: costs, leases, zoning, cap rates and buying a business.`, schema:[{'@type':'CollectionPage', name:'Commercial real estate guides'}, bcLD([['Home', 'home'], ['Guides', 'learn']])]});
+    focusEl = $('#p-h'); window.scrollTo(0, 0);
+  } else if (h === 'glossary') {
+    nav = 'learn';
+    v.innerHTML = viewGlossary();
+    setSeo({h, title:'Commercial real estate glossary | HomeQuest', desc:'Additional rent, cap rate, net lease, zoning, SDE and other commercial real estate terms, explained in plain language with examples.', schema:[{'@type':'DefinedTermSet', name:'Commercial real estate glossary', hasDefinedTerm:Object.values(TERMS).map(t => ({'@type':'DefinedTerm', name:t.t, description:plain(t.b[0])}))}, bcLD([['Home', 'home'], ['Guides', 'learn'], ['Glossary', 'glossary']])]});
+    focusEl = $('#p-h'); window.scrollTo(0, 0);
+  } else if (h.startsWith('learn-') && ARTICLES.find(a => a.slug === h.slice(6))) {
+    nav = 'learn';
+    const a = ARTICLES.find(x => x.slug === h.slice(6));
+    v.innerHTML = viewArticle(a);
+    setSeo({h, og:'article', title:`${a.title} | HomeQuest`, desc:a.desc, schema:[{'@type':'Article', headline:a.title, description:a.desc, dateModified:'2026-09-23', author:{'@id':SITE + '/#org'}, publisher:{'@id':SITE + '/#org'}, mainEntityOfPage:SITE + pathFor(h)}, bcLD([['Home', 'home'], ['Guides', 'learn'], [a.title, h]]), ...(a.faq ? [faqLD(a.faq)] : [])]});
+    focusEl = $('#p-h'); window.scrollTo(0, 0);
   } else {
-    currentNav = '';
     v.innerHTML = viewHome();
-    document.title = 'HomeQuest Commercial';
-    focusEl = $('main'); window.scrollTo(0, 0); lastListing = null;
+    setSeo({h:'home', title:'Commercial real estate for lease and sale in BC | HomeQuest', desc:`Search commercial space for lease, property for sale and businesses for sale in ${REGION}. Monthly costs, zoning and plain-language advice on every listing.`,
+      schema:[{'@type':'WebSite', name:'HomeQuest Commercial', url:SITE + '/', potentialAction:{'@type':'SearchAction', target:SITE + '/search/?q={search_term_string}', 'query-input':'required name=search_term_string'}}, faqLD(HOME_FAQ)]});
+    focusEl = $('main'); window.scrollTo(0, 0);
     if (h === 'faq') { const f = $('#faq'); f && f.scrollIntoView(); }
   }
-  if (h !== 'search' && h !== 'guide' && !h.startsWith('listing-')) currentNav = '';
-  if (h.startsWith('listing-')) currentNav = '';
+  currentNav = nav;
   $$('.main-nav a').forEach(a => a.dataset.nav === currentNav ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
   if (!firstRender && focusEl) focusEl.focus({preventScroll:true});
   firstRender = false;
@@ -1500,6 +2169,8 @@ document.addEventListener('click', e => {
   if (t.dataset.day) { contactCtx.day = t.dataset.day; $$('[data-day]').forEach(b => b.setAttribute('aria-pressed', b === t)); $('#c-day-e').hidden = true; return; }
   if (t.dataset.time) { const on = contactCtx.time !== t.dataset.time; contactCtx.time = on ? t.dataset.time : null; $$('[data-time]').forEach(b => b.setAttribute('aria-pressed', on && b === t)); return; }
   if (t.id === 'menuBtn') { $('#dlgMenu').showModal(); return; }
+  if (t.id === 'seoBtn') { openSeoPanel(); return; }
+  if (t.id === 'palBtn') { openPalettes(); return; }
   if (t.id === 'themeBtn') { toggleTheme(); return; }
   if (t.id === 'fClear') { S = {...DEFAULT(), q:S.q, view:S.view, sort:S.sort}; $('#fBody').innerHTML = filtersBody(); renderResults(); updateShowBtn(); return; }
   if (t.id === 'tAsk') { $('#dlgTerm').close(); openContact(location.hash.startsWith('#listing-') ? 'ask' : 'requirements', location.hash.startsWith('#listing-') ? location.hash.slice(9) : null, `I have a question about ${$('#tTitle').textContent.toLowerCase()}: `); return; }
@@ -1510,6 +2181,8 @@ function rerenderGuide() { $('#view').innerHTML = viewGuide(); $('#g-h').focus()
 
 document.addEventListener('change', e => {
   const t = e.target;
+  if (t.name === 'pal') { applyPalette(t.value); paintDots(); return; }
+  if (t.name === 'pmode') { if (t.value === 'system') { delete document.documentElement.dataset.theme; store.set('theme', null); } else { document.documentElement.dataset.theme = t.value; store.set('theme', t.value); } setThemeLabel(); return; }
   if (t.name === 'h-mode') { const tf = $('#h-type-f'); tf.hidden = t.value === 'business'; return; }
   if (t.id === 'h-type' && t.value === 'unsure') { guide = {step:0, goal:null, deal:null, budget:null, areas:[]}; location.hash = 'guide'; return; }
   if (t.name === 'f-deal' || t.name === 'm-deal') { S.deal = t.value; if (S.price !== 'any' && BUDGETS[S.price].deal !== S.deal && S.deal !== 'any') S.price = 'any'; afterFilter(); return; }
@@ -1593,6 +2266,10 @@ setThemeLabel();
 
 /* ================= Init ================= */
 document.body.insertAdjacentHTML('beforeend', `<datalist id="places">${CITIES.map(c => `<option value="${c}">`).join('')}${[...new Set(L.filter(l => !l.conf).map(l => l.area + ', ' + l.city))].map(a => `<option value="${a}">`).join('')}</datalist>`);
+applyPalette(store.get('palette', 'cobalt'));
+function paintDots() { const P = PALETTES[document.documentElement.dataset.palette || 'cobalt']; $('#palDots').innerHTML = [P.light.accent, P.light.ink, P.dark.accent].map(c => `<i style="background:${c}"></i>`).join(''); }
+paintDots();
+popularSearches();
 updateSaved();
 route();
 })();
