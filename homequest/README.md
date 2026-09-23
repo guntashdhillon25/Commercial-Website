@@ -24,10 +24,11 @@ Terms such as additional rent, net vs. gross lease, cap rate, NOI, zoning, due d
 - **Monthly cost, not just $/sf/yr.** Lease cards and budgets use an estimated monthly total (base + additional rent), and the detail page shows the arithmetic.
 - **Explained where it comes up.** One tip per results page, chosen for the current search (lease pricing, cap rate, NDA and so on) and dismissible. Glossary terms open inline.
 - **Low-pressure calls to action.** Each listing has one primary action (Book a viewing, or Request details for businesses) and one secondary action (Ask). On phones these sit in a sticky bottom bar. An off-market "Discuss your requirements" prompt appears after the sixth result and on empty results.
-- **Mobile:** compact horizontal listing cards, 44px+ touch targets, 16px inputs (so iOS doesn't zoom in), safe-area padding, and native selects so iPhone and Android show their own pickers.
+- **Results layout:** listing cards sit beside a map. Numbered pins match numbered cards: hovering over one highlights the other, and tapping a pin scrolls to its card. On phones the map is behind a **Show map** button.
+- **Mobile:** full-width listing cards, property type pills that scroll sideways, 44px+ touch targets, 16px inputs (so iOS doesn't zoom in), safe-area padding, and native selects so iPhone and Android show their own pickers.
 - **Accessibility (WCAG 2.2 AA where practical):** semantic landmarks, a skip link, labelled controls, visible focus, `aria-pressed`/`aria-current` for selected states, native `<dialog>` focus handling, a live result count, focus moved to the page heading on navigation, and reduced-motion support.
 - **Dark mode:** a full token set follows the system setting. The header toggle overrides it and is remembered.
-- **Type:** Schibsted Grotesk (headings) and Hanken Grotesk (body), from Google Fonts.
+- **Look:** follows the earlier *Space for Lease* prototype: Bricolage Grotesque headings with a highlighted key phrase, Public Sans body text, pill-shaped buttons and filters, labelled filter fields, property type pills, and illustrated listing tiles with three key facts per card. The site uses the Cobalt colour scheme.
 
 ## SEO
 
@@ -76,26 +77,26 @@ Filtered searches (for example, with a budget or a feature filter) are set to `n
 - set up a Google Business Profile with the same name, address and phone number
 - replace the example price ranges with current figures, and add real listing photos with descriptive alt text
 
-## Colour schemes
+## Colours: Cobalt
 
-Use **Colour scheme** in the top bar to switch palettes live. Each scheme has a full light and dark version, and the choice is remembered. All pairs are chosen for WCAG AA contrast.
-
-| Scheme | Light: background / text / accent | Dark: background / text / accent | Feel |
+| Token | Light | Dark | Used for |
 |---|---|---|---|
-| Cobalt (default) | `#F3F5F4` / `#0D1719` / `#1D44C4` | `#0A1011` / `#E7EEEC` / `#8EA6FF` | Clear, product-like |
-| Evergreen | `#F2F5F2` / `#0C1A14` / `#0B6B4F` | `#09110D` / `#E6EFEA` / `#5FD0A5` | Calm, established |
-| Harbour | `#F2F4F7` / `#0E1B2E` / `#0A6A7A` | `#0A0F18` / `#E7ECF4` / `#5CC8D8` | Coastal, corporate |
-| Navy & brass | `#F4F3F0` / `#121A2B` / `#8A5A0F` | `#0C0F16` / `#ECEAE4` / `#E0B25E` | Premium, traditional |
-| Burgundy | `#F5F3F3` / `#1B1416` / `#8C1D3A` | `#110C0D` / `#F0E9EA` / `#F08AA5` | Confident, upscale |
-| Graphite | `#F4F4F3` / `#111111` / `#111111` | `#0B0B0B` / `#EDEDEB` / `#EDEDEB` | Minimal, monochrome |
+| `--bg` | `#F3F5F4` | `#0A1011` | Page background |
+| `--surface` | `#FFFFFF` | `#121A1C` | Cards, header, forms |
+| `--ink` | `#0D1719` | `#E7EEEC` | Text, selected pills |
+| `--muted` | `#536062` | `#9AA8A6` | Secondary text |
+| `--line` | `#D5DCDA` | `#253032` | Borders |
+| `--accent` | `#1D44C4` | `#8EA6FF` | Buttons, links, call-to-action band, map highlight |
+| `--accent-soft` | `#E3E9FB` | `#1B2447` | Tips, cost calculator background |
+| `--mark` | `#D5DFFF` | `#24357A` | Highlighted words in headings |
 
-The full token sets are in `PALETTES` in the script. To make one the default, copy its `light` and `dark` values into the `:root` blocks at the top of the CSS.
+The listing tiles use soft per-type tints (`--t-retail`, `--t-office` …), each with a dark-mode version. Replace the tiles with real listing photos when listings are connected.
 
 ## Rebuilding on myRealPage
 
 myRealPage sites are built from pages, listing widgets and forms. Here's how each part of the prototype maps across:
 
-1. **Global styles:** paste the `:root` tokens and component CSS into the site's custom CSS (Site Design → custom CSS/header code) so buttons, cards and forms match on every page.
+1. **Global styles:** add the Google Fonts link (Bricolage Grotesque and Public Sans) to the site header code. Then paste the `:root` tokens and component CSS into the site's custom CSS, so buttons, pills, cards and forms match on every page.
 2. **Home page:** use the hero copy and goal list as a custom HTML block. Point the hero search at your listing search page, with query parameters for transaction type and property type.
 3. **Search results and listing details:** use myRealPage's MLS®/IDX listing search and detail templates, restyled with the tokens above. Where you can add custom content, include the monthly cost estimate, the plain-language zoning notes and the next-steps block. For the full filter and map experience with CREA DDF® data, reuse the existing `ddf-worker` (it already returns sf, $/sf and monthly figures) and embed this page's search script.
 4. **Business listings:** these usually aren't on MLS®. Keep them as a small JSON list or as individual myRealPage pages, and show the area only until the buyer signs an NDA.

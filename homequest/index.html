@@ -4,7 +4,7 @@
 <meta name="description" content="Search commercial space for lease, property for sale and businesses for sale across Metro Vancouver and the Fraser Valley.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700;800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Public+Sans:wght@400;500;600;700&display=swap">
 <style>
 /* ============ Tokens ============ */
 :root{
@@ -17,9 +17,14 @@
   --shadow:0 1px 2px rgb(13 23 25 / .05), 0 10px 28px rgb(13 23 25 / .09);
   --scrim:rgb(13 23 25 / .45);
   --ps:22%; --p-sky:90%; --p-gr:78%; --p-b1:81%; --p-b2:64%; --p-gl:38%; --p-tr:97%; --p-dr:50%; --p-aw:52%;
-  --display:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
-  --body:"Hanken Grotesk","Segoe UI",Roboto,Arial,sans-serif;
-  --r:12px; --r-sm:8px;
+  --display:"Bricolage Grotesque","Avenir Next","Segoe UI",sans-serif;
+  --body:"Public Sans","Segoe UI",Roboto,Arial,sans-serif;
+  --r:14px; --r-sm:8px;
+  --mark:#D5DFFF;
+  --t-retail:linear-gradient(160deg,#E8D7C2,#D5BFA3); --t-office:linear-gradient(160deg,#C9D6E0,#AFC2D1);
+  --t-industrial:linear-gradient(160deg,#CFD3CC,#B4BAB0); --t-restaurant:linear-gradient(160deg,#E3C9C0,#CFAA9E);
+  --t-business:linear-gradient(160deg,#E4DBC0,#CFC199); --t-investment:linear-gradient(160deg,#CFE0D4,#B3CDBC);
+  --t-land:linear-gradient(160deg,#DCE5C9,#C2D2A5); --t-icon:#15201E;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   color-scheme:dark;
@@ -32,6 +37,11 @@
   --shadow:0 1px 2px rgb(0 0 0 / .3), 0 10px 28px rgb(0 0 0 / .35);
   --scrim:rgb(0 0 0 / .6);
   --ps:14%; --p-sky:15%; --p-gr:10%; --p-b1:25%; --p-b2:19%; --p-gl:46%; --p-tr:36%; --p-dr:15%; --p-aw:38%;
+  --mark:#24357A;
+  --t-retail:linear-gradient(160deg,#3A3127,#2C251D); --t-office:linear-gradient(160deg,#27323C,#1E272F);
+  --t-industrial:linear-gradient(160deg,#2D312C,#232621); --t-restaurant:linear-gradient(160deg,#3A2C28,#2D221F);
+  --t-business:linear-gradient(160deg,#37321F,#2B2717); --t-investment:linear-gradient(160deg,#25332A,#1C2820);
+  --t-land:linear-gradient(160deg,#2E3623,#232A1B); --t-icon:#D9E2DF;
 }}
 :root[data-theme="dark"]{
   color-scheme:dark;
@@ -44,6 +54,11 @@
   --shadow:0 1px 2px rgb(0 0 0 / .3), 0 10px 28px rgb(0 0 0 / .35);
   --scrim:rgb(0 0 0 / .6);
   --ps:14%; --p-sky:15%; --p-gr:10%; --p-b1:25%; --p-b2:19%; --p-gl:46%; --p-tr:36%; --p-dr:15%; --p-aw:38%;
+  --mark:#24357A;
+  --t-retail:linear-gradient(160deg,#3A3127,#2C251D); --t-office:linear-gradient(160deg,#27323C,#1E272F);
+  --t-industrial:linear-gradient(160deg,#2D312C,#232621); --t-restaurant:linear-gradient(160deg,#3A2C28,#2D221F);
+  --t-business:linear-gradient(160deg,#37321F,#2B2717); --t-investment:linear-gradient(160deg,#25332A,#1C2820);
+  --t-land:linear-gradient(160deg,#2E3623,#232A1B); --t-icon:#D9E2DF;
 }
 
 /* ============ Base ============ */
@@ -499,8 +514,6 @@ table.mk{border-collapse:collapse;width:100%;min-width:460px;font-size:14.5px;fo
 .pal .sw i:nth-child(4){margin-left:4px}
 .pal b{display:block;font-size:15.5px}
 .pal small{display:block;color:var(--muted);font-size:13.5px}
-#dlgPalette::backdrop{background:transparent}
-@media (min-width:641px){#dlgPalette{margin:56px 16px auto auto;max-height:calc(100% - 72px)}}
 .serp{display:grid;gap:3px;padding:16px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);font-family:Arial,sans-serif}
 .serp-url{font-size:13px;color:var(--ink-2);overflow-wrap:anywhere}
 .serp-title{font-size:19px;line-height:1.3;color:#1a0dab}
@@ -518,6 +531,137 @@ table.mk{border-collapse:collapse;width:100%;min-width:460px;font-size:14.5px;fo
 .seo-more summary{cursor:pointer;font-weight:600;min-height:40px;display:flex;align-items:center}
 .seo-more ul{padding-left:20px;font-size:14.5px;display:grid;gap:4px}
 .seo-more pre{margin:0;max-height:320px;overflow:auto;background:var(--surface-2);border-radius:var(--r-sm);padding:12px;font:12.5px/1.5 ui-monospace,Menlo,Consolas,monospace}
+
+/* ============ Look: matches the Space for Lease design, Cobalt colours ============ */
+body{font-size:15.5px}
+h1,h2,h3{letter-spacing:-.01em}
+.btn{border-radius:999px}
+.btn-sec{border-color:var(--ink)}
+.proto{background:var(--ink);color:var(--bg);border:0}
+.proto button{color:var(--bg)}
+.brand-mono{width:38px;height:38px;border-radius:50%;background:var(--accent);color:var(--on-accent);display:grid;place-items:center;font:800 14px var(--display);flex:none}
+.logo b{display:block;font:800 18px/1.1 var(--display);letter-spacing:-.01em}
+.logo small{font:500 12px/1.3 var(--body);letter-spacing:0;text-transform:none;color:var(--muted);margin-top:1px}
+.main-nav a{font-weight:500;font-size:15px;color:var(--ink)}
+.main-nav a[aria-current="page"]{color:var(--accent);font-weight:600;box-shadow:inset 0 -2px 0 var(--accent)}
+.head-call{font-weight:600;font-size:15px;white-space:nowrap;margin-right:6px}
+.mark{background:var(--mark);color:var(--ink);padding:0 .14em;border-radius:4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.sec-head h2,.shead h2{font-size:clamp(24px,3vw,34px);font-weight:800;line-height:1.1}
+.sec-head .eyebrow{margin-bottom:6px}
+.shead{display:grid;gap:6px;margin-bottom:20px;max-width:65ch}
+.shead p{color:var(--muted)}
+
+/* pills instead of segmented controls */
+.seg{gap:6px;padding:0;border:0;background:none;flex-wrap:wrap}
+.seg span{border:1px solid var(--line-2);border-radius:999px;background:var(--surface);color:var(--ink);font-weight:500;padding:0 16px}
+.seg label:hover span{border-color:var(--ink)}
+.seg input:checked + span{background:var(--ink);border-color:var(--ink);color:var(--on-ink);font-weight:600}
+.seg button{border:1px solid var(--line-2);border-radius:999px;background:var(--surface);color:var(--ink)}
+.tpill{display:inline-flex;align-items:center;min-height:40px;padding:0 15px;border-radius:999px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink);font:500 14.5px var(--body);white-space:nowrap;text-decoration:none}
+.tpill:hover{border-color:var(--ink);color:var(--ink)}
+.tpill[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--on-ink);font-weight:600}
+.tpill.ghost{border-style:dashed;color:var(--accent);font-weight:600}
+.flabel{display:block;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.sel select,.input{border-color:var(--line-2)}
+
+/* search page hero + filters */
+.s-hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end;padding-block:10px 24px}
+.s-hero h1{font-size:clamp(32px,4.6vw,54px);font-weight:800;line-height:1.02;margin-top:6px}
+.s-hero .lede-seo{color:var(--muted);max-width:60ch;margin-top:12px}
+.agent-card{display:flex;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--line);padding:12px 14px;border-radius:12px;max-width:360px}
+.agent-card .ph{width:52px;height:52px;border-radius:50%;background:var(--accent-soft);border:1px solid var(--line);color:var(--accent);display:grid;place-items:center;font:800 16px var(--display);flex:none}
+.agent-card p{font-size:14px}
+.agent-card .link-btn{text-align:left}
+.s-bar{padding-block:12px}
+.fbar{align-items:flex-end;gap:10px 12px}
+.fcol{display:flex;flex-direction:column;min-width:0}
+.fcol.loc{flex:1 1 240px}
+.fcol .sel{width:190px}
+.fcol .loc-wrap,.fcol .sel,.fcol .seg{flex:none}
+.fcol .seg span{min-height:48px}
+.main-nav a{white-space:nowrap}
+.city{opacity:.7}
+@media (max-width:1300px){.head-call{display:none}}
+.fcol .seg{flex-wrap:nowrap}
+.type-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.rhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+.rhead .count{font-weight:600}
+.rhead .count span{color:var(--muted);font-weight:400}
+.rhead .r-tools .sel select{min-height:40px;border-radius:999px;font-size:14.5px}
+.maptoggle{display:none}
+
+/* results: list beside a sticky map */
+.results{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:24px;align-items:start;padding-bottom:48px}
+.results .cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;padding-bottom:0}
+.mapbox{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--sbar,150px) + 12px);background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.mapbox .map{border:0;border-radius:0;aspect-ratio:4/5;max-height:calc(100vh - var(--sbar,150px) - 110px);min-height:320px;background:var(--surface-2)}
+.mapnote{font-size:12.5px;color:var(--muted);padding:8px 12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.mapsel{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 12px;border-top:1px solid var(--line);font-size:14.5px}
+.mapsel a{font-weight:600;color:var(--ink)}
+.pin{width:30px;height:30px;min-height:0;padding:0;border-radius:50%;background:var(--ink);color:var(--on-ink);border:3px solid var(--surface);transform:translate(-50%,-50%);font:700 12px/1 var(--body);display:grid;place-items:center;box-shadow:0 2px 6px rgb(0 0 0 / .3);transition:transform .15s,background-color .15s}
+.pin::after{display:none}
+.pin:hover,.pin.hot,.pin[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);transform:translate(-50%,-50%) scale(1.15);z-index:4}
+.pin.conf{border-style:dashed;border-color:var(--biz)}
+
+/* listing cards */
+.card{border-radius:14px;transition:border-color .15s,box-shadow .15s,transform .15s}
+.card:hover,.card.hot{border-color:var(--accent);box-shadow:var(--shadow);transform:translateY(-2px)}
+.photo{position:relative;aspect-ratio:16/10;display:grid;place-items:center;max-width:100%;color:var(--t-icon)}
+.photo > svg{width:44%;height:auto;opacity:.9}
+.photo .tag{top:10px;left:10px;font-size:12px}
+.photo .ptype{position:absolute;bottom:10px;left:10px;background:var(--surface);color:var(--ink);font-size:12px;font-weight:600;padding:3px 8px;border-radius:4px}
+.photo .pn{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--on-ink);display:grid;place-items:center;font-size:12.5px;font-weight:700}
+.photo .save{top:auto;bottom:8px;right:8px;width:40px;height:40px}
+.card .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.card-title{font:700 18px/1.2 var(--display)}
+.addr{font-size:13.5px;color:var(--muted)}
+.addr b{color:var(--accent);font-weight:700}
+.facts3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;border-top:1px solid var(--line);padding-top:10px}
+.facts3 div{display:grid;gap:1px;min-width:0}
+.facts3 dt{font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.facts3 dd{font-weight:700;font-size:15px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.card .hl{font-weight:500;font-size:13.5px}
+.card-cta{font-size:14.5px}
+
+/* bands */
+.band:not(.inline){background:var(--accent);color:var(--on-accent);border:0;border-radius:18px}
+.band:not(.inline) p{color:var(--on-accent);opacity:.88}
+.band:not(.inline) .btn-pri{background:var(--surface);color:var(--ink)}
+.band:not(.inline) .btn-pri:hover{background:var(--surface-2);color:var(--ink)}
+.band.inline{border-radius:14px}
+.search-card{border-radius:18px}
+
+/* SEO sections */
+.browse > div,.related > div{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.browse h3,.related h3{font-size:15px;margin-bottom:10px}
+.linkgrid,.linkgrid.one{display:flex;flex-wrap:wrap;gap:8px}
+.linkgrid a{display:inline-flex;gap:8px;min-height:36px;padding:0 14px;border:0;border-radius:999px;background:var(--surface-2);color:var(--ink);font-size:14px;font-weight:500}
+.linkgrid a:hover{background:var(--accent-soft);color:var(--accent);text-decoration:none}
+.linkgrid a span{font-size:12.5px}
+.popular .linkgrid a{min-height:34px;color:var(--ink-2)}
+.tw{border-radius:14px}
+.mk td{white-space:nowrap}
+.article-card{border-radius:14px}
+.article-card:hover{border-color:var(--accent)}
+.faq2{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:40px;align-items:start}
+.faq2 .shead{position:sticky;top:calc(env(safe-area-inset-top,0px) + 24px)}
+.faq{max-width:none}
+.faq summary{font-size:16.5px}
+.faq summary::after{content:"+";width:auto;height:auto;border:0;transform:none;font:400 24px/1 var(--body);color:var(--accent);margin:0}
+.faq details[open] summary::after{content:"–";transform:none}
+.faq .a{color:var(--muted)}
+
+/* detail */
+.gallery{display:block;aspect-ratio:3/1;border-radius:14px;overflow:hidden}
+.gallery .photo{height:100%;aspect-ratio:auto}
+.gallery .photo > svg{width:16%}
+.kf dt{font-size:11px;letter-spacing:.05em;text-transform:uppercase;font-weight:700}
+.kf dd{font-size:17px}
+.calc{background:var(--accent-soft);border:0}
+.calc .explain{background:var(--surface)}
+.act{border-radius:14px}
+.goals{border-radius:14px}
 
 /* ============ Responsive ============ */
 @media (max-width:1080px){
@@ -555,6 +699,25 @@ table.mk{border-collapse:collapse;width:100%;min-width:460px;font-size:14.5px;fo
   .popular .linkgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .d-bc{display:none}
   .m-crumb{display:flex}
+  .results{grid-template-columns:minmax(0,1fr)}
+  .mapbox{position:relative;top:0;order:-1}
+  .mapbox.collapsed{display:none}
+  .mapbox .map{aspect-ratio:1;max-height:none}
+  .maptoggle{display:inline-flex}
+  .s-hero{grid-template-columns:minmax(0,1fr)}
+  .fcol.deal{order:3;flex-basis:100%}
+  .fcol.loc{flex:1 1 0}
+  .fcol .flabel{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .fcol.d-only-f{display:none}
+  .fcol .seg{display:flex;width:100%}
+  .fcol .seg label{flex:1}
+  .fcol .seg span{width:100%}
+  .fbar{flex-wrap:wrap}
+  .type-row{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding-inline:16px}
+  .type-row::-webkit-scrollbar{display:none}
+  .faq2{grid-template-columns:minmax(0,1fr);gap:8px}
+  .faq2 .shead{position:static}
+  .head-call{display:none}
 }
 @media (max-width:640px){
   .hero{padding-block:28px 24px}
@@ -578,18 +741,8 @@ table.mk{border-collapse:collapse;width:100%;min-width:460px;font-size:14.5px;fo
   .r-tools .sel{flex:1}
   .map{aspect-ratio:4/5}
   .city{font-size:10.5px}
-  /* compact horizontal cards: more results per screen */
-  .cards{grid-template-columns:minmax(0,1fr);gap:12px}
-  .card{display:grid;grid-template-columns:118px minmax(0,1fr)}
-  .card-media{aspect-ratio:auto;height:100%;min-height:150px}
-  .card .tag{left:6px;top:6px;font-size:11.5px;padding:4px 6px}
-  .card .tag-new{display:none}
-  .card .save{right:auto;left:70px;top:auto;bottom:8px;width:40px;height:40px}
-  .card-body{padding:12px 14px;gap:4px}
-  .price{font-size:20px}
-  .card .price-sub{display:none}
-  .card-title{font-size:15.5px}
-  .card-cta{padding-top:4px;font-size:14.5px}
+  .results .cards,.cards{grid-template-columns:minmax(0,1fr)}
+  .photo{aspect-ratio:2/1}
   .band.inline{padding:18px}
   .foot-grid{grid-template-columns:minmax(0,1fr)}
   .browse,.articles,.districts,.linkgrid,.popular .linkgrid{grid-template-columns:minmax(0,1fr)}
@@ -598,21 +751,17 @@ table.mk{border-collapse:collapse;width:100%;min-width:460px;font-size:14.5px;fo
   .seo{padding-block:32px 48px;gap:36px}
 }
 @media (max-width:380px){
-  .card{grid-template-columns:96px minmax(0,1fr)}
-  .card .save{left:52px}
-  .card .facts li:nth-child(n+3){display:none}
   .logo small{display:none}
 }
 </style>
 
 <a class="skip" href="#main">Skip to content</a>
-<div class="proto"><span>Design prototype · sample listings · built to be rebuilt on myRealPage</span><button type="button" id="palBtn" aria-haspopup="dialog"><span class="dots" aria-hidden="true" id="palDots"></span>Colour scheme</button><button type="button" id="seoBtn" aria-haspopup="dialog">SEO details for this page</button></div>
+<div class="proto"><span>Design prototype · sample listings · built to be rebuilt on myRealPage</span><button type="button" id="seoBtn" aria-haspopup="dialog">SEO details for this page</button></div>
 
 <header class="site-head">
   <div class="wrap head-row">
     <a class="logo" href="#home" aria-label="HomeQuest Commercial, home">
-      <svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="currentColor"/><path d="M8 24V13l8-5 8 5v11h-5v-6h-6v6z" fill="var(--surface)"/></svg>
-      <span>HomeQuest<small>Commercial</small></span>
+      <span class="brand-mono" aria-hidden="true">HQ</span><span><b>HomeQuest</b><small>Commercial real estate · BC</small></span>
     </a>
     <nav class="main-nav" aria-label="Main">
       <a href="#lease" data-nav="lease">Lease space</a>
@@ -622,6 +771,7 @@ table.mk{border-collapse:collapse;width:100%;min-width:460px;font-size:14.5px;fo
       <a href="#learn" data-nav="learn">Guides</a>
     </nav>
     <div class="head-tools">
+      <span class="head-call num">604-555-0142</span>
       <a class="icon-btn" href="#saved" aria-label="Saved listings" id="savedLink">
         <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7.5-4.6-7.5-10.2A4.2 4.2 0 0 1 12 7.3a4.2 4.2 0 0 1 7.5 2.5C19.5 15.4 12 20 12 20z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
         <span class="count-dot" id="savedCount" hidden>0</span>
@@ -644,7 +794,7 @@ table.mk{border-collapse:collapse;width:100%;min-width:460px;font-size:14.5px;fo
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <a class="logo" href="#home"><svg class="logo-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="currentColor"/><path d="M8 24V13l8-5 8 5v11h-5v-6h-6v6z" fill="var(--surface)"/></svg><span>HomeQuest<small>Commercial</small></span></a>
+        <a class="logo" href="#home"><span class="brand-mono" aria-hidden="true">HQ</span><span><b>HomeQuest</b><small>Commercial real estate · BC</small></span></a>
         <p style="margin-top:14px;max-width:38ch">Commercial leasing, property sales and business brokerage across Metro Vancouver and the Fraser Valley.</p>
         <p style="margin-top:10px;color:var(--ink)"><span class="num">604-555-0142</span><br>commercial@homequest.example</p>
       </div>
@@ -700,13 +850,6 @@ table.mk{border-collapse:collapse;width:100%;min-width:460px;font-size:14.5px;fo
     <button class="btn btn-pri btn-block" type="button" data-contact="requirements">Discuss your requirements</button>
     <p class="hint" style="text-align:center">Or call <span class="num" style="color:var(--ink);font-weight:600">604-555-0142</span></p>
   </div>
-</dialog>
-
-<!-- Colour scheme (prototype tool) -->
-<dialog id="dlgPalette" class="small" aria-labelledby="pTitle">
-  <div class="dlg-head"><div><h2 id="pTitle">Colour scheme</h2><p>Try each one. It applies to every page, in light and dark mode.</p></div><button class="icon-btn" type="button" data-close aria-label="Close"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
-  <div class="dlg-body" id="pBody"></div>
-  <div class="dlg-foot"><button class="btn btn-pri" type="button" data-close>Done</button></div>
 </dialog>
 
 <!-- SEO review (prototype tool) -->
@@ -1060,49 +1203,19 @@ const ICON = {
   check: '<svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 };
 
-/* ================= Illustrations (stand-ins for listing photos) ================= */
-const ground = '<rect class="gr" y="205" width="400" height="45"/>';
-const ART = {
-  retail(){ let s = '<rect class="b2" x="34" y="88" width="332" height="10"/><rect class="b1" x="40" y="96" width="320" height="109"/><rect class="b2" x="40" y="96" width="320" height="26"/><rect class="tr" x="150" y="104" width="100" height="10" rx="2"/>';
-    for (let i = 0; i < 4; i++) s += `<rect class="gl" x="${54 + i * 76}" y="134" width="64" height="71"/><rect class="b2" x="${85 + i * 76}" y="134" width="2" height="71"/>`;
-    return s + ground; },
-  restaurant(){ let s = this.retail().replace(ground, '');
-    for (let i = 0; i < 10; i++) s += `<rect class="${i % 2 ? 'tr' : 'aw'}" x="${46 + i * 30.8}" y="124" width="30.8" height="12"/>`;
-    s += '<path class="aw" d="M300 176a22 10 0 0 1 44 0z"/><rect class="dr" x="321" y="176" width="2" height="29"/><path class="aw" d="M56 176a22 10 0 0 1 44 0z"/><rect class="dr" x="77" y="176" width="2" height="29"/>';
-    return s + ground; },
-  office(){ let s = '<rect class="b2" x="30" y="128" width="120" height="77"/><rect class="b1" x="150" y="26" width="150" height="179"/><rect class="b2" x="300" y="96" width="70" height="109"/>';
-    for (let r = 0; r < 10; r++) for (let c = 0; c < 6; c++) s += `<rect class="gl" x="${160 + c * 23}" y="${38 + r * 16}" width="16" height="9"/>`;
-    for (let r = 0; r < 4; r++) for (let c = 0; c < 4; c++) s += `<rect class="tr" x="${40 + c * 27}" y="${140 + r * 15}" width="18" height="7" opacity=".7"/>`;
-    return s + ground; },
-  industrial(){ let s = '<rect class="b2" x="20" y="100" width="360" height="12"/><rect class="b1" x="20" y="110" width="360" height="95"/><rect class="gl" x="34" y="128" width="92" height="36"/><rect class="tr" x="34" y="170" width="30" height="35"/>';
-    for (let i = 0; i < 4; i++) s += `<rect class="dr" x="${150 + i * 56}" y="150" width="42" height="55"/><rect class="b2" x="${150 + i * 56}" y="146" width="42" height="4"/>`;
-    return s + ground; },
-  auto(){ let s = '<rect class="b2" x="20" y="100" width="360" height="12"/><rect class="b1" x="20" y="110" width="360" height="95"/><rect class="tr" x="130" y="118" width="140" height="14" rx="2"/>';
-    for (let i = 0; i < 5; i++) s += `<rect class="dr" x="${34 + i * 70}" y="144" width="56" height="61"/>`;
-    s += '<rect class="gl" x="104" y="160" width="56" height="45" opacity=".5"/>';
-    return s + ground; },
-  strip(){ let s = '<rect class="b1" x="16" y="110" width="368" height="95"/>';
-    for (let i = 0; i < 6; i++) s += `<rect class="${i % 2 ? 'b2' : 'tr'}" x="${22 + i * 60.5}" y="118" width="54" height="14" rx="2"/><rect class="gl" x="${22 + i * 60.5}" y="142" width="54" height="63"/>`;
-    return s + '<rect class="b2" x="16" y="104" width="368" height="8"/>' + ground; },
-  mixed(){ let s = '<rect class="b1" x="90" y="44" width="220" height="161"/><rect class="b2" x="84" y="38" width="232" height="10"/>';
-    for (let r = 0; r < 3; r++) for (let c = 0; c < 5; c++) s += `<rect class="gl" x="${104 + c * 41}" y="${60 + r * 30}" width="26" height="20"/>`;
-    s += '<rect class="b2" x="90" y="148" width="220" height="10"/><rect class="aw" x="100" y="158" width="200" height="8"/><rect class="gl" x="100" y="170" width="200" height="35"/>';
-    s += '<rect class="b2" x="20" y="120" width="70" height="85"/><rect class="b2" x="310" y="100" width="70" height="105" opacity=".7"/>';
-    return s + ground; },
-  land(){ let s = '<path class="b2" d="M0 150 Q60 128 120 142 T250 138 T400 132 V210 H0Z" opacity=".6"/><path class="gr" d="M0 178 Q120 160 230 172 T400 166 V250 H0Z"/>';
-    for (let i = 0; i < 7; i++) s += `<path class="b1" d="M${-40 + i * 70} 250 L${120 + i * 36} 176" stroke-width="2" stroke="currentColor" opacity=".25" fill="none"/>`;
-    s += '<rect class="dr" x="270" y="150" width="4" height="50"/><rect class="dr" x="326" y="150" width="4" height="50"/><rect class="tr" x="262" y="130" width="76" height="34" rx="2"/><rect class="b2" x="272" y="140" width="40" height="4"/><rect class="b2" x="272" y="150" width="54" height="4"/>';
-    return s; }
+/* ================= Listing tiles (stand-ins for listing photos) ================= */
+const TILE = {
+  retail:'<svg viewBox="0 0 100 70" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" aria-hidden="true"><path d="M8 26h84v40H8z"/><path d="M4 26 12 6h76l8 20"/><path d="M4 26c0 6 8 8 12 3 4 5 12 5 16 0 4 5 12 5 16 0 4 5 12 5 16 0 4 5 12 5 16 0 4 5 12 3 12-3"/><path d="M20 66V42h18v24M50 40h30v16H50z"/></svg>',
+  office:'<svg viewBox="0 0 100 70" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="M26 66V6h48v60"/><path d="M36 16h8M56 16h8M36 28h8M56 28h8M36 40h8M56 40h8"/><path d="M44 66V52h12v14M14 66h72"/></svg>',
+  industrial:'<svg viewBox="0 0 100 70" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" aria-hidden="true"><path d="M6 66V34l22-12v12l22-12v12l22-12v44z"/><path d="M72 66V8h14v58"/><path d="M16 66V48h22v18M46 50h16"/></svg>',
+  restaurant:'<svg viewBox="0 0 100 70" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M30 6v22c0 6 10 6 10 0V6M35 6v60"/><path d="M66 66V6c-10 6-12 20-12 30h12"/></svg>',
+  business:'<svg viewBox="0 0 100 70" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" aria-hidden="true"><path d="M8 26h84v40H8z"/><path d="M4 26 12 6h76l8 20H4"/><path d="M20 66V42h18v24"/><path d="M52 44h28v14H52z"/><path d="M58 44l8-9 8 9"/></svg>',
+  investment:'<svg viewBox="0 0 100 70" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" aria-hidden="true"><path d="M6 66V24h40v42M46 66V36h48v30"/><path d="M14 34h8M30 34h8M14 46h8M30 46h8M56 66V48h28v18"/></svg>',
+  land:'<svg viewBox="0 0 100 70" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 58c18-10 38-12 58-6s26 4 34-2"/><path d="M4 66h92"/><path d="M32 52V20"/><path d="M32 20h26v14H32"/><path d="M72 50V38M84 50V40"/></svg>'
 };
-function photo(l, extra = '') {
-  const draw = ART[l.art] || ART.retail;
-  return `<svg class="ph" viewBox="0 0 400 250" preserveAspectRatio="xMidYMid slice" style="--h:${l.hue}" ${extra || 'aria-hidden="true"'}><rect class="sky" width="400" height="250"/>${draw.call(ART, l)}</svg>`;
+function tile(l, inner = '', attrs = '') {
+  return `<div class="photo" style="background:var(--t-${l.type})" ${attrs}>${TILE[l.type] || TILE.retail}${inner}</div>`;
 }
-document.head.insertAdjacentHTML('beforeend', `<style>
-.ph .sky{fill:hsl(var(--h) var(--ps) var(--p-sky))}.ph .gr{fill:hsl(var(--h) 10% var(--p-gr))}
-.ph .b1{fill:hsl(var(--h) var(--ps) var(--p-b1));color:hsl(var(--h) 20% 30%)}.ph .b2{fill:hsl(var(--h) var(--ps) var(--p-b2))}
-.ph .gl{fill:hsl(var(--h) 32% var(--p-gl))}.ph .tr{fill:hsl(var(--h) 18% var(--p-tr))}
-.ph .dr{fill:hsl(var(--h) 10% var(--p-dr))}.ph .aw{fill:hsl(calc(var(--h) + 160) 42% var(--p-aw))}</style>`);
 
 /* ================= State ================= */
 const DEFAULT = () => ({q:'', areas:[], deal:'any', types:[], price:'any', size:'any', feat:[], zone:[], lease:'any', cap:0, fresh:false, sort:'rec', view:'list', savedOnly:false});
@@ -1172,19 +1285,25 @@ const moreCount = () => S.feat.length + S.zone.length + (S.lease !== 'any') + (S
 const allCount = () => moreCount() + (S.deal !== 'any') + S.types.length + (S.price !== 'any') + (S.size !== 'any') + S.areas.length;
 
 /* ================= Shared renderers ================= */
-function card(l) {
-  const p = priceOf(l), sv = saved.has(l.id);
+const bigMoney = n => n >= 1e6 ? short(n) : money(n);
+function factsOf(l) {
+  const k = kind(l);
+  if (k === 'lease') return [['Est. / month', money(monthly(l)) + (l.sfMin ? '+' : '')], ['Size', sizeText(l)], ['Rent / sf / yr', dol(l.rent + l.add)]];
+  if (k === 'biz') return [['Asking', bigMoney(l.price)], ['Cash flow / yr', short(l.sde)], ['Since', l.est]];
+  if (k === 'inv') return [['Price', bigMoney(l.price)], ['Cap rate', l.cap + '%'], ['Income / yr', short(l.noi)]];
+  if (k === 'land') return [['Price', bigMoney(l.price)], ['Site', l.acres + ' acres'], ['Per acre', short(l.price / l.acres)]];
+  return [['Price', bigMoney(l.price)], ['Size', sizeText(l)], ['Per sf', '$' + fmt(l.price / l.sf)]];
+}
+function card(l, n) {
+  const sv = saved.has(l.id);
   const cta = l.type === 'business' ? 'View business' : l.deal === 'lease' ? 'View space' : 'View property';
-  const facts = [sizeText(l), l.deal === 'lease' ? (l.avail === 'Now' ? 'Available now' : 'Available ' + l.avail) : l.type === 'business' ? `Since ${l.est}` : l.type === 'investment' ? `${l.occ}% leased` : null].filter(Boolean);
-  return `<article class="card">
-    <div class="card-media">${photo(l)}<span class="tag ${dealCls(l)}">${dealLabel(l)}</span>${l.isNew ? '<span class="tag tag-new">New</span>' : ''}</div>
-    <button class="save" type="button" data-save="${l.id}" aria-pressed="${sv}" aria-label="Save ${esc(l.title)}">${ICON.heart}</button>
-    <div class="card-body">
-      <p class="price">${priceUnitHTML(p)}</p>
-      <p class="price-sub">${p.sub}</p>
+  const avail = l.deal === 'lease' ? (l.avail === 'Now' ? 'Available now' : 'Available ' + l.avail) : '';
+  return `<article class="card" data-id="${l.id}">
+    ${tile(l, `<span class="tag ${dealCls(l)}">${dealLabel(l)}</span><span class="ptype">${TYPES[l.type].label} · ${esc(l.conf ? l.city : l.area)}</span>${n ? `<span class="pn" aria-hidden="true">${n}</span>` : ''}<button class="save" type="button" data-save="${l.id}" aria-pressed="${sv}" aria-label="Save ${esc(l.title)}">${ICON.heart}</button>`)}
+    <div class="body">
       <h3 class="card-title"><a href="#listing-${l.id}">${esc(l.title)}</a></h3>
-      <p class="meta">${TYPES[l.type].label} · ${esc(where(l))}</p>
-      <ul class="facts">${facts.map(f => `<li>${f}</li>`).join('')}</ul>
+      <p class="addr">${esc(where(l))}${avail ? ' · ' + avail : ''}${l.isNew ? ' · <b>New</b>' : ''}</p>
+      <dl class="facts3">${factsOf(l).map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl>
       <p class="hl">${esc(l.hl)}</p>
       <span class="card-cta" aria-hidden="true">${cta} →</span>
     </div>
@@ -1210,7 +1329,7 @@ function viewHome() {
   return `
   <section class="hero"><div class="wrap hero-grid">
     <div>
-      <h1>Find the right commercial space, in plain language.</h1>
+      <h1>Find the right commercial space, <span class="mark">in plain language.</span></h1>
       <p class="hero-lede">Search space to lease, property to buy and businesses for sale across Metro Vancouver and the Fraser Valley. Not sure what you need? Tell us what you’re planning and we’ll point you to the right kind of property.</p>
     </div>
     <form class="search-card" id="heroForm" role="search" aria-label="Search listings">
@@ -1231,7 +1350,7 @@ function viewHome() {
   </div></section>
 
   <section class="section"><div class="wrap">
-    <div class="sec-head"><div><h2>Start with what you’re planning</h2><p>No real estate terms needed. Pick the closest match and we’ll show the property types that fit.</p></div></div>
+    <div class="sec-head"><div><span class="eyebrow">Guided search</span><h2>Start with what you’re planning</h2><p>No real estate terms needed. Pick the closest match and we’ll show the property types that fit.</p></div></div>
     <div class="goals">
       ${GOALS.map(g => `<button type="button" class="goal" data-goal="${g.id}"><b>${g.label}</b><span>${g.hint}</span></button>`).join('')}
       <a class="goal alt" href="#guide"><b>Something else</b><span>Answer a few questions and we’ll guide you</span></a>
@@ -1239,7 +1358,7 @@ function viewHome() {
   </div></section>
 
   <section class="section"><div class="wrap">
-    <div class="sec-head"><div><h2>New this week</h2><p>Recently added space, property and businesses.</p></div><a class="btn btn-sec btn-sm" href="#search">See all ${L.length} listings</a></div>
+    <div class="sec-head"><div><span class="eyebrow">Just listed</span><h2>New this week</h2><p>Recently added space, property and businesses.</p></div><a class="btn btn-sec btn-sm" href="#search">See all ${L.length} listings</a></div>
     <div class="cards" style="padding-bottom:0">${fresh.map(card).join('')}</div>
   </div></section>
 
@@ -1262,9 +1381,8 @@ function viewHome() {
   </div></section>
 
   <section class="section" id="faq"><div class="wrap">
-    <div class="sec-head"><div><h2>Common questions</h2></div></div>
-    ${faqHTML(HOME_FAQ)}
-  </div>
+    <div class="faq2"><div class="shead"><span class="eyebrow">FAQ</span><h2>Common questions</h2><p>Don’t see yours? <button type="button" class="link-btn" data-contact="requirements">Ask us directly.</button></p></div>
+    ${faqHTML(HOME_FAQ)}</div>
   </div></section>`;
 }
 
@@ -1274,29 +1392,43 @@ function searchTitle() {
   if (!ctx.type && S.deal === 'any' && !S.areas.length) return 'All commercial listings';
   return nounFor(ctx) + (ctx.city ? ` in ${ctx.city}, BC` : S.areas.length > 1 ? ` in ${S.areas.length} areas` : '');
 }
+function titleHTML() {
+  const t = esc(searchTitle());
+  return /for (lease|sale)/.test(t) ? t.replace(/(for (?:lease|sale)(?: in [^<]+)?)$/, '<span class="mark">$1</span>') : t.replace(/( in [^<]+)$/, '<span class="mark">$1</span>');
+}
+function typePills() {
+  return `<button type="button" class="tpill" data-tpill="any" aria-pressed="${!S.types.length}">All types</button>${Object.entries(TYPES).map(([k, t]) => `<button type="button" class="tpill" data-tpill="${k}" aria-pressed="${S.types.includes(k)}">${t.label}</button>`).join('')}<a class="tpill ghost" href="#guide">Not sure? Help me choose</a>`;
+}
+let mapOpen = false;
 function viewSearch() {
   return `
-  <div class="s-bar"><div class="wrap">
-    <form class="fbar" id="fbar" role="search" aria-label="Filter listings">
-      <div class="loc-wrap">${ICON.search}<label for="f-q" class="sr-only">Location or keyword</label><input class="input" id="f-q" type="search" list="places" placeholder="City or neighbourhood" autocomplete="off" value="${esc(S.q)}"></div>
-      ${dealSeg('f-deal')}
-      <span class="sel" id="w-type"><label for="f-type" class="sr-only">Property type</label><select id="f-type">${selOptions('type')}</select></span>
-      <span class="sel" id="w-price"><label for="f-price" class="sr-only">Budget</label><select id="f-price">${selOptions('price')}</select></span>
-      <span class="sel" id="w-size"><label for="f-size" class="sr-only">Size</label><select id="f-size">${selOptions('size')}</select></span>
-      <button class="btn btn-sec btn-filter" type="button" id="moreBtn" aria-haspopup="dialog">${ICON.sliders}<span class="d-only">More filters</span><span class="m-only">Filters</span><span class="n" hidden></span></button>
-    </form>
-  </div></div>
   <div class="wrap">
     <div id="r-bc"></div>
-    <div class="r-head">
-      <div><h1 id="r-title" tabindex="-1">${searchTitle()}</h1><p class="r-count" id="r-count" aria-live="polite"></p><p class="lede-seo" id="r-intro"></p></div>
-      <div class="r-tools">
-        <span class="sel"><label for="f-sort" class="sr-only">Sort</label><select id="f-sort">${selOptions('sort')}</select></span>
-        <div class="seg" role="group" aria-label="View as"><button type="button" data-view="list" aria-pressed="${S.view === 'list'}">List</button><button type="button" data-view="map" aria-pressed="${S.view === 'map'}">Map</button></div>
-      </div>
+    <div class="s-hero">
+      <div><h1 id="r-title" tabindex="-1">${titleHTML()}</h1><p class="lede-seo" id="r-intro"></p></div>
+      <div class="agent-card"><span class="ph" aria-hidden="true">HQ</span><p>Not seeing the right space? Many aren’t advertised. <button type="button" class="link-btn" data-contact="requirements">Tell us what you need →</button></p></div>
     </div>
+  </div>
+  <div class="s-bar"><div class="wrap">
+    <form class="fbar" id="fbar" role="search" aria-label="Filter listings">
+      <div class="fcol loc"><label class="flabel" for="f-q">Where</label><div class="loc-wrap">${ICON.search}<input class="input" id="f-q" type="search" list="places" placeholder="City or neighbourhood" autocomplete="off" value="${esc(S.q)}"></div></div>
+      <div class="fcol deal"><span class="flabel" aria-hidden="true">Lease or buy</span>${dealSeg('f-deal')}</div>
+      <div class="fcol d-only-f"><label class="flabel" for="f-price">Budget</label><span class="sel" id="w-price"><select id="f-price">${selOptions('price')}</select></span></div>
+      <div class="fcol d-only-f"><label class="flabel" for="f-size">Size</label><span class="sel" id="w-size"><select id="f-size">${selOptions('size')}</select></span></div>
+      <div class="fcol"><span class="flabel d-only" aria-hidden="true">&nbsp;</span><button class="btn btn-sec btn-filter" type="button" id="moreBtn" aria-haspopup="dialog">${ICON.sliders}<span class="d-only">More filters</span><span class="m-only">Filters</span><span class="n" hidden></span></button></div>
+    </form>
+    <div class="type-row" role="group" aria-label="Property type">${typePills()}</div>
+  </div></div>
+  <div class="wrap" style="padding-top:16px">
     <div class="chips" id="r-chips"></div>
     <div id="r-note"></div>
+    <div class="rhead">
+      <p class="count num" id="r-count" aria-live="polite"></p>
+      <div class="r-tools">
+        <span class="sel"><label for="f-sort" class="sr-only">Sort</label><select id="f-sort">${selOptions('sort')}</select></span>
+        <button class="btn btn-sec btn-sm maptoggle" type="button" id="mapToggle" aria-controls="mapbox" aria-expanded="${mapOpen}">${mapOpen ? 'Hide map' : 'Show map'}</button>
+      </div>
+    </div>
     <div id="r-body"></div>
     <div id="r-seo"></div>
   </div>`;
@@ -1320,7 +1452,8 @@ function syncControls() {
     mb.classList.toggle('on', n > 0);
     mb.setAttribute('aria-label', (narrow ? 'Filters' : 'More filters') + (n ? `, ${n} applied` : ''));
   }
-  const title = $('#r-title'); if (title) title.textContent = searchTitle();
+  const title = $('#r-title'); if (title) title.innerHTML = titleHTML();
+  $$('[data-tpill]', v).forEach(b => b.setAttribute('aria-pressed', b.dataset.tpill === 'any' ? !S.types.length : S.types.includes(b.dataset.tpill)));
 }
 function contextNote(r) {
   let key = null, html = '';
@@ -1346,7 +1479,8 @@ function renderResults() {
   currentNav = ctx.type === 'business' ? 'businesses' : S.deal === 'lease' ? 'lease' : S.deal === 'sale' ? 'buy' : '';
   $$('.main-nav a').forEach(a => a.dataset.nav === currentNav ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
   searchSeo(r);
-  $('#r-count').textContent = r.length === 1 ? '1 listing' : `${r.length} listings`;
+  $('#r-count').innerHTML = `${r.length} ${r.length === 1 ? 'listing' : 'listings'} <span>of ${L.length}</span>`;
+  const sb = $('.s-bar'); if (sb) document.documentElement.style.setProperty('--sbar', sb.offsetHeight + 'px');
   $('#r-chips').innerHTML = activeFilters().map((f, i) => `<span class="chip">${esc(f.label)}<button type="button" data-chip="${i}" aria-label="Remove filter: ${esc(f.label)}">${ICON.x}</button></span>`).join('') + (activeFilters().length > 1 ? '<button type="button" class="link-btn" data-clear-all style="min-height:36px;font-size:14.5px">Clear all</button>' : '');
   $('#r-note').innerHTML = contextNote(r);
   if (!r.length) {
@@ -1361,28 +1495,25 @@ function renderResults() {
     </div>`;
     return;
   }
-  if (S.view === 'map') { body.innerHTML = mapHTML(r); return; }
-  const cards = r.map(card);
+  const cards = r.map((l, i) => card(l, i + 1));
   const band = `<div class="band inline"><div><h2>Not seeing the right fit?</h2><p>Tell us what you need and we’ll search off-market space and upcoming listings for you.</p></div><div class="acts"><button class="btn btn-sec" type="button" data-contact="requirements">Discuss your requirements</button></div></div>`;
   cards.splice(Math.min(6, cards.length), 0, band);
-  body.innerHTML = `<div class="cards">${cards.join('')}</div>`;
+  body.innerHTML = `<div class="results"><div><div class="cards">${cards.join('')}</div></div><aside class="mapbox${mapOpen ? '' : ' collapsed'}" id="mapbox" aria-label="Map of listings">${mapHTML(r)}</aside></div>`;
 }
+function mapSel(l) { return l ? `<a href="#listing-${l.id}">${esc(l.title)}</a><b class="num">${priceOf(l).pin}</b>` : 'Select a pin to preview a listing.'; }
 function mapHTML(r) {
-  if (!r.find(l => l.id === mapPick)) mapPick = r[0].id;
-  const pick = byId(mapPick);
+  if (!r.find(l => l.id === mapPick)) mapPick = null;
   return `<div class="map" role="group" aria-label="Map of ${r.length} listings (approximate locations)">
     <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
       <path class="water" d="M0 0 H100 V6 Q70 12 50 9 Q30 14 18 12 Q8 13 0 16 Z"/>
       <path class="water" d="M0 16 Q6 30 5 48 Q4 70 10 100 H0 Z"/>
       <path class="water" d="M5 48 Q18 44 30 48 Q40 50 50 44 Q62 38 76 42 Q88 46 100 44 V48 Q88 50 76 46 Q62 43 51 48 Q40 54 30 52 Q18 48 6 52 Z"/>
     </svg>
-    ${Object.entries(CITY_XY).map(([c, [x, y]]) => `<span class="city" style="left:${x}%;top:${y + 8}%">${c}</span>`).join('')}
-    ${r.map(l => `<button type="button" class="pin${l.conf ? ' conf' : ''}" style="left:${l.x}%;top:${l.y}%" data-pin="${l.id}" aria-pressed="${l.id === mapPick}" aria-label="${esc(l.title)}, ${priceOf(l).pin}">${priceOf(l).pin}</button>`).join('')}
+    ${Object.entries(CITY_XY).map(([c, [x, y]]) => `<span class="city" style="left:${x}%;top:${y + 7}%">${c}</span>`).join('')}
+    ${r.map((l, i) => `<button type="button" class="pin${l.conf ? ' conf' : ''}" style="left:${l.x}%;top:${l.y}%" data-pin="${l.id}" aria-pressed="${l.id === mapPick}" aria-label="${i + 1}: ${esc(l.title)}, ${priceOf(l).pin}">${i + 1}</button>`).join('')}
   </div>
-  <div class="map-foot">
-    <p class="cap">Locations are approximate. Dashed pins are businesses, shown by area only to keep the sale confidential.</p>
-    <div class="map-pick">${card(pick)}</div>
-  </div>`;
+  <div class="mapsel" id="mapsel">${mapSel(mapPick && byId(mapPick))}</div>
+  <div class="mapnote"><span>Approximate locations. Dashed pins are businesses, shown by area only.</span><span class="num">${r.length} shown</span></div>`;
 }
 
 function filtersBody() {
@@ -1520,11 +1651,7 @@ function viewDetail(l) {
       <p class="d-loc">${esc(l.area)}, ${esc(l.city)}${l.conf ? ` · exact location shared after a ${term('nda', 'confidentiality agreement')}` : ''}</p>
       <div class="m-price"><p class="price">${priceUnitHTML(p)}</p><p class="price-sub">${p.sub}</p></div>
     </div>
-    <div class="gallery">
-      <div>${photo(l, `role="img" aria-label="Photo placeholder: ${esc(l.title)}"`)}<span class="count">${l.conf ? 'Photos after NDA' : '12 photos'}</span></div>
-      <div>${photo({...l, hue: l.hue + 18})}</div>
-      <div>${photo({...l, hue: l.hue - 18})}</div>
-    </div>
+    <div class="gallery">${tile(l, `<span class="count">${l.conf ? 'Photos after NDA' : '12 photos'}</span>`, `role="img" aria-label="Photo placeholder: ${esc(l.title)}"`)}</div>
     <div class="d-grid">
       <div class="d-main">
         <section aria-label="Key facts"><dl class="kf">${keyFacts(l).map(([k, v, t]) => `<div><dt>${k}${t ? termQ(t, k) : ''}</dt><dd>${v}</dd></div>`).join('')}</dl></section>
@@ -1838,6 +1965,7 @@ function seoBlock(ctx) {
   return `<section class="seo" aria-labelledby="seo-h">
     <div class="seo-grid">
       <div class="prose">
+        <span class="eyebrow">${ctx.city ? (dk === 'sale' || ctx.type === 'business' ? 'Buying' : dk === 'lease' ? 'Leasing' : 'Commercial real estate') + ' in ' + ctx.city : 'Guide'}</span>
         <h2 id="seo-h">${noun}${where}: what to know</h2>
         ${A ? `<p>${A.intro}</p>` : ''}${T ? `<p>${T.about}</p>` : ''}${!A && !T ? `<p>${REGION_TEXT}</p>` : ''}
         ${A ? `<h3>Where to look in ${ctx.city}</h3><div class="districts">${A.districts.map(([n, d]) => `<div><b>${n}</b><span>${d}</span></div>`).join('')}</div><p class="hint">Getting around: ${A.access}</p>` : ''}
@@ -1850,8 +1978,8 @@ function seoBlock(ctx) {
         <ul class="guide-links">${relatedArticles(ctx).map(a => `<li><a href="#learn-${a.slug}">${a.title}</a><span>${a.read} min read</span></li>`).join('')}<li><a href="#learn">All guides</a></li></ul>
       </aside>
     </div>
-    ${faqs.length ? `<div><h2>Questions about ${lower1(noun)}${where}</h2>${faqHTML(faqs)}</div>` : ''}
-    <div class="related">${related}</div>
+    ${faqs.length ? `<div class="faq2"><div class="shead"><span class="eyebrow">FAQ</span><h2>Questions about ${lower1(noun)}${where}</h2><p>Don’t see yours? <button type="button" class="link-btn" data-contact="requirements">Ask us directly.</button></p></div>${faqHTML(faqs)}</div>` : ''}
+    <div><div class="shead"><span class="eyebrow">Browse</span><h2>Related searches</h2></div><div class="related">${related}</div></div>
   </section>`;
 }
 const REGION_TEXT = `HomeQuest covers commercial real estate across ${REGION}: shops and restaurants on busy high streets, offices near SkyTrain, warehouses near the port and highways, and businesses for sale. Rents and prices generally fall the further you go from Vancouver, while newer buildings and parking become easier to find.`;
@@ -1969,7 +2097,7 @@ function homeSeoSections() {
   const areas = CITIES.map(c => 'area-' + citySlug(c));
   return `
   <section class="section"><div class="wrap">
-    <div class="sec-head"><div><h2>Browse commercial real estate</h2><p>Every property type and area has its own page, with listings, typical prices and local advice.</p></div></div>
+    <div class="sec-head"><div><span class="eyebrow">Browse</span><h2>Browse commercial real estate</h2><p>Every property type and area has its own page, with listings, typical prices and local advice.</p></div></div>
     <div class="browse">
       <div><h3>Space for lease</h3>${linkList(['lease', ...LEASE_BASES], 'one')}</div>
       <div><h3>Property and businesses for sale</h3>${linkList(['buy', ...SALE_BASES], 'one')}</div>
@@ -1977,13 +2105,13 @@ function homeSeoSections() {
     </div>
   </div></section>
   <section class="section"><div class="wrap seo-grid">
-    <div class="prose"><h2>Commercial real estate in ${REGION}</h2><p>${REGION_TEXT}</p>
+    <div class="prose"><span class="eyebrow">Market</span><h2>Commercial real estate in ${REGION}</h2><p>${REGION_TEXT}</p>
       <p>Most commercial space here is leased rather than bought. Rent is quoted ${term('psf', 'per square foot per year')}, usually on a ${term('net-lease', 'net lease')}, so every listing on HomeQuest also shows an estimated monthly total. If you’re buying, we show the down payment, ${term('ptt', 'property transfer tax')} and an estimated mortgage payment.</p>
       <p>Industrial space is in short supply across the region, and good retail units on busy streets lease quickly. If you have a specific need, it helps to tell us early so we can watch for space before it’s advertised.</p></div>
     <aside class="seo-side"><h3>Typical asking prices</h3>${marketTable()}</aside>
   </div></section>
   <section class="section"><div class="wrap">
-    <div class="sec-head"><div><h2>Guides for tenants, buyers and investors</h2><p>Short, practical explanations of how commercial real estate works.</p></div><a class="btn btn-sec btn-sm" href="#learn">All guides</a></div>
+    <div class="sec-head"><div><span class="eyebrow">Resources</span><h2>Guides for tenants, buyers and investors</h2><p>Short, practical explanations of how commercial real estate works.</p></div><a class="btn btn-sec btn-sm" href="#learn">All guides</a></div>
     <div class="articles">${ARTICLES.slice(0, 6).map(articleCard).join('')}</div>
   </div></section>`;
 }
@@ -2018,57 +2146,6 @@ function openSeoPanel() {
     <details class="seo-more"><summary>Structured data (JSON-LD)</summary><pre>${esc(JSON.stringify({'@context':'https://schema.org', '@graph':SEO.graph}, null, 2))}</pre></details>
     <p class="proto-note">A review tool for this prototype only. It isn’t part of the live site.</p>`;
   $('#dlgSeo').showModal();
-}
-
-/* ================= Colour schemes ================= */
-const PALETTES = {
-  cobalt:{name:'Cobalt', note:'Crisp blue actions on cool grey. Clear and product-like.',
-    light:{bg:'#F3F5F4', surface:'#FFFFFF', surface2:'#EAEEEC', ink:'#0D1719', ink2:'#2A3638', muted:'#536062', line:'#D5DCDA', line2:'#A9B4B1', accent:'#1D44C4', hover:'#16379F', soft:'#E3E9FB', onAccent:'#FFFFFF', onInk:'#FFFFFF'},
-    dark:{bg:'#0A1011', surface:'#121A1C', surface2:'#1A2426', ink:'#E7EEEC', ink2:'#C3CECB', muted:'#9AA8A6', line:'#253032', line2:'#3F4D4F', accent:'#8EA6FF', hover:'#B0C1FF', soft:'#1B2447', onAccent:'#0A1011', onInk:'#0A1011'}},
-  evergreen:{name:'Evergreen', note:'Deep green on soft sage-grey. Calm and established.',
-    light:{bg:'#F2F5F2', surface:'#FFFFFF', surface2:'#E7EDE8', ink:'#0C1A14', ink2:'#28382F', muted:'#506158', line:'#D3DDD6', line2:'#A6B5AB', accent:'#0B6B4F', hover:'#08553F', soft:'#DDEFE6', onAccent:'#FFFFFF', onInk:'#FFFFFF'},
-    dark:{bg:'#09110D', surface:'#111B16', surface2:'#19261F', ink:'#E6EFEA', ink2:'#C1CFC7', muted:'#96A89E', line:'#22302A', line2:'#3C4D44', accent:'#5FD0A5', hover:'#86DEBC', soft:'#0F2E22', onAccent:'#06120D', onInk:'#09110D'}},
-  harbour:{name:'Harbour', note:'Navy text with a teal accent. Coastal and corporate.',
-    light:{bg:'#F2F4F7', surface:'#FFFFFF', surface2:'#E8ECF2', ink:'#0E1B2E', ink2:'#2A3850', muted:'#525F73', line:'#D5DBE4', line2:'#A7B2C2', accent:'#0A6A7A', hover:'#075562', soft:'#DCEEF1', onAccent:'#FFFFFF', onInk:'#FFFFFF'},
-    dark:{bg:'#0A0F18', surface:'#111827', surface2:'#182133', ink:'#E7ECF4', ink2:'#C3CCDA', muted:'#97A3B6', line:'#222D40', line2:'#3B4860', accent:'#5CC8D8', hover:'#86D8E4', soft:'#0F2B33', onAccent:'#061218', onInk:'#0A0F18'}},
-  brass:{name:'Navy & brass', note:'Navy with warm brass buttons. Premium and traditional.',
-    light:{bg:'#F4F3F0', surface:'#FFFFFF', surface2:'#ECE9E3', ink:'#121A2B', ink2:'#2E3647', muted:'#5A5F6B', line:'#DDD8CF', line2:'#B3AC9F', accent:'#8A5A0F', hover:'#6F480B', soft:'#F4EAD6', onAccent:'#FFFFFF', onInk:'#FFFFFF'},
-    dark:{bg:'#0C0F16', surface:'#141925', surface2:'#1C2230', ink:'#ECEAE4', ink2:'#CBC7BD', muted:'#A09B90', line:'#262C3A', line2:'#414859', accent:'#E0B25E', hover:'#EDC77F', soft:'#33280F', onAccent:'#16110A', onInk:'#0C0F16'}},
-  burgundy:{name:'Burgundy', note:'A deep wine accent on warm grey. Confident and upscale.',
-    light:{bg:'#F5F3F3', surface:'#FFFFFF', surface2:'#EDE8E8', ink:'#1B1416', ink2:'#3A2F32', muted:'#645A5D', line:'#DFD7D8', line2:'#B5A9AB', accent:'#8C1D3A', hover:'#711730', soft:'#F6E3E8', onAccent:'#FFFFFF', onInk:'#FFFFFF'},
-    dark:{bg:'#110C0D', surface:'#1A1315', surface2:'#241B1E', ink:'#F0E9EA', ink2:'#D3C8CA', muted:'#A99C9F', line:'#2F2427', line2:'#4C3D41', accent:'#F08AA5', hover:'#F6ABBF', soft:'#3A1520', onAccent:'#1A0A0F', onInk:'#110C0D'}},
-  graphite:{name:'Graphite', note:'Black and white only, with colour saved for status. Minimal.',
-    light:{bg:'#F4F4F3', surface:'#FFFFFF', surface2:'#EAEAE8', ink:'#111111', ink2:'#333333', muted:'#5E5E5C', line:'#DADAD7', line2:'#ADADA9', accent:'#111111', hover:'#333333', soft:'#EAEAE8', onAccent:'#FFFFFF', onInk:'#FFFFFF'},
-    dark:{bg:'#0B0B0B', surface:'#151515', surface2:'#1E1E1E', ink:'#EDEDEB', ink2:'#CACAC7', muted:'#9C9C98', line:'#2A2A2A', line2:'#454545', accent:'#EDEDEB', hover:'#FFFFFF', soft:'#262626', onAccent:'#0B0B0B', onInk:'#0B0B0B'}}
-};
-(function paletteCSS() {
-  const TOK = {bg:'--bg', surface:'--surface', surface2:'--surface-2', ink:'--ink', ink2:'--ink-2', muted:'--muted', line:'--line', line2:'--line-2', accent:'--accent', hover:'--accent-hover', soft:'--accent-soft', onAccent:'--on-accent', onInk:'--on-ink'};
-  const decl = p => Object.entries(p).map(([k, v]) => `${TOK[k]}:${v}`).join(';') + `;--sale:${p.accent};--sale-soft:${p.soft}`;
-  let css = '';
-  for (const [id, P] of Object.entries(PALETTES)) {
-    if (id === 'cobalt') continue;
-    css += `:root[data-palette="${id}"]{${decl(P.light)}}@media (prefers-color-scheme:dark){:root[data-palette="${id}"]:not([data-theme="light"]){${decl(P.dark)}}}:root[data-palette="${id}"][data-theme="dark"]{${decl(P.dark)}}`;
-  }
-  document.head.insertAdjacentHTML('beforeend', `<style id="palettes">${css}</style>`);
-})();
-function applyPalette(id) {
-  if (!PALETTES[id]) id = 'cobalt';
-  if (id === 'cobalt') delete document.documentElement.dataset.palette; else document.documentElement.dataset.palette = id;
-  store.set('palette', id);
-}
-function openPalettes() {
-  const cur = document.documentElement.dataset.palette || 'cobalt';
-  const mode = document.documentElement.dataset.theme || 'system';
-  $('#pBody').innerHTML = `
-    <fieldset class="fgroup"><legend class="sr-only">Colour scheme</legend>
-      ${Object.entries(PALETTES).map(([id, P]) => `<label class="pal"><input type="radio" name="pal" value="${id}" ${id === cur ? 'checked' : ''}>
-        <span class="sw" aria-hidden="true"><i style="background:${P.light.bg}"></i><i style="background:${P.light.ink}"></i><i style="background:${P.light.accent}"></i><i style="background:${P.dark.bg}"></i><i style="background:${P.dark.accent}"></i></span>
-        <span><b>${P.name}</b><small>${P.note}</small></span></label>`).join('')}
-    </fieldset>
-    <fieldset class="fgroup"><legend>Mode</legend>
-      <div class="seg" style="display:flex">${['system', 'light', 'dark'].map(m => `<label style="flex:1"><input type="radio" name="pmode" value="${m}" ${m === mode ? 'checked' : ''}><span style="width:100%">${m[0].toUpperCase() + m.slice(1)}</span></label>`).join('')}</div>
-    </fieldset>`;
-  $('#dlgPalette').showModal();
 }
 
 /* ================= Router ================= */
@@ -2158,7 +2235,22 @@ document.addEventListener('click', e => {
   if (t.hasAttribute('data-show-all')) { S = DEFAULT(); if (location.hash === '#search') { e.preventDefault(); route(); } return; }
   if (t.dataset.dismiss) { dismissed.add(t.dataset.dismiss); $('#r-note').innerHTML = ''; $('#r-title').focus(); return; }
   if (t.dataset.view) { S.view = t.dataset.view; $$('[data-view]').forEach(b => b.setAttribute('aria-pressed', b.dataset.view === S.view)); renderResults(); return; }
-  if (t.dataset.pin) { mapPick = t.dataset.pin; renderResults(); const p = $(`[data-pin="${mapPick}"]`); p && p.focus(); return; }
+  if (t.dataset.pin) {
+    mapPick = t.dataset.pin;
+    $$('.pin').forEach(p => p.setAttribute('aria-pressed', p.dataset.pin === mapPick));
+    $('#mapsel').innerHTML = mapSel(byId(mapPick));
+    const c = $(`.card[data-id="${mapPick}"]`);
+    if (c) { c.scrollIntoView({block:'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'}); c.classList.add('hot'); setTimeout(() => c.classList.remove('hot'), 1400); }
+    return;
+  }
+  if (t.dataset.tpill) {
+    const k = t.dataset.tpill;
+    S.types = k === 'any' || (S.types.length === 1 && S.types[0] === k) ? [] : [k];
+    if (k === 'business') S.deal = 'sale';
+    if (S.price !== 'any' && S.deal !== 'any' && BUDGETS[S.price].deal !== S.deal) S.price = 'any';
+    afterFilter(); return;
+  }
+  if (t.id === 'mapToggle') { mapOpen = !mapOpen; const m = $('#mapbox'); m && m.classList.toggle('collapsed', !mapOpen); t.textContent = mapOpen ? 'Hide map' : 'Show map'; t.setAttribute('aria-expanded', mapOpen); return; }
   if (t.id === 'moreBtn') { openFilters(); return; }
   if (t.id === 'moreDet') { const open = t.getAttribute('aria-expanded') !== 'true'; $$('#detList [data-more]').forEach(d => d.hidden = !open); t.setAttribute('aria-expanded', open); t.textContent = open ? 'Show fewer details' : `Show all ${$$('#detList > div').length} details`; return; }
   if (t.dataset.goal) { guide = {step:1, goal:t.dataset.goal, deal:null, budget:null, areas:[]}; location.hash = 'guide'; return; }
@@ -2170,7 +2262,6 @@ document.addEventListener('click', e => {
   if (t.dataset.time) { const on = contactCtx.time !== t.dataset.time; contactCtx.time = on ? t.dataset.time : null; $$('[data-time]').forEach(b => b.setAttribute('aria-pressed', on && b === t)); return; }
   if (t.id === 'menuBtn') { $('#dlgMenu').showModal(); return; }
   if (t.id === 'seoBtn') { openSeoPanel(); return; }
-  if (t.id === 'palBtn') { openPalettes(); return; }
   if (t.id === 'themeBtn') { toggleTheme(); return; }
   if (t.id === 'fClear') { S = {...DEFAULT(), q:S.q, view:S.view, sort:S.sort}; $('#fBody').innerHTML = filtersBody(); renderResults(); updateShowBtn(); return; }
   if (t.id === 'tAsk') { $('#dlgTerm').close(); openContact(location.hash.startsWith('#listing-') ? 'ask' : 'requirements', location.hash.startsWith('#listing-') ? location.hash.slice(9) : null, `I have a question about ${$('#tTitle').textContent.toLowerCase()}: `); return; }
@@ -2181,8 +2272,6 @@ function rerenderGuide() { $('#view').innerHTML = viewGuide(); $('#g-h').focus()
 
 document.addEventListener('change', e => {
   const t = e.target;
-  if (t.name === 'pal') { applyPalette(t.value); paintDots(); return; }
-  if (t.name === 'pmode') { if (t.value === 'system') { delete document.documentElement.dataset.theme; store.set('theme', null); } else { document.documentElement.dataset.theme = t.value; store.set('theme', t.value); } setThemeLabel(); return; }
   if (t.name === 'h-mode') { const tf = $('#h-type-f'); tf.hidden = t.value === 'business'; return; }
   if (t.id === 'h-type' && t.value === 'unsure') { guide = {step:0, goal:null, deal:null, budget:null, areas:[]}; location.hash = 'guide'; return; }
   if (t.name === 'f-deal' || t.name === 'm-deal') { S.deal = t.value; if (S.price !== 'any' && BUDGETS[S.price].deal !== S.deal && S.deal !== 'any') S.price = 'any'; afterFilter(); return; }
@@ -2257,6 +2346,15 @@ function openTerm(k) {
   d.showModal();
 }
 
+function hotSync(e, on) {
+  const el = e.target.closest && e.target.closest('.card[data-id], .pin[data-pin]'); if (!el) return;
+  const id = el.dataset.id || el.dataset.pin;
+  $$(`.card[data-id="${id}"], .pin[data-pin="${id}"]`).forEach(x => x.classList.toggle('hot', on));
+}
+document.addEventListener('mouseover', e => hotSync(e, true));
+document.addEventListener('mouseout', e => hotSync(e, false));
+window.addEventListener('resize', () => { const sb = $('.s-bar'); if (sb) document.documentElement.style.setProperty('--sbar', sb.offsetHeight + 'px'); });
+
 /* ================= Theme ================= */
 function effectiveDark() { const a = document.documentElement.dataset.theme; return a ? a === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; }
 function setThemeLabel() { $('#themeBtn').setAttribute('aria-label', effectiveDark() ? 'Switch to light mode' : 'Switch to dark mode'); }
@@ -2266,9 +2364,6 @@ setThemeLabel();
 
 /* ================= Init ================= */
 document.body.insertAdjacentHTML('beforeend', `<datalist id="places">${CITIES.map(c => `<option value="${c}">`).join('')}${[...new Set(L.filter(l => !l.conf).map(l => l.area + ', ' + l.city))].map(a => `<option value="${a}">`).join('')}</datalist>`);
-applyPalette(store.get('palette', 'cobalt'));
-function paintDots() { const P = PALETTES[document.documentElement.dataset.palette || 'cobalt']; $('#palDots').innerHTML = [P.light.accent, P.light.ink, P.dark.accent].map(c => `<i style="background:${c}"></i>`).join(''); }
-paintDots();
 popularSearches();
 updateSaved();
 route();
